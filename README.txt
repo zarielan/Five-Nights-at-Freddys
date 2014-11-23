@@ -1,7 +1,0 @@
-# Five Nights at Freddy's Recreated
-
-Ohai there! This is just a little project of mine where I recreated **Five Nights at Freddy's** by **Scott Cawthon**
-
-The game is rewritten in **Java** using **Libgdx**
-
-This repository and its author are not in any way associated with or supported by Scott Cawthon. All textures and audio are the property of Scott Cawthon.
