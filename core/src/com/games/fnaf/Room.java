@@ -41,6 +41,8 @@ public enum Room
 
 		//Rooms that have multiple positions in them. Yay for hardcoded values! :D
 		multiplePos = new ArrayMap<String, Integer>();
+		multiplePos.put("ShowStageBonnieChicaFreddy", 2);
+		multiplePos.put("ShowStageFreddy", 2);
 		multiplePos.put("DiningAreaBonnie", 2);
 		multiplePos.put("DiningAreaChica", 2);
 		multiplePos.put("BackstageBonnie", 2);

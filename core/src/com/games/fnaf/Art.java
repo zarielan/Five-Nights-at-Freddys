@@ -31,10 +31,12 @@ public class Art
 		roomTextures = new ArrayMap<String, Texture>();
 
 		roomTextures.put("ShowStage", new Texture("ShowStage.png"));
-		roomTextures.put("ShowStageBonnieChicaFreddy", new Texture("ShowStage_BonnieChicaFreddy.png"));
+		roomTextures.put("ShowStageBonnieChicaFreddy1", new Texture("ShowStage_BonnieChicaFreddy1.png"));
+		roomTextures.put("ShowStageBonnieChicaFreddy2", new Texture("ShowStage_BonnieChicaFreddy2.png"));
 		roomTextures.put("ShowStageBonnieFreddy", new Texture("ShowStage_BonnieFreddy.png"));
 		roomTextures.put("ShowStageChicaFreddy", new Texture("ShowStage_ChicaFreddy.png"));
-		roomTextures.put("ShowStageFreddy", new Texture("ShowStage_Freddy.png"));
+		roomTextures.put("ShowStageFreddy1", new Texture("ShowStage_Freddy1.png"));
+		roomTextures.put("ShowStageFreddy2", new Texture("ShowStage_Freddy2.png"));
 
 		roomTextures.put("DiningArea", new Texture("DiningArea.png"));
 		roomTextures.put("DiningAreaFreddy", new Texture("DiningArea_Freddy.png"));
