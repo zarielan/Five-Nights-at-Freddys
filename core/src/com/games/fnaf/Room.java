@@ -3,7 +3,6 @@ package com.games.fnaf;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ArrayMap;
 
 public enum Room
@@ -94,11 +93,13 @@ public enum Room
 
 		String fName = args.toString();
 
-		for (String s : multiplePos)
+		for (int i = 0; i < multiplePos.size; i++)
 		{
+			String s = multiplePos.getKeyAt(i);
+			int scope = multiplePos.getValueAt(i);
 			if (s.equals(fName))
 			{
-				fName = fName.concat(",2");
+				fName += ",".concat(String.valueOf(scope));
 				break;
 			}
 		}
