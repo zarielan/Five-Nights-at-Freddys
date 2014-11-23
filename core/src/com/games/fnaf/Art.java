@@ -62,6 +62,10 @@ public class Art
 		roomTextures.put("WestHall", new Texture("WestHall.png"));
 		roomTextures.put("WestHallBonnie", new Texture("WestHall_Bonnie.png"));
 
+		roomTextures.put("WestHallCor1", new Texture("WestHallCor1.png"));
+		roomTextures.put("WestHallCor2", new Texture("WestHallCor2.png"));
+		roomTextures.put("WestHallCorBonnie", new Texture("WestHallCor_Bonnie.png"));
+
 		//Camera buttons
 		cameraButtonTextures = new ArrayMap<String,Texture>();
 		cameraButtonTextures.put("1A", new Texture("1A.png"));
@@ -71,6 +75,7 @@ public class Art
 		cameraButtonTextures.put("7", new Texture("7.png"));
 		cameraButtonTextures.put("3", new Texture("3.png"));
 		cameraButtonTextures.put("2A", new Texture("2A.png"));
+		cameraButtonTextures.put("2B", new Texture("2B.png"));
 	}
 
 	/* Support for rooms having multiple textures. They're not controlled though, it will just pick one image at random

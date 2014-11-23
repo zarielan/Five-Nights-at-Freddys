@@ -18,9 +18,9 @@ public class FNaF extends ApplicationAdapter
 		Art.loadTextures();
 
 		//Set their starting areas
-		Animatronic.FREDDY.setCurrentRoom(Room.RESTROOMS);
-		Animatronic.BONNIE.setCurrentRoom(Room.WEST_HALL);
-		Animatronic.CHICA.setCurrentRoom(Room.RESTROOMS);
+		Animatronic.FREDDY.setCurrentRoom(Room.SHOW_STAGE);
+		Animatronic.BONNIE.setCurrentRoom(Room.WEST_HALL_CORNER);
+		Animatronic.CHICA.setCurrentRoom(Room.DINING_AREA);
 		Animatronic.FOXY.setCurrentRoom(Room.PIRATE_COVE);
 
 		batch = new SpriteBatch();
