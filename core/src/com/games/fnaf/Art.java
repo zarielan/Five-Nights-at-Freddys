@@ -49,9 +49,11 @@ public class Art
 		roomTextures.put("DiningAreaBonnieFreddy", new Texture("DiningArea_BonnieFreddy.png"));
 		roomTextures.put("DiningAreaBonnieChicaFreddy", new Texture("DiningArea_BonnieChicaFreddy.png"));
 
+		//TODO Foxy
 		roomTextures.put("PirateCoveFoxy", new Texture("PirateCove_Foxy.png"));
 
-		roomTextures.put("Backstage", new Texture("Backstage.png"));
+		roomTextures.put("Backstage1", new Texture("Backstage1.png"));
+		roomTextures.put("Backstage2", new Texture("Backstage2.png"));
 		roomTextures.put("BackstageBonnie1", new Texture("Backstage_Bonnie1.png"));
 		roomTextures.put("BackstageBonnie2", new Texture("Backstage_Bonnie1.png")); //<-- this specifically
 		/* TODO change this to Backstage_Bonnie2, too scared shitless to see Bonnie starting at the camera closely */
@@ -69,6 +71,7 @@ public class Art
 		roomTextures.put("WestHall", new Texture("WestHall.png"));
 		roomTextures.put("WestHallBonnie", new Texture("WestHall_Bonnie.png"));
 
+		//TODO Golden Freddy
 		roomTextures.put("WestHallCor1", new Texture("WestHallCor1.png"));
 		roomTextures.put("WestHallCor2", new Texture("WestHallCor2.png"));
 		roomTextures.put("WestHallCorBonnie", new Texture("WestHallCor_Bonnie.png"));

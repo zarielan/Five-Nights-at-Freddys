@@ -43,6 +43,7 @@ public enum Room
 		multiplePos = new ArrayMap<String, Integer>();
 		multiplePos.put("ShowStageBonnieChicaFreddy", 2);
 		multiplePos.put("ShowStageFreddy", 2);
+		multiplePos.put("Backstage", 2);
 		multiplePos.put("DiningAreaBonnie", 2);
 		multiplePos.put("DiningAreaChica", 2);
 		multiplePos.put("BackstageBonnie", 2);
