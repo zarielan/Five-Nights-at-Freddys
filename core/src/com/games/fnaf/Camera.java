@@ -61,12 +61,18 @@ public class Camera
 
 	public void changeRoom(Room room)
 	{
+		if (this.room == room)
+		{
+			return;
+		}
+
 		if (this.room != null)
 		{
 			this.room.getCamButton().setSelected(false);
 		}
 
 		this.room = room;
+		this.room.changeRoomTexture();
 		this.room.getCamButton().setSelected(true);
 	}
 }

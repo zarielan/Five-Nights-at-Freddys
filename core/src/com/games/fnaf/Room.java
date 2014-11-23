@@ -128,10 +128,15 @@ public enum Room
 	{
 		if (texture == null)
 		{
-			texture = getTexture();
+			changeRoomTexture();
 		}
 
 		return texture;
+	}
+
+	public void changeRoomTexture()
+	{
+		texture = getTexture();
 	}
 
 	public void setVisiting(boolean visit, int ID)
