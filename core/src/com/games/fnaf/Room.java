@@ -71,6 +71,7 @@ public enum Room
 		return cameraX;
 	}
 
+	//Gets texture dependent on its name hehe
 	private Texture getTexture()
 	{
 		StringBuilder args = new StringBuilder(name);

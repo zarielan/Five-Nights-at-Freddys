@@ -19,6 +19,7 @@ public class Art
 		cameraButtonFlash = new Texture("CameraButtonFlash.png");
 
 		//Rooms
+		//Animatronic naming must be in the order of Bonnie -> Chica -> Freddy -> Foxy
 		roomTextures = new ArrayMap<String, Texture>();
 
 		roomTextures.put("ShowStage", new Texture("ShowStage.png"));
@@ -30,6 +31,8 @@ public class Art
 		roomTextures.put("DiningArea", new Texture("DiningArea.png"));
 		roomTextures.put("DiningAreaFreddy", new Texture("DiningArea_Freddy.png"));
 		roomTextures.put("DiningAreaBonnie", new Texture("DiningArea_Bonnie.png"));
+		roomTextures.put("DiningAreaChica", new Texture("DiningArea_Chica.png"));
+		roomTextures.put("DiningAreaBonnieChica", new Texture("DiningArea_BonnieChica.png"));
 
 		//Camera buttons
 		cameraButtonTextures = new ArrayMap<String,Texture>();

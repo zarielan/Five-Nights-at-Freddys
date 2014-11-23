@@ -17,9 +17,11 @@ public class Camera
 		map = new Sprite(Art.map);
 		map.setPosition(Gdx.graphics.getWidth() - map.getWidth(), 0f);
 		changeRoom(Room.SHOW_STAGE);
-		Animatronic.FREDDY.setCurrentRoom(room);
+
+		//Set their starting areas
+		Animatronic.FREDDY.setCurrentRoom(Room.SHOW_STAGE);
 		Animatronic.BONNIE.setCurrentRoom(Room.DINING_AREA);
-		Animatronic.CHICA.setCurrentRoom(room);
+		Animatronic.CHICA.setCurrentRoom(Room.DINING_AREA);
 	}
 
 	public void render()
