@@ -45,6 +45,7 @@ public class Art
 		roomTextures.put("PirateCoveFoxy", new Texture("PirateCove_Foxy.png"));
 
 		roomTextures.put("Backstage", new Texture("Backstage.png"));
+		roomTextures.put("BackstageBonnie", new Texture("Backstage_Bonnie1.png"));
 
 		//Camera buttons
 		cameraButtonTextures = new ArrayMap<String,Texture>();
