@@ -1,7 +1,9 @@
 package com.games.fnaf;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ArrayMap;
 
 /*  Credits to Scott Cawthon for creating and developing Five Nights at Freddy's and Five Nights at Freddy's 2 */
@@ -12,6 +14,7 @@ public class Art
 	public static Texture cameraButtonFlash;
 	public static ArrayMap<String, Texture> roomTextures;
 	public static ArrayMap<String, Texture> cameraButtonTextures;
+	public static Array<TextureRegion> kitchenStatic;
 
 	public static void loadTextures()
 	{
@@ -66,6 +69,12 @@ public class Art
 		roomTextures.put("WestHallCor2", new Texture("WestHallCor2.png"));
 		roomTextures.put("WestHallCorBonnie", new Texture("WestHallCor_Bonnie.png"));
 
+		kitchenStatic = new Array<TextureRegion>();
+		for (int i = 1; i <= 8; i++)
+		{
+			kitchenStatic.add(new TextureRegion(new Texture("KitchenFrames/" + i + ".png")));
+		}
+
 		//Camera buttons
 		cameraButtonTextures = new ArrayMap<String,Texture>();
 		cameraButtonTextures.put("1A", new Texture("1A.png"));
@@ -76,6 +85,7 @@ public class Art
 		cameraButtonTextures.put("3", new Texture("3.png"));
 		cameraButtonTextures.put("2A", new Texture("2A.png"));
 		cameraButtonTextures.put("2B", new Texture("2B.png"));
+		cameraButtonTextures.put("6", new Texture("6.png"));
 	}
 
 	/* Support for rooms having multiple textures. They're not controlled though, it will just pick one image at random
@@ -111,6 +121,11 @@ public class Art
 		for (Texture t : cameraButtonTextures.values())
 		{
 			t.dispose();
+		}
+
+		for (TextureRegion t : kitchenStatic)
+		{
+			t.getTexture().dispose();
 		}
 	}
 }
