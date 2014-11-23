@@ -7,14 +7,14 @@ import com.badlogic.gdx.utils.ArrayMap;
 
 public enum Room
 {
-	SHOW_STAGE("ShowStage", new CameraButton("1A", Gdx.graphics.getWidth() - 260f, 360f)),
-	PIRATE_COVE("PirateCove", new CameraButton("1C", Gdx.graphics.getWidth() - 320f, 225f)),
-	DINING_AREA("DiningArea", new CameraButton("1B", Gdx.graphics.getWidth() - 280f, 304f)),
-	BACKSTAGE("Backstage", new CameraButton("5", Gdx.graphics.getWidth() - 390f, 280f)),
-	RESTROOMS("Restrooms", new CameraButton("7", Gdx.graphics.getWidth() - 55f, 275f)),
-	SUPPLY_CLOSET("SupplyCloset", new CameraButton("3", Gdx.graphics.getWidth() - 350f, 130f));
-	/*WEST_HALL("WestHall"),
-	WEST_HALL_CORNER("WestHallCor"),
+	SHOW_STAGE("ShowStage", new CameraButton("1A", Gdx.graphics.getWidth() - 260f, 360f), true),
+	PIRATE_COVE("PirateCove", new CameraButton("1C", Gdx.graphics.getWidth() - 320f, 225f), true),
+	DINING_AREA("DiningArea", new CameraButton("1B", Gdx.graphics.getWidth() - 280f, 304f), true),
+	BACKSTAGE("Backstage", new CameraButton("5", Gdx.graphics.getWidth() - 390f, 280f), true),
+	RESTROOMS("Restrooms", new CameraButton("7", Gdx.graphics.getWidth() - 55f, 275f), true),
+	SUPPLY_CLOSET("SupplyCloset", new CameraButton("3", Gdx.graphics.getWidth() - 350f, 130f), false),
+	WEST_HALL("WestHall", new CameraButton("2A", Gdx.graphics.getWidth() - 265f, 110f), true);
+	/*WEST_HALL_CORNER("WestHallCor"),
 	EAST_HALL("EastHall"),
 	EAST_HALL_CORNER("EastHallCor");*/
 
@@ -26,14 +26,16 @@ public enum Room
 	private float timePassed = 0f;
 	private CameraButton camButton;
 	private ArrayMap<String, Integer> multiplePos;
+	private boolean moving;
 
-	private Room(String name, CameraButton camButton)
+	private Room(String name, CameraButton camButton, boolean movingCam)
 	{
+		moving = movingCam;
 		this.name = name;
 		this.visitors = new boolean[4];
 		texture = null;
 		this.camButton = camButton;
-		cameraX = MathUtils.random(-320f, 0f);
+		cameraX = moving ? MathUtils.random(-320f, 0f) : 0f;
 		xVel = 2f * (float)MathUtils.randomSign();
 
 		//Rooms that have multiple positions in them. Yay for hardcoded values! :D
@@ -53,26 +55,29 @@ public enum Room
 	//Move camera left and right
 	public void updateCameraValues()
 	{
-		if (timePassed >= 3f && !isCameraMoving)
+		if (moving)
 		{
-			isCameraMoving = true;
-		}
-
-		if (isCameraMoving)
-		{
-			timePassed = 0f;
-			cameraX += xVel;
-
-			if ((xVel == -2f && cameraX + getTexture().getWidth() <= 1280f) || (xVel == 2f && cameraX >= 0f))
+			if (timePassed >= 3f && !isCameraMoving)
 			{
-				xVel *= -1f;
-				isCameraMoving = false;
+				isCameraMoving = true;
 			}
-		}
 
-		if (!isCameraMoving)
-		{
-			timePassed += Gdx.graphics.getDeltaTime();
+			if (isCameraMoving)
+			{
+				timePassed = 0f;
+				cameraX += xVel;
+
+				if ((xVel == -2f && cameraX + getTexture().getWidth() <= 1280f) || (xVel == 2f && cameraX >= 0f))
+				{
+					xVel *= -1f;
+					isCameraMoving = false;
+				}
+			}
+
+			if (!isCameraMoving)
+			{
+				timePassed += Gdx.graphics.getDeltaTime();
+			}
 		}
 	}
 
