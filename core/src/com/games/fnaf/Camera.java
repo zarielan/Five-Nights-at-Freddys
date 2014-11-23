@@ -4,12 +4,15 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.utils.Disposable;
 
-public class Camera
+public class Camera implements Disposable
 {
 	private SpriteBatch batch;
 	private Sprite map;
 	private Room room;
+	private ShapeRenderer debug;
 
 	public Camera(SpriteBatch batch1)
 	{
@@ -20,6 +23,14 @@ public class Camera
 		Animatronic.FREDDY.setCurrentRoom(room);
 		Animatronic.BONNIE.setCurrentRoom(room);
 		Animatronic.CHICA.setCurrentRoom(room);
+
+		debug = new ShapeRenderer();
+	}
+
+	@Override
+	public void dispose()
+	{
+		debug.dispose();
 	}
 
 	public void render()
@@ -28,10 +39,12 @@ public class Camera
 		batch.draw(room.getCurrentTexture(), room.getCameraX(), 0f);
 		map.draw(batch);
 
+		debug.begin(ShapeRenderer.ShapeType.Filled);
 		for (Room r : Room.values())
 		{
 			CameraButton cam = r.getCamButton();
 			cam.render(batch);
+			debug.rect(cam.getHitBox().getX(), cam.getHitBox().getY(), cam.getHitBox().getWidth(), cam.getHitBox().getHeight());
 
 			if (Gdx.input.isButtonPressed(Input.Buttons.LEFT))
 			{
@@ -42,6 +55,7 @@ public class Camera
 				}
 			}
 		}
+		debug.end();
 	}
 
 	public void changeRoom(Room room)

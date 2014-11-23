@@ -24,10 +24,6 @@ public class CameraButton
 		hitBox = new Rectangle(position.x, position.y, bg.getWidth(), bg.getHeight());
 	}
 
-	public static void init()
-	{
-	}
-
 	public void render(SpriteBatch batch)
 	{
 		//Flicker effect

@@ -32,15 +32,12 @@ public enum Room
 		this.camButton = camButton;
 	}
 
-	public static void init()
-	{
-	}
-
 	public CameraButton getCamButton()
 	{
 		return camButton;
 	}
 
+	//Move camera left and right
 	public void updateCameraValues()
 	{
 		if (timePassed >= 3f && !isCameraMoving)
