@@ -15,8 +15,8 @@ public enum Room
 	SUPPLY_CLOSET("SupplyCloset", new CameraButton("3", Gdx.graphics.getWidth() - 350f, 130f), false),
 	WEST_HALL("WestHall", new CameraButton("2A", Gdx.graphics.getWidth() - 263f, 110f), true),
 	WEST_HALL_CORNER("WestHallCor", new CameraButton("2B", Gdx.graphics.getWidth() - 263f, 70f), true),
-	/*EAST_HALL("EastHall"),
-	EAST_HALL_CORNER("EastHallCor");*/
+	EAST_HALL("EastHall", new CameraButton("4A", Gdx.graphics.getWidth() - 160f, 110f), true),
+	//EAST_HALL_CORNER("EastHallCor");*/
 	KITCHEN("Kitchen", new CameraButton("6", Gdx.graphics.getWidth() - 65f, 145f), false);
 
 	private final String name;

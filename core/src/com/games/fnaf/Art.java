@@ -12,6 +12,7 @@ public class Art
 	public static Texture map;
 	public static Texture cameraButtonBG;
 	public static Texture cameraButtonFlash;
+	public static Texture cameraDisabled;
 	public static ArrayMap<String, Texture> roomTextures;
 	public static ArrayMap<String, Texture> cameraButtonTextures;
 	public static Array<TextureRegion> kitchenStatic;
@@ -22,6 +23,7 @@ public class Art
 		map = new Texture("map.png");
 		cameraButtonBG = new Texture("CameraButtonBG.png");
 		cameraButtonFlash = new Texture("CameraButtonFlash.png");
+		cameraDisabled = new Texture("CameraDisabled.png");
 
 		//Rooms
 		//Animatronic combination naming must be in the order of Bonnie -> Chica -> Freddy -> Foxy
@@ -86,6 +88,7 @@ public class Art
 		cameraButtonTextures.put("2A", new Texture("2A.png"));
 		cameraButtonTextures.put("2B", new Texture("2B.png"));
 		cameraButtonTextures.put("6", new Texture("6.png"));
+		cameraButtonTextures.put("4A", new Texture("4A.png"));
 	}
 
 	/* Support for rooms having multiple textures. They're not controlled though, it will just pick one image at random
@@ -112,6 +115,7 @@ public class Art
 		map.dispose();
 		cameraButtonBG.dispose();
 		cameraButtonFlash.dispose();
+		cameraDisabled.dispose();
 
 		for (Texture t : roomTextures.values())
 		{

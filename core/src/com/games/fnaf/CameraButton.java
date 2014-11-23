@@ -38,11 +38,11 @@ public class CameraButton
 
 			if (timeElapsed >= 1f)
 			{
-				batch.draw(flash, position.x, position.y);
+				batch.draw(bg, position.x, position.y);
 			}
 			else
 			{
-				batch.draw(bg, position.x, position.y);
+				batch.draw(flash, position.x, position.y);
 			}
 		}
 		else
