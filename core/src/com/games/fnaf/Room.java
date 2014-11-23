@@ -16,7 +16,7 @@ public enum Room
 	WEST_HALL("WestHall", new CameraButton("2A", Gdx.graphics.getWidth() - 263f, 110f), true),
 	WEST_HALL_CORNER("WestHallCor", new CameraButton("2B", Gdx.graphics.getWidth() - 263f, 70f), true),
 	EAST_HALL("EastHall", new CameraButton("4A", Gdx.graphics.getWidth() - 160f, 110f), true),
-	//EAST_HALL_CORNER("EastHallCor");*/
+	EAST_HALL_CORNER("EastHallCor", new CameraButton("4B", Gdx.graphics.getWidth() - 160f, 70f), true),
 	KITCHEN("Kitchen", new CameraButton("6", Gdx.graphics.getWidth() - 65f, 145f), false);
 
 	private final String name;
@@ -49,6 +49,7 @@ public enum Room
 		multiplePos.put("WestHallCor", 2);
 		multiplePos.put("EastHall", 3);
 		multiplePos.put("EastHallChica", 2);
+		multiplePos.put("EastHallCor", 5);
 	}
 
 	public CameraButton getCamButton()

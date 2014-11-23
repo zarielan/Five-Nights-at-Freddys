@@ -78,6 +78,14 @@ public class Art
 		roomTextures.put("EastHallChica1", new Texture("EastHall_Chica1.png"));
 		roomTextures.put("EastHallChica2", new Texture("EastHall_Chica2.png"));
 
+		roomTextures.put("EastHallCor1", new Texture("EastHallCor1.png"));
+		roomTextures.put("EastHallCor2", new Texture("EastHallCor2.png"));
+		roomTextures.put("EastHallCor3", new Texture("EastHallCor3.png"));
+		roomTextures.put("EastHallCor4", new Texture("EastHallCor4.png"));
+		roomTextures.put("EastHallCor5", new Texture("EastHallCor5.png"));
+		roomTextures.put("EastHallCorFreddy", new Texture("EastHallCor_Freddy.png"));
+		roomTextures.put("EastHallCorChica", new Texture("EastHallCor_Chica.png"));
+
 		kitchenStatic = new Array<TextureRegion>();
 		for (int i = 1; i <= 8; i++)
 		{
@@ -96,6 +104,7 @@ public class Art
 		cameraButtonTextures.put("2B", new Texture("2B.png"));
 		cameraButtonTextures.put("6", new Texture("6.png"));
 		cameraButtonTextures.put("4A", new Texture("4A.png"));
+		cameraButtonTextures.put("4B", new Texture("4B.png"));
 	}
 
 	/* Support for rooms having multiple textures. They're not controlled though, it will just pick one image at random
