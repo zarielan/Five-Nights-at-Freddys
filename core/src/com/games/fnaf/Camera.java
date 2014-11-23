@@ -44,11 +44,15 @@ public class Camera implements Disposable
 		{
 			CameraButton cam = r.getCamButton();
 			cam.render(batch);
+			debug.setColor(0f, 0f, 1f, 0.5f);
 			debug.rect(cam.getHitBox().getX(), cam.getHitBox().getY(), cam.getHitBox().getWidth(), cam.getHitBox().getHeight());
-			System.out.println(cam + ", " + cam.getHitBox() + ", " + System.currentTimeMillis());
+
+			boolean collision = cam.getHitBox().contains(Gdx.input.getX(), Gdx.input.getY());
+
+			System.out.println(collision + ", " + System.currentTimeMillis());
 			if (Gdx.input.isButtonPressed(Input.Buttons.LEFT))
 			{
-				if (cam.getHitBox().contains(Gdx.input.getX(), Gdx.input.getY()))
+				if (collision)
 				{
 					System.out.println("HIT " + System.currentTimeMillis());
 					//changeRoom(r);
