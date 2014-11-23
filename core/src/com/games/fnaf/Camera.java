@@ -45,13 +45,13 @@ public class Camera implements Disposable
 			CameraButton cam = r.getCamButton();
 			cam.render(batch);
 			debug.rect(cam.getHitBox().getX(), cam.getHitBox().getY(), cam.getHitBox().getWidth(), cam.getHitBox().getHeight());
-
+			System.out.println(cam + ", " + cam.getHitBox() + ", " + System.currentTimeMillis());
 			if (Gdx.input.isButtonPressed(Input.Buttons.LEFT))
 			{
 				if (cam.getHitBox().contains(Gdx.input.getX(), Gdx.input.getY()))
 				{
-					System.out.println("HIT");
-					changeRoom(r);
+					System.out.println("HIT " + System.currentTimeMillis());
+					//changeRoom(r);
 				}
 			}
 		}
