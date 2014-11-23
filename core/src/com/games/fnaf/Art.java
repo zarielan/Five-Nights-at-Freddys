@@ -118,6 +118,12 @@ public class Art
 		roomLabels.put("PirateCove", new Texture("PirateCoveLabel.png"));
 		roomLabels.put("Backstage", new Texture("BackstageLabel.png"));
 		roomLabels.put("DiningArea", new Texture("DiningAreaLabel.png"));
+		roomLabels.put("WestHall", new Texture("WestHallLabel.png"));
+		roomLabels.put("EastHallCor", new Texture("EastHallCorLabel.png"));
+		roomLabels.put("WestHallCor", new Texture("WestHallCorLabel.png"));
+		roomLabels.put("Restrooms", new Texture("RestroomsLabel.png"));
+		roomLabels.put("Kitchen", new Texture("KitchenLabel.png"));
+		roomLabels.put("EastHall", new Texture("EastHallLabel.png"));
 	}
 
 	/* Support for rooms having multiple textures. They're not controlled though, it will just pick one image at random
