@@ -11,9 +11,9 @@ public enum Room
 	PIRATE_COVE("PirateCove", new CameraButton("1C", Gdx.graphics.getWidth() - 320f, 225f)),
 	DINING_AREA("DiningArea", new CameraButton("1B", Gdx.graphics.getWidth() - 280f, 304f)),
 	BACKSTAGE("Backstage", new CameraButton("5", Gdx.graphics.getWidth() - 390f, 280f)),
-	RESTROOMS("Restrooms", new CameraButton("7", Gdx.graphics.getWidth() - 55f, 275f));
-	/*SUPPLY_CLOSET("SupplyCloset"),
-	WEST_HALL("WestHall"),
+	RESTROOMS("Restrooms", new CameraButton("7", Gdx.graphics.getWidth() - 55f, 275f)),
+	SUPPLY_CLOSET("SupplyCloset", new CameraButton("3", Gdx.graphics.getWidth() - 350f, 130f));
+	/*WEST_HALL("WestHall"),
 	WEST_HALL_CORNER("WestHallCor"),
 	EAST_HALL("EastHall"),
 	EAST_HALL_CORNER("EastHallCor");*/

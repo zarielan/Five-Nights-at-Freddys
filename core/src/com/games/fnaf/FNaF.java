@@ -19,7 +19,7 @@ public class FNaF extends ApplicationAdapter
 
 		//Set their starting areas
 		Animatronic.FREDDY.setCurrentRoom(Room.DINING_AREA);
-		Animatronic.BONNIE.setCurrentRoom(Room.DINING_AREA);
+		Animatronic.BONNIE.setCurrentRoom(Room.SUPPLY_CLOSET);
 		Animatronic.CHICA.setCurrentRoom(Room.RESTROOMS);
 		Animatronic.FOXY.setCurrentRoom(Room.PIRATE_COVE);
 
