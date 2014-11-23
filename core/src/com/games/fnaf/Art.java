@@ -71,6 +71,10 @@ public class Art
 		roomTextures.put("WestHallCor2", new Texture("WestHallCor2.png"));
 		roomTextures.put("WestHallCorBonnie", new Texture("WestHallCor_Bonnie.png"));
 
+		roomTextures.put("EastHall1", new Texture("EastHall1.png"));
+		roomTextures.put("EastHall2", new Texture("EastHall2.png"));
+		roomTextures.put("EastHall3", new Texture("EastHall3.png"));
+
 		kitchenStatic = new Array<TextureRegion>();
 		for (int i = 1; i <= 8; i++)
 		{

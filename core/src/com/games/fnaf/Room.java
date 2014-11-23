@@ -47,6 +47,7 @@ public enum Room
 		multiplePos.put("RestroomsChica", 2);
 		multiplePos.put("RestroomsChicaFreddy", 2);
 		multiplePos.put("WestHallCor", 2);
+		multiplePos.put("EastHall", 3);
 	}
 
 	public CameraButton getCamButton()
