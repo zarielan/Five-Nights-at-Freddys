@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Disposable;
 
 public class Camera implements Disposable
@@ -47,9 +48,9 @@ public class Camera implements Disposable
 			debug.setColor(0f, 0f, 1f, 0.5f);
 			debug.rect(cam.getHitBox().getX(), cam.getHitBox().getY(), cam.getHitBox().getWidth(), cam.getHitBox().getHeight());
 
-			boolean collision = cam.getHitBox().contains(Gdx.input.getX(), Gdx.input.getY());
+			boolean collision = isColliding(cam.getHitBox(), Gdx.input.getX(), Gdx.input.getY());
 
-			System.out.println(collision + ", " + System.currentTimeMillis());
+			//System.out.println(collision + ", " + System.currentTimeMillis());
 			if (Gdx.input.isButtonPressed(Input.Buttons.LEFT))
 			{
 				if (collision)
@@ -60,6 +61,11 @@ public class Camera implements Disposable
 			}
 		}
 		debug.end();
+	}
+
+	public boolean isColliding(Rectangle rekt, float x, float y)
+	{
+		return (rekt.getX() <= x) && (x <= rekt.getX() + rekt.getWidth()) && (rekt.getY() <= y) && (y <= rekt.getY() + rekt.getHeight());
 	}
 
 	public void changeRoom(Room room)
