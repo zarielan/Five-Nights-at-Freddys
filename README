@@ -2,10 +2,8 @@
 
 Ohai there! This is just a little project of mine where I recreated [Five Nights at Freddy's](http://store.steampowered.com/app/319510/) by Scott Cawthon
 
-Why? Well, as a beginner, I need to make games in order to learn how to make games. Well, I just found out I am horrible at thinking of what to make games out of. So I thought to myself, *Why not just recreate existing games? That's kind of making new games, except the concept and idea is already made up...*
-
-Aaand that's what I did.
-
 The game is rewritten in Java using [Libgdx](http://libgdx.badlogicgames.com/).
+
+* * *
 
 This repository and its author are not in any way associated with Scott Cawthon. All textures and audio are the property of Scott Cawthon.
