@@ -36,6 +36,7 @@ public enum Room
 		cameraX = MathUtils.random(-320f, 0f);
 		xVel = 2f * (float)MathUtils.randomSign();
 
+		//Rooms that have multiple positions in them. Yay for hardcoded values! :D
 		multiplePos = new Array<String>();
 		multiplePos.add("DiningAreaBonnie");
 		multiplePos.add("DiningAreaChica");

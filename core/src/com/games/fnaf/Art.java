@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.ArrayMap;
 
+/*  Credits to Scott Cawthon for creating and developing Five Nights at Freddy's and Five Nights at Freddy's 2 */
 public class Art
 {
 	public static Texture map;
@@ -40,6 +41,8 @@ public class Art
 		roomTextures.put("DiningAreaChicaFreddy", new Texture("DiningArea_ChicaFreddy.png"));
 		roomTextures.put("DiningAreaBonnieFreddy", new Texture("DiningArea_BonnieFreddy.png"));
 		roomTextures.put("DiningAreaBonnieChicaFreddy", new Texture("DiningArea_BonnieChicaFreddy.png"));
+
+		roomTextures.put("PirateCoveFoxy", new Texture("PirateCove_Foxy.png"));
 
 		//Camera buttons
 		cameraButtonTextures = new ArrayMap<String,Texture>();

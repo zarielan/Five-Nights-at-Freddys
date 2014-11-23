@@ -20,8 +20,9 @@ public class Camera
 
 		//Set their starting areas
 		Animatronic.FREDDY.setCurrentRoom(Room.SHOW_STAGE);
-		Animatronic.BONNIE.setCurrentRoom(Room.SHOW_STAGE);
+		Animatronic.BONNIE.setCurrentRoom(Room.DINING_AREA);
 		Animatronic.CHICA.setCurrentRoom(Room.DINING_AREA);
+		Animatronic.FOXY.setCurrentRoom(Room.PIRATE_COVE);
 	}
 
 	public void render()
