@@ -28,6 +28,8 @@ public class Art
 		roomTextures.put("ShowStageFreddy", new Texture("ShowStage_Freddy.png"));
 
 		roomTextures.put("DiningArea", new Texture("DiningArea.png"));
+		roomTextures.put("DiningAreaFreddy", new Texture("DiningArea_Freddy.png"));
+		roomTextures.put("DiningAreaBonnie", new Texture("DiningArea_Bonnie.png"));
 
 		//Camera buttons
 		cameraButtonTextures = new ArrayMap<String,Texture>();

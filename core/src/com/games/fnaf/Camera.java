@@ -18,7 +18,7 @@ public class Camera
 		map.setPosition(Gdx.graphics.getWidth() - map.getWidth(), 0f);
 		changeRoom(Room.SHOW_STAGE);
 		Animatronic.FREDDY.setCurrentRoom(room);
-		Animatronic.BONNIE.setCurrentRoom(room);
+		Animatronic.BONNIE.setCurrentRoom(Room.DINING_AREA);
 		Animatronic.CHICA.setCurrentRoom(room);
 	}
 
