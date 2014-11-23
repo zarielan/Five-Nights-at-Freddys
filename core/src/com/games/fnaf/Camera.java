@@ -39,8 +39,7 @@ public class Camera
 			{
 				if (collision)
 				{
-					System.out.println("HIT " + System.currentTimeMillis());
-					//changeRoom(r);
+					changeRoom(r);
 				}
 			}
 		}
@@ -48,12 +47,6 @@ public class Camera
 
 	public void changeRoom(Room room)
 	{
-		System.out.println(this.room + " -> " + room);
-		if (this.room == room)
-		{
-			throw new IllegalArgumentException("Lol you can't switch to the same rooms");
-		}
-
 		if (this.room != null)
 		{
 			this.room.getCamButton().setSelected(false);

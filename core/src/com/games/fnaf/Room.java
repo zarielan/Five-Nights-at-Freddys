@@ -2,6 +2,7 @@ package com.games.fnaf;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.MathUtils;
 
 public enum Room
 {
@@ -19,7 +20,7 @@ public enum Room
 	private final String name;
 	private boolean[] visitors;
 	private Texture texture;
-	private float xVel = -2f, cameraX = 0f;
+	private float cameraX = 0f, xVel = 0f;
 	private boolean isCameraMoving = true;
 	private float timePassed = 0f;
 	private CameraButton camButton;
@@ -30,6 +31,8 @@ public enum Room
 		this.visitors = new boolean[4];
 		texture = null;
 		this.camButton = camButton;
+		cameraX = MathUtils.random(-320f, 0f);
+		xVel = 2f * (float)MathUtils.randomSign();
 	}
 
 	public CameraButton getCamButton()
@@ -92,6 +95,11 @@ public enum Room
 
 	public Texture getCurrentTexture()
 	{
+		if (texture == null)
+		{
+			texture = getTexture();
+		}
+
 		return texture;
 	}
 

@@ -44,7 +44,6 @@ public class FNaF extends ApplicationAdapter
 	{
 		batch.dispose();
 		Art.disposeTextures();
-		camera.dispose();
 	}
 }
 
