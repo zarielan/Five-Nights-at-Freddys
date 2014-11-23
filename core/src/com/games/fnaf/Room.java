@@ -3,6 +3,7 @@ package com.games.fnaf;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.utils.Array;
 
 public enum Room
 {
@@ -24,6 +25,7 @@ public enum Room
 	private boolean isCameraMoving = true;
 	private float timePassed = 0f;
 	private CameraButton camButton;
+	private Array<String> multiplePos;
 
 	private Room(String name, CameraButton camButton)
 	{
@@ -33,6 +35,10 @@ public enum Room
 		this.camButton = camButton;
 		cameraX = MathUtils.random(-320f, 0f);
 		xVel = 2f * (float)MathUtils.randomSign();
+
+		multiplePos = new Array<String>();
+		multiplePos.add("DiningAreaBonnie");
+		multiplePos.add("DiningAreaChica");
 	}
 
 	public CameraButton getCamButton()
@@ -84,7 +90,17 @@ public enum Room
 		}
 
 		String fName = args.toString();
-		Texture tex = Art.roomTextures.get(fName);
+
+		for (String s : multiplePos)
+		{
+			if (s.equals(fName))
+			{
+				fName = fName.concat(",2");
+				break;
+			}
+		}
+
+		Texture tex = Art.getRoomTexture(fName);
 		if (tex == null)
 		{
 			System.err.println(fName + " doesn't exist.");

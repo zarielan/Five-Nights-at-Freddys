@@ -1,6 +1,7 @@
 package com.games.fnaf;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.ArrayMap;
 
 public class Art
@@ -28,11 +29,13 @@ public class Art
 		roomTextures.put("ShowStageBonnieFreddy", new Texture("ShowStage_BonnieFreddy.png"));
 		roomTextures.put("ShowStageChicaFreddy", new Texture("ShowStage_ChicaFreddy.png"));
 		roomTextures.put("ShowStageFreddy", new Texture("ShowStage_Freddy.png"));
-		
+
 		roomTextures.put("DiningArea", new Texture("DiningArea.png"));
 		roomTextures.put("DiningAreaFreddy", new Texture("DiningArea_Freddy.png"));
-		roomTextures.put("DiningAreaBonnie", new Texture("DiningArea_Bonnie.png"));
-		roomTextures.put("DiningAreaChica", new Texture("DiningArea_Chica.png"));
+		roomTextures.put("DiningAreaBonnie1", new Texture("DiningArea_Bonnie1.png"));
+		roomTextures.put("DiningAreaBonnie2", new Texture("DiningArea_Bonnie2.png"));
+		roomTextures.put("DiningAreaChica1", new Texture("DiningArea_Chica1.png"));
+		roomTextures.put("DiningAreaChica2", new Texture("DiningArea_Chica2.png"));
 		roomTextures.put("DiningAreaBonnieChica", new Texture("DiningArea_BonnieChica.png"));
 		roomTextures.put("DiningAreaChicaFreddy", new Texture("DiningArea_ChicaFreddy.png"));
 		roomTextures.put("DiningAreaBonnieFreddy", new Texture("DiningArea_BonnieFreddy.png"));
@@ -43,6 +46,25 @@ public class Art
 		cameraButtonTextures.put("1A", new Texture("1A.png"));
 		cameraButtonTextures.put("1B", new Texture("1B.png"));
 		cameraButtonTextures.put("1C", new Texture("1C.png"));
+	}
+
+	/* Support for rooms having multiple textures. They're not controlled though, it will just pick one image at random
+	   for that room */
+	public static Texture getRoomTexture(String room)
+	{
+		if (room.contains(","))
+		{
+			String[] args = room.split(",");
+			String key = args[0];
+			int frames = Integer.parseInt(args[1]);
+			int chosen = MathUtils.random(1, frames);
+			String name = key.concat(String.valueOf(chosen));
+			return roomTextures.get(name);
+		}
+		else
+		{
+			return roomTextures.get(room);
+		}
 	}
 
 	public static void disposeTextures()
