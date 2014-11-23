@@ -9,9 +9,9 @@ public enum Room
 {
 	SHOW_STAGE("ShowStage", new CameraButton("1A", Gdx.graphics.getWidth() - 260f, 360f)),
 	PIRATE_COVE("PirateCove", new CameraButton("1C", Gdx.graphics.getWidth() - 320f, 225f)),
-	DINING_AREA("DiningArea", new CameraButton("1B", Gdx.graphics.getWidth() - 280f, 304f));
-	/*BACKSTAGE("Backstage"),
-	RESTROOMS("Restrooms"),
+	DINING_AREA("DiningArea", new CameraButton("1B", Gdx.graphics.getWidth() - 280f, 304f)),
+	BACKSTAGE("Backstage", new CameraButton("5", Gdx.graphics.getWidth() - 390f, 280f));
+	/*RESTROOMS("Restrooms"),
 	SUPPLY_CLOSET("SupplyCloset"),
 	WEST_HALL("WestHall"),
 	WEST_HALL_CORNER("WestHallCor"),

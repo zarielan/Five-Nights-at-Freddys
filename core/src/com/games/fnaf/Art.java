@@ -44,11 +44,14 @@ public class Art
 
 		roomTextures.put("PirateCoveFoxy", new Texture("PirateCove_Foxy.png"));
 
+		roomTextures.put("Backstage", new Texture("Backstage.png"));
+
 		//Camera buttons
 		cameraButtonTextures = new ArrayMap<String,Texture>();
 		cameraButtonTextures.put("1A", new Texture("1A.png"));
 		cameraButtonTextures.put("1B", new Texture("1B.png"));
 		cameraButtonTextures.put("1C", new Texture("1C.png"));
+		cameraButtonTextures.put("5", new Texture("5.png"));
 	}
 
 	/* Support for rooms having multiple textures. They're not controlled though, it will just pick one image at random
