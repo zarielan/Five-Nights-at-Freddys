@@ -46,7 +46,8 @@ public class Art
 
 		roomTextures.put("Backstage", new Texture("Backstage.png"));
 		roomTextures.put("BackstageBonnie1", new Texture("Backstage_Bonnie1.png"));
-		roomTextures.put("BackstageBonnie2", new Texture("Backstage_Bonnie2.png"));
+		roomTextures.put("BackstageBonnie2", new Texture("Backstage_Bonnie1.png")); //<-- this specifically
+		/* TODO change this to Backstage_Bonnie2, too scared shitless to see Bonnie starting at the camera closely */
 
 		//Camera buttons
 		cameraButtonTextures = new ArrayMap<String,Texture>();

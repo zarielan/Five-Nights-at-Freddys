@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.ArrayMap;
 
 public enum Room
 {
@@ -25,7 +26,7 @@ public enum Room
 	private boolean isCameraMoving = true;
 	private float timePassed = 0f;
 	private CameraButton camButton;
-	private Array<String> multiplePos;
+	private ArrayMap<String, Integer> multiplePos;
 
 	private Room(String name, CameraButton camButton)
 	{
@@ -37,10 +38,10 @@ public enum Room
 		xVel = 2f * (float)MathUtils.randomSign();
 
 		//Rooms that have multiple positions in them. Yay for hardcoded values! :D
-		multiplePos = new Array<String>();
-		multiplePos.add("DiningAreaBonnie");
-		multiplePos.add("DiningAreaChica");
-		multiplePos.add("BackstageBonnie");
+		multiplePos = new ArrayMap<String, Integer>();
+		multiplePos.put("DiningAreaBonnie", 2);
+		multiplePos.put("DiningAreaChica", 2);
+		multiplePos.put("BackstageBonnie", 2);
 	}
 
 	public CameraButton getCamButton()
