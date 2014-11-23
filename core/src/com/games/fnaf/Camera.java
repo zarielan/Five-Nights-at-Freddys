@@ -4,15 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.utils.Disposable;
 
-public class Camera implements Disposable
+public class Camera
 {
 	private SpriteBatch batch;
 	private Sprite map;
 	private Room room;
-	private ShapeRenderer debug;
 
 	public Camera(SpriteBatch batch1)
 	{
@@ -23,14 +20,6 @@ public class Camera implements Disposable
 		Animatronic.FREDDY.setCurrentRoom(room);
 		Animatronic.BONNIE.setCurrentRoom(room);
 		Animatronic.CHICA.setCurrentRoom(room);
-
-		debug = new ShapeRenderer();
-	}
-
-	@Override
-	public void dispose()
-	{
-		debug.dispose();
 	}
 
 	public void render()
@@ -39,13 +28,10 @@ public class Camera implements Disposable
 		batch.draw(room.getCurrentTexture(), room.getCameraX(), 0f);
 		map.draw(batch);
 
-		debug.begin(ShapeRenderer.ShapeType.Filled);
 		for (Room r : Room.values())
 		{
 			CameraButton cam = r.getCamButton();
 			cam.render(batch);
-			debug.setColor(0f, 0f, 1f, 0.5f);
-			debug.rect(cam.getHitBox().getX(), cam.getHitBox().getY(), cam.getHitBox().getWidth(), cam.getHitBox().getHeight());
 
 			boolean collision = cam.getHitBox().contains(Gdx.input.getX(), MathStuff.reverseYCoords(Gdx.input.getY()));
 
@@ -58,7 +44,6 @@ public class Camera implements Disposable
 				}
 			}
 		}
-		debug.end();
 	}
 
 	public void changeRoom(Room room)
