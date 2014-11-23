@@ -40,6 +40,7 @@ public enum Room
 		multiplePos = new Array<String>();
 		multiplePos.add("DiningAreaBonnie");
 		multiplePos.add("DiningAreaChica");
+		multiplePos.add("BackstageBonnie");
 	}
 
 	public CameraButton getCamButton()
