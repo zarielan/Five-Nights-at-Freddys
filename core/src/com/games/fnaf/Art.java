@@ -15,6 +15,7 @@ public class Art
 	public static Texture cameraDisabled;
 	public static ArrayMap<String, Texture> roomTextures;
 	public static ArrayMap<String, Texture> cameraButtonTextures;
+	public static ArrayMap<String, Texture> roomLabels;
 	public static Array<TextureRegion> kitchenStatic;
 
 	public static void loadTextures()
@@ -110,6 +111,13 @@ public class Art
 		cameraButtonTextures.put("6", new Texture("6.png"));
 		cameraButtonTextures.put("4A", new Texture("4A.png"));
 		cameraButtonTextures.put("4B", new Texture("4B.png"));
+
+		roomLabels = new ArrayMap<String, Texture>();
+		roomLabels.put("ShowStage", new Texture("ShowStageLabel.png"));
+		roomLabels.put("SupplyCloset", new Texture("SupplyClosetLabel.png"));
+		roomLabels.put("PirateCove", new Texture("PirateCoveLabel.png"));
+		roomLabels.put("Backstage", new Texture("BackstageLabel.png"));
+		roomLabels.put("DiningArea", new Texture("DiningAreaLabel.png"));
 	}
 
 	/* Support for rooms having multiple textures. They're not controlled though, it will just pick one image at random
@@ -151,6 +159,11 @@ public class Art
 		for (TextureRegion t : kitchenStatic)
 		{
 			t.getTexture().dispose();
+		}
+
+		for (Texture t : roomLabels.values())
+		{
+			t.dispose();
 		}
 	}
 }

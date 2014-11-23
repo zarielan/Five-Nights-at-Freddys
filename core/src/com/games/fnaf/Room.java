@@ -55,6 +55,11 @@ public enum Room
 		multiplePos.put("EastHallCor", 5);
 	}
 
+	public String getName()
+	{
+		return name;
+	}
+
 	public CameraButton getCamButton()
 	{
 		return camButton;

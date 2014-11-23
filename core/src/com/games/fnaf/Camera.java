@@ -2,6 +2,7 @@ package com.games.fnaf;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -57,6 +58,9 @@ public class Camera
 				}
 			}
 		}
+
+		Texture label = Art.roomLabels.get(room.getName());
+		batch.draw(label, Gdx.graphics.getWidth() - 290f - (label.getWidth() / 2), 400f);
 	}
 
 	public void changeRoom(Room room)
