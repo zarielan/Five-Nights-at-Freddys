@@ -24,6 +24,11 @@ public enum Animatronic
 		return ai;
 	}
 
+	public Room getCurrentRoom()
+	{
+		return currentRoom;
+	}
+
 	public String getName()
 	{
 		return name;

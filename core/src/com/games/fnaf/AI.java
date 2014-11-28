@@ -1,13 +1,16 @@
 package com.games.fnaf;
 
+import com.badlogic.gdx.utils.Array;
+
 public abstract class AI
 {
-	public int frequency;
-	public final float TIME = 90f;
-	public final float MOVEMENT_TIME = 30f;
-	public float freqMovement;
-	public int timer;
-	public boolean isMoving;
+	private int frequency;
+	private final float TIME = 90f;
+	private final float MOVEMENT_TIME = 30f;
+	private float freqMovement;
+	private int timer;
+	private boolean isMoving;
+	protected Array<Room> allowedRooms;
 
 	public AI()
 	{
@@ -15,6 +18,7 @@ public abstract class AI
 		freqMovement = MOVEMENT_TIME / (float)frequency;
 		timer = 0;
 		isMoving = false;
+		allowedRooms = new Array<Room>();
 	}
 
 	public void setFrequency(int i)
@@ -28,14 +32,15 @@ public abstract class AI
 		isMoving = bool;
 	}
 
-	public final void update()
+	public final void update(Animatronic anim)
 	{
 		if (isMoving && (int)(FNaF.getTimeElapsed() / freqMovement) == timer)
 		{
+			if (timer > 0)
+				updatePosition(anim);
 			timer++;
-			updatePosition();
 		}
 	}
 
-	public abstract void updatePosition();
+	public abstract void updatePosition(Animatronic anim);
 }

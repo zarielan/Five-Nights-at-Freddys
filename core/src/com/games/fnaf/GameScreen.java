@@ -21,10 +21,10 @@ public class GameScreen extends ScreenAdapter
 	{
 		camera.render();
 		Animatronic.CHICA.getAI().setFrequency(20);
-		Animatronic.CHICA.setMoving(true);
+		Animatronic.CHICA.getAI().setMoving(true);
 		for (Animatronic a : Animatronic.values())
 		{
-			a.updateAI();
+			a.getAI().update(a);
 		}
 	}
 
