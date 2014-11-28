@@ -20,12 +20,23 @@ public class GameScreen extends ScreenAdapter
 	public void render(float delta)
 	{
 		camera.render();
+		Animatronic.CHICA.getAI().setFrequency(20);
+		Animatronic.CHICA.setMoving(true);
+		for (Animatronic a : Animatronic.values())
+		{
+			a.updateAI();
+		}
 	}
 
 	@Override
 	public void show()
 	{
 		this.camera = new Camera(batch);
+		//Set their starting areas
+		Animatronic.FREDDY.setCurrentRoom(Room.SHOW_STAGE);
+		Animatronic.BONNIE.setCurrentRoom(Room.SHOW_STAGE);
+		Animatronic.CHICA.setCurrentRoom(Room.SHOW_STAGE);
+		Animatronic.FOXY.setCurrentRoom(Room.PIRATE_COVE);
 	}
 
 	@Override

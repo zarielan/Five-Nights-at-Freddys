@@ -19,9 +19,9 @@ public enum Animatronic
 		this.ai = ai;
 	}
 
-	public void updateAI()
+	public AI getAI()
 	{
-		ai.update();
+		return ai;
 	}
 
 	public String getName()

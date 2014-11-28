@@ -19,12 +19,6 @@ public class FNaF extends Game
 		Art.loadTextures();
 		timeElapsed = 0f;
 
-		//Set their starting areas
-		Animatronic.FREDDY.setCurrentRoom(Room.SHOW_STAGE);
-		Animatronic.BONNIE.setCurrentRoom(Room.SHOW_STAGE);
-		Animatronic.CHICA.setCurrentRoom(Room.SHOW_STAGE);
-		Animatronic.FOXY.setCurrentRoom(Room.PIRATE_COVE);
-
 		batch = new SpriteBatch();
 		ortho = new OrthographicCamera();
 		ortho.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
