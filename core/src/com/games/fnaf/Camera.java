@@ -31,7 +31,7 @@ public class Camera
 		room.updateCameraValues();
 		if (room == Room.KITCHEN)
 		{
-			batch.draw(kitchenStatic.getKeyFrame(FNaF), 0f, 0f);
+			batch.draw(kitchenStatic.getKeyFrame(FNaF.getTimeElapsed()), 0f, 0f);
 			batch.draw(Art.cameraDisabled, (Gdx.graphics.getWidth() - Art.cameraDisabled.getWidth()) / 2, 600f);
 		}
 		else
