@@ -13,7 +13,6 @@ public class Camera
 	private Sprite map;
 	private Room room;
 	private Animation kitchenStatic;
-	private float timeElapsed = 0f;
 
 	public Camera(SpriteBatch batch1)
 	{
@@ -29,11 +28,10 @@ public class Camera
 
 	public void render()
 	{
-		timeElapsed += Gdx.graphics.getDeltaTime();
 		room.updateCameraValues();
 		if (room == Room.KITCHEN)
 		{
-			batch.draw(kitchenStatic.getKeyFrame(timeElapsed), 0f, 0f);
+			batch.draw(kitchenStatic.getKeyFrame(FNaF), 0f, 0f);
 			batch.draw(Art.cameraDisabled, (Gdx.graphics.getWidth() - Art.cameraDisabled.getWidth()) / 2, 600f);
 		}
 		else
