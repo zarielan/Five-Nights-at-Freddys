@@ -10,11 +10,13 @@ public class FNaF extends Game
 {
 	private SpriteBatch batch;
 	private OrthographicCamera ortho;
+	private static float timeElapsed;
 
 	@Override
 	public void create()
 	{
 		Art.loadTextures();
+		timeElapsed = 0f;
 
 		//Set their starting areas
 		Animatronic.FREDDY.setCurrentRoom(Room.SHOW_STAGE);
@@ -31,6 +33,8 @@ public class FNaF extends Game
 	@Override
 	public void render()
 	{
+		timeElapsed += Gdx.graphics.getDeltaTime();
+
 		batch.setProjectionMatrix(ortho.combined);
 		ortho.update();
 
@@ -43,6 +47,11 @@ public class FNaF extends Game
 			this.getScreen().render(Gdx.graphics.getDeltaTime());
 
 		batch.end();
+	}
+
+	public static float getTimeElapsed()
+	{
+		return timeElapsed;
 	}
 
 	@Override
