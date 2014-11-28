@@ -1,16 +1,15 @@
 package com.games.fnaf;
 
-import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class FNaF extends ApplicationAdapter
+public class FNaF extends Game
 {
 	private SpriteBatch batch;
 	private OrthographicCamera ortho;
-	private Camera camera;
 
 	@Override
 	public void create()
@@ -26,7 +25,7 @@ public class FNaF extends ApplicationAdapter
 		batch = new SpriteBatch();
 		ortho = new OrthographicCamera();
 		ortho.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		camera = new Camera(batch);
+		this.setScreen(new GameScreen(batch, ortho));
 	}
 
 	@Override
@@ -40,7 +39,8 @@ public class FNaF extends ApplicationAdapter
 
 		batch.begin();
 
-		camera.render();
+		if (this.getScreen() != null)
+			this.getScreen().render(Gdx.graphics.getDeltaTime());
 
 		batch.end();
 	}
