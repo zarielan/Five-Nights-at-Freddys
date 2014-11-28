@@ -11,6 +11,7 @@ public class FNaF extends Game
 	private SpriteBatch batch;
 	private OrthographicCamera ortho;
 	private static float timeElapsed;
+	private int timer = 0;
 
 	@Override
 	public void create()
@@ -45,6 +46,12 @@ public class FNaF extends Game
 
 		if (this.getScreen() != null)
 			this.getScreen().render(Gdx.graphics.getDeltaTime());
+
+		if ((int)(FNaF.getTimeElapsed() / (30f/3f)) == timer)
+		{
+			timer++;
+			System.out.println("MOVE");;
+		}
 
 		batch.end();
 	}
