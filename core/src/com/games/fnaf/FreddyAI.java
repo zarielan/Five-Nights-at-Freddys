@@ -1,0 +1,10 @@
+package com.games.fnaf;
+
+public class FreddyAI extends AI
+{
+	@Override
+	public void updatePosition()
+	{
+
+	}
+}

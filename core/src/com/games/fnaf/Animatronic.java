@@ -2,19 +2,26 @@ package com.games.fnaf;
 
 public enum Animatronic
 {
-	BONNIE(0, "Bonnie"),
-	CHICA(1, "Chica"),
-	FREDDY(2, "Freddy"),
-	FOXY(3, "Foxy");
+	BONNIE(0, "Bonnie", new BonnieAI()),
+	CHICA(1, "Chica", new ChicaAI()),
+	FREDDY(2, "Freddy", new FreddyAI()),
+	FOXY(3, "Foxy", new FoxyAI());
 
 	private Room currentRoom;
 	private final String name;
 	private final int ID;
+	private final AI ai;
 
-	private Animatronic(int ID, String name)
+	private Animatronic(int ID, String name, AI ai)
 	{
 		this.ID = ID;
 		this.name = name;
+		this.ai = ai;
+	}
+
+	public void updateAI()
+	{
+		ai.update();
 	}
 
 	public String getName()

@@ -21,8 +21,8 @@ public class FNaF extends Game
 
 		//Set their starting areas
 		Animatronic.FREDDY.setCurrentRoom(Room.SHOW_STAGE);
-		Animatronic.BONNIE.setCurrentRoom(Room.DINING_AREA);
-		Animatronic.CHICA.setCurrentRoom(Room.DINING_AREA);
+		Animatronic.BONNIE.setCurrentRoom(Room.SHOW_STAGE);
+		Animatronic.CHICA.setCurrentRoom(Room.SHOW_STAGE);
 		Animatronic.FOXY.setCurrentRoom(Room.PIRATE_COVE);
 
 		batch = new SpriteBatch();
@@ -46,12 +46,6 @@ public class FNaF extends Game
 
 		if (this.getScreen() != null)
 			this.getScreen().render(Gdx.graphics.getDeltaTime());
-
-		if ((int)(FNaF.getTimeElapsed() / (30f/3f)) == timer)
-		{
-			timer++;
-			System.out.println("MOVE");;
-		}
 
 		batch.end();
 	}
