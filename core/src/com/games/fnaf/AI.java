@@ -1,6 +1,6 @@
 package com.games.fnaf;
 
-import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.ArrayMap;
 
 public abstract class AI
 {
@@ -10,7 +10,7 @@ public abstract class AI
 	private float freqMovement;
 	private int timer;
 	private boolean isMoving;
-	protected Array<Room> allowedRooms;
+	protected ArrayMap<Room, Room[]> allowedRooms;
 
 	public AI()
 	{
@@ -18,7 +18,7 @@ public abstract class AI
 		freqMovement = MOVEMENT_TIME / (float)frequency;
 		timer = 0;
 		isMoving = false;
-		allowedRooms = new Array<Room>();
+		allowedRooms = new ArrayMap<Room, Room[]>();
 	}
 
 	public void setFrequency(int i)

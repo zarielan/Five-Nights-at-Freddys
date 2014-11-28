@@ -7,11 +7,11 @@ public class ChicaAI extends AI
 	public ChicaAI()
 	{
 		super();
-		allowedRooms.add(Room.DINING_AREA);
-		allowedRooms.add(Room.SHOW_STAGE);
-		allowedRooms.add(Room.RESTROOMS);
-		allowedRooms.add(Room.EAST_HALL);
-		allowedRooms.add(Room.EAST_HALL_CORNER);
+		allowedRooms.put(Room.SHOW_STAGE, new Room[]{Room.DINING_AREA});
+		allowedRooms.put(Room.DINING_AREA, new Room[]{Room.RESTROOMS, Room.EAST_HALL});
+		allowedRooms.put(Room.RESTROOMS, new Room[]{Room.DINING_AREA});
+		allowedRooms.put(Room.EAST_HALL, new Room[]{Room.DINING_AREA, Room.EAST_HALL_CORNER});
+		allowedRooms.put(Room.EAST_HALL_CORNER, new Room[]{Room.EAST_HALL});
 	}
 
 	@Override
@@ -19,7 +19,11 @@ public class ChicaAI extends AI
 	{
 		System.out.println(anim.getName());
 		System.out.println("Currently in: " + anim.getCurrentRoom().getName());
-		anim.setCurrentRoom(allowedRooms.get(MathUtils.random(0, allowedRooms.size - 1)));
+
+		Room[] possibleRooms = allowedRooms.get(anim.getCurrentRoom());
+		int chosen = MathUtils.random(0, possibleRooms.length - 1);
+		anim.setCurrentRoom(possibleRooms[chosen]);
+
 		System.out.println("Now in: " + anim.getCurrentRoom().getName());
 	}
 }
