@@ -17,7 +17,8 @@ public enum Room
 	WEST_HALL_CORNER("WestHallCor", new CameraButton("2B", Gdx.graphics.getWidth() - 263f, 68f), true),
 	EAST_HALL("EastHall", new CameraButton("4A", Gdx.graphics.getWidth() - 160f, 110f), true),
 	EAST_HALL_CORNER("EastHallCor", new CameraButton("4B", Gdx.graphics.getWidth() - 160f, 68f), true),
-	KITCHEN("Kitchen", new CameraButton("6", Gdx.graphics.getWidth() - 65f, 145f), false);
+	KITCHEN("Kitchen", new CameraButton("6", Gdx.graphics.getWidth() - 65f, 145f), false),
+	OFFICE("Office", null, false);
 
 	private final String name;
 	private boolean[] visitors;
