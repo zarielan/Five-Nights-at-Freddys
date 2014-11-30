@@ -33,7 +33,7 @@ public class GameScreen extends ScreenAdapter
 			office.render();
 		}
 
-		batch.draw(Art.cameraToggle, 0f, 0f);
+		batch.draw(Art.cameraToggle, 600f, 600f);
 
 		for (Animatronic a : Animatronic.values())
 		{
