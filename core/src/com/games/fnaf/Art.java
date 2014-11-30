@@ -13,6 +13,7 @@ public class Art
 	public static Texture cameraButtonBG;
 	public static Texture cameraButtonFlash;
 	public static Texture cameraDisabled;
+	public static ArrayMap<String, Texture> officeTextures;
 	public static ArrayMap<String, Texture> roomTextures;
 	public static ArrayMap<String, Texture> cameraButtonTextures;
 	public static ArrayMap<String, Texture> roomLabels;
@@ -92,7 +93,8 @@ public class Art
 		roomTextures.put("EastHallCorFreddy", new Texture("EastHallCor_Freddy.png"));
 		roomTextures.put("EastHallCorChica", new Texture("EastHallCor_Chica.png"));
 
-		roomTextures.put("Office", new Texture("Office.png"));
+		officeTextures = new ArrayMap<String, Texture>();
+		officeTextures.put("Office", new Texture("Office.png"));
 
 		kitchenStatic = new Array<TextureRegion>();
 		for (int i = 1; i <= 8; i++)
@@ -170,6 +172,11 @@ public class Art
 		}
 
 		for (Texture t : roomLabels.values())
+		{
+			t.dispose();
+		}
+
+		for (Texture t : officeTextures.values())
 		{
 			t.dispose();
 		}
