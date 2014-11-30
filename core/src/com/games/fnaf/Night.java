@@ -2,11 +2,7 @@ package com.games.fnaf;
 
 public enum Night
 {
-	NIGHT_1(2, 1, 0, 0),
-	NIGHT_2(4, 2, 2, 0),
-	NIGHT_3(2, 1, 0, 0),
-	NIGHT_4(2, 1, 0, 0),
-	NIGHT_5(2, 1, 0, 0);
+	NIGHT_1(2, 1, 0, 0);
 
 	private int bonnie = -1;
 	private int chica = -1;

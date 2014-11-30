@@ -7,8 +7,9 @@ public class ChicaAI extends AI
 	public ChicaAI()
 	{
 		super();
-		allowedRooms.put(Room.SHOW_STAGE, new Room[]{Room.DINING_AREA});
-		allowedRooms.put(Room.DINING_AREA, new Room[]{Room.RESTROOMS, Room.EAST_HALL});
+		allowedRooms.put(Room.SHOW_STAGE, new Room[] {Room.DINING_AREA});
+		allowedRooms.put(Room.DINING_AREA, new Room[]{Room.RESTROOMS, Room.EAST_HALL, Room.KITCHEN});
+		allowedRooms.put(Room.KITCHEN, new Room[]{Room.DINING_AREA});
 		allowedRooms.put(Room.RESTROOMS, new Room[]{Room.DINING_AREA});
 		allowedRooms.put(Room.EAST_HALL, new Room[]{Room.DINING_AREA, Room.EAST_HALL_CORNER});
 		allowedRooms.put(Room.EAST_HALL_CORNER, new Room[]{Room.EAST_HALL});
