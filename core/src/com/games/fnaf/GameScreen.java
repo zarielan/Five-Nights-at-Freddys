@@ -25,9 +25,15 @@ public class GameScreen extends ScreenAdapter
 	public void render(float delta)
 	{
 		if (lookingAtCamera)
+		{
 			camera.render();
+		}
 		else
+		{
 			office.render();
+		}
+
+		batch.draw(Art.cameraToggle, 0f, 0f);
 
 		for (Animatronic a : Animatronic.values())
 		{

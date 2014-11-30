@@ -13,6 +13,7 @@ public class Art
 	public static Texture cameraButtonBG;
 	public static Texture cameraButtonFlash;
 	public static Texture cameraDisabled;
+	public static Texture cameraToggle;
 	public static ArrayMap<String, Texture> officeTextures;
 	public static ArrayMap<String, Texture> roomTextures;
 	public static ArrayMap<String, Texture> cameraButtonTextures;
@@ -27,6 +28,7 @@ public class Art
 		cameraButtonBG = new Texture("CameraButtonBG.png");
 		cameraButtonFlash = new Texture("CameraButtonFlash.png");
 		cameraDisabled = new Texture("CameraDisabled.png");
+		cameraToggle = new Texture("CameraToggle.png");
 
 		//Rooms
 		//Animatronic combination naming must be in the order of Bonnie -> Chica -> Freddy -> Foxy
@@ -162,6 +164,7 @@ public class Art
 		cameraButtonBG.dispose();
 		cameraButtonFlash.dispose();
 		cameraDisabled.dispose();
+		cameraToggle.dispose();
 
 		for (Texture t : roomTextures.values())
 		{
