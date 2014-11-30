@@ -33,6 +33,8 @@ public class GameScreen extends ScreenAdapter
 			office.render();
 		}
 
+		//Holy fuck the button doesn't show up. Okay, TODO
+		//but for next time :)
 		batch.draw(Art.cameraToggle, 600f, 600f);
 
 		for (Animatronic a : Animatronic.values())
