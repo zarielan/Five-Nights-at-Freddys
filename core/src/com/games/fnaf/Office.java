@@ -10,7 +10,7 @@ public class Office implements Disposable
 {
 	private SpriteBatch batch;
 	private OrthographicCamera camera;
-	private final float SIGHT_MOVEMENT = 300f;
+	private final float SIGHT_MOVEMENT = 400f;
 	private final int CURSORX = 300;
 	private Animation officeFan;
 
@@ -30,7 +30,7 @@ public class Office implements Disposable
 		batch.begin();
 
 		batch.draw(Art.officeTextures.get("Office"), -160, 0f);
-		batch.draw(officeFan.getKeyFrame(FNaF.getTimeElapsed()), 640f, 300f);
+		batch.draw(officeFan.getKeyFrame(FNaF.getTimeElapsed()), 620f, 221f); //these x,y values are merely from trial and error xD
 
 		float step = Gdx.graphics.getDeltaTime() * SIGHT_MOVEMENT;
 		//I honestly don't have any idea where I got 480 and 800, something with 640 +- 160? Wut? o.O
