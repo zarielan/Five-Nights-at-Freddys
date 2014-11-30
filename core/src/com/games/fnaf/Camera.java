@@ -44,6 +44,10 @@ public class Camera
 		for (Room r : Room.values())
 		{
 			CameraButton cam = r.getCamButton();
+
+			if (cam == null)
+				continue;
+
 			cam.render(batch);
 
 			boolean collision = cam.getHitBox().contains(Gdx.input.getX(), MathStuff.reverseYCoords(Gdx.input.getY()));
