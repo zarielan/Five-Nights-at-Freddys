@@ -19,6 +19,7 @@ public class GameScreen extends ScreenAdapter
 	private Night night;
 	private Rectangle cameraToggleHitbox;
 	private Animation cameraToggle;
+	private float animStateTime = 0f;
 
 	public GameScreen(SpriteBatch batch)
 	{
@@ -29,8 +30,7 @@ public class GameScreen extends ScreenAdapter
 		this.lookingAtCamera = false;
 		this.cameraToggleHitbox = new Rectangle(255f, 27f, Art.cameraToggle.getWidth(), Art.cameraToggle.getHeight());
 		this.toggling = false;
-		this.cameraToggle = new Animation(1/20f, Art.cameraPopup);
-		this.cameraToggle.setPlayMode(Animation.PlayMode.NORMAL);
+		this.cameraToggle = new Animation(1/15f, Art.cameraPopup);
 		this.hasCollided = false;
 	}
 
@@ -64,24 +64,29 @@ public class GameScreen extends ScreenAdapter
 
 			if (!lookingAtCamera)
 			{
-				this.cameraToggle.setPlayMode(Animation.PlayMode.LOOP);
+				this.cameraToggle.setPlayMode(Animation.PlayMode.NORMAL);
 			}
 			else
 			{
-				this.cameraToggle.setPlayMode(Animation.PlayMode.LOOP_REVERSED);
+				this.cameraToggle.setPlayMode(Animation.PlayMode.REVERSED);
 			}
 		}
 
 		if (toggling)
 		{
-			toggling = !this.cameraToggle.isAnimationFinished(FNaF.getTimeElapsed());
+			animStateTime += delta;
 
-			if (!toggling)
+			if (this.cameraToggle.isAnimationFinished(animStateTime))
 			{
+				toggling = false;
 				lookingAtCamera = !lookingAtCamera;
 			}
 
-			batch.draw(cameraToggle.getKeyFrame(FNaF.getTimeElapsed()), 0f, 0f, 1280f, 720f);
+			batch.draw(cameraToggle.getKeyFrame(animStateTime), 0f, 0f, 1280f, 720f);
+		}
+		else
+		{
+			animStateTime = 0f;
 		}
 
 		hasCollided = collision;
