@@ -31,7 +31,7 @@ public class GameScreen extends ScreenAdapter
 		this.lookingAtCamera = false;
 		this.cameraToggleHitbox = new Rectangle(255f, 27f, Art.cameraToggle.getWidth(), Art.cameraToggle.getHeight());
 		this.toggling = false;
-		this.cameraToggle = new Animation(1/25f, Art.cameraPopup);
+		this.cameraToggle = new Animation(1/30f, Art.cameraPopup);
 		this.hasCollided = false;
 		this.renderOffice = true;
 	}
@@ -58,6 +58,11 @@ public class GameScreen extends ScreenAdapter
 			a.getAI().update(a);
 		}
 
+		cameraToggling(delta);
+	}
+
+	private void cameraToggling(float delta)
+	{
 		boolean collision = this.cameraToggleHitbox.contains(Gdx.input.getX(), MathStuff.reverseYCoords(Gdx.input.getY()));
 
 		if (!hasCollided && collision && !toggling)
