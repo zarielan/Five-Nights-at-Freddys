@@ -13,6 +13,7 @@ public class GameScreen extends ScreenAdapter
 	private Office office;
 	private boolean lookingAtCamera;
 	private boolean toggling;
+	private boolean hasCollided;
 	private SpriteBatch batch;
 	private OrthographicCamera ortho;
 	private Night night;
@@ -30,6 +31,7 @@ public class GameScreen extends ScreenAdapter
 		this.toggling = false;
 		this.cameraToggle = new Animation(1/20f, Art.cameraPopup);
 		this.cameraToggle.setPlayMode(Animation.PlayMode.NORMAL);
+		this.hasCollided = false;
 	}
 
 	@Override
@@ -56,7 +58,7 @@ public class GameScreen extends ScreenAdapter
 
 		boolean collision = this.cameraToggleHitbox.contains(Gdx.input.getX(), MathStuff.reverseYCoords(Gdx.input.getY()));
 
-		if (collision && !toggling)
+		if (!hasCollided && collision && !toggling)
 		{
 			toggling = true;
 
@@ -66,15 +68,23 @@ public class GameScreen extends ScreenAdapter
 			}
 			else
 			{
-				this.cameraToggle.setPlayMode(Animation.PlayMode.REVERSED);
+				this.cameraToggle.setPlayMode(Animation.PlayMode.LOOP_REVERSED);
 			}
 		}
 
 		if (toggling)
 		{
 			toggling = !this.cameraToggle.isAnimationFinished(FNaF.getTimeElapsed());
+
+			if (!toggling)
+			{
+				lookingAtCamera = !lookingAtCamera;
+			}
+
 			batch.draw(cameraToggle.getKeyFrame(FNaF.getTimeElapsed()), 0f, 0f, 1280f, 720f);
 		}
+
+		hasCollided = collision;
 	}
 
 	@Override
