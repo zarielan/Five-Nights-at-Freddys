@@ -4,9 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.Disposable;
 
-public class Office implements Disposable
+public class Office
 {
 	private SpriteBatch batch;
 	private OrthographicCamera camera;
@@ -14,9 +13,9 @@ public class Office implements Disposable
 	private final int CURSORX = 300;
 	private Animation officeFan;
 
-	public Office()
+	public Office(SpriteBatch batch)
 	{
-		this.batch = new SpriteBatch();
+		this.batch = batch;
 		this.camera = new OrthographicCamera();
 		camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		officeFan = new Animation(1/30f, Art.officeFan);
@@ -27,7 +26,6 @@ public class Office implements Disposable
 	{
 		batch.setProjectionMatrix(camera.combined);
 		camera.update();
-		batch.begin();
 
 		batch.draw(Art.officeTextures.get("Office"), -160, 0f);
 		batch.draw(officeFan.getKeyFrame(FNaF.getTimeElapsed()), 620f, 221f); //these x,y values are merely from trial and error xD
@@ -42,13 +40,5 @@ public class Office implements Disposable
 		{
 			camera.position.x += step;
 		}
-
-		batch.end();
-	}
-
-	@Override
-	public void dispose()
-	{
-		batch.dispose();
 	}
 }

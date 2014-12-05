@@ -52,7 +52,7 @@ public class GameScreen extends ScreenAdapter
 	public void show()
 	{
 		this.camera = new Camera(batch);
-		this.office = new Office();
+		this.office = new Office(batch);
 		//Set their starting areas
 		Animatronic.FREDDY.setCurrentRoom(Room.SHOW_STAGE);
 		Animatronic.BONNIE.setCurrentRoom(Room.SHOW_STAGE);
@@ -69,6 +69,5 @@ public class GameScreen extends ScreenAdapter
 	@Override
 	public void dispose()
 	{
-		office.dispose();
 	}
 }
