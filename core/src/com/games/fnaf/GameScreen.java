@@ -14,6 +14,7 @@ public class GameScreen extends ScreenAdapter
 	private boolean lookingAtCamera;
 	private boolean toggling;
 	private boolean hasCollided;
+	private boolean renderOffice;
 	private SpriteBatch batch;
 	private OrthographicCamera ortho;
 	private Night night;
@@ -30,14 +31,15 @@ public class GameScreen extends ScreenAdapter
 		this.lookingAtCamera = false;
 		this.cameraToggleHitbox = new Rectangle(255f, 27f, Art.cameraToggle.getWidth(), Art.cameraToggle.getHeight());
 		this.toggling = false;
-		this.cameraToggle = new Animation(1/15f, Art.cameraPopup);
+		this.cameraToggle = new Animation(1/25f, Art.cameraPopup);
 		this.hasCollided = false;
+		this.renderOffice = true;
 	}
 
 	@Override
 	public void render(float delta)
 	{
-		if (lookingAtCamera)
+		if (lookingAtCamera && !renderOffice)
 		{
 			camera.render();
 		}
@@ -79,7 +81,23 @@ public class GameScreen extends ScreenAdapter
 			if (this.cameraToggle.isAnimationFinished(animStateTime))
 			{
 				toggling = false;
-				lookingAtCamera = !lookingAtCamera;
+				if (!lookingAtCamera)
+				{
+					lookingAtCamera = true;
+					renderOffice = false;
+				}
+				else
+				{
+					lookingAtCamera = false;
+					renderOffice = true;
+				}
+			}
+			else
+			{
+				if (lookingAtCamera)
+				{
+					renderOffice = true;
+				}
 			}
 
 			batch.draw(cameraToggle.getKeyFrame(animStateTime), 0f, 0f, 1280f, 720f);
