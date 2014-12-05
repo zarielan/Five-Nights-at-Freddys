@@ -18,6 +18,7 @@ public class Art
 	public static ArrayMap<String, Texture> roomTextures;
 	public static ArrayMap<String, Texture> cameraButtonTextures;
 	public static ArrayMap<String, Texture> roomLabels;
+	public static ArrayMap<String, Array<TextureRegion>> jumpScares;
 	public static Array<TextureRegion> kitchenStatic;
 	public static Array<TextureRegion> officeFan;
 
@@ -29,6 +30,14 @@ public class Art
 		cameraButtonFlash = new Texture("CameraButtonFlash.png");
 		cameraDisabled = new Texture("CameraDisabled.png");
 		cameraToggle = new Texture("CameraToggle.png");
+
+		//Jumpsares
+		jumpScares = new ArrayMap<String, Array<TextureRegion>>();
+		jumpScares.put("Chica", new Array<TextureRegion>());
+		for (int i = 1; i <= 16; i++)
+		{
+			jumpScares.get("Chica").add(new TextureRegion(new Texture("Jumpscares/Chica (" + i + ")")));
+		}
 
 		//Rooms
 		//Animatronic combination naming must be in the order of Bonnie -> Chica -> Freddy -> Foxy
@@ -165,6 +174,14 @@ public class Art
 		cameraButtonFlash.dispose();
 		cameraDisabled.dispose();
 		cameraToggle.dispose();
+
+		for (Array<TextureRegion> t : jumpScares.values())
+		{
+			for (TextureRegion tr : t)
+			{
+				tr.getTexture().dispose();
+			}
+		}
 
 		for (Texture t : roomTextures.values())
 		{

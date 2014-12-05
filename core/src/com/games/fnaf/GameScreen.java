@@ -55,6 +55,15 @@ public class GameScreen extends ScreenAdapter
 		if (collision && !toggling)
 		{
 			toggling = true;
+
+			if (!lookingAtCamera)
+			{
+
+			}
+			else
+			{
+
+			}
 		}
 	}
 
