@@ -3,13 +3,11 @@ package com.games.fnaf;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class FNaF extends Game
 {
 	private SpriteBatch batch;
-	private OrthographicCamera ortho;
 	private static float timeElapsed;
 
 	@Override
@@ -19,18 +17,13 @@ public class FNaF extends Game
 		timeElapsed = 0f;
 
 		batch = new SpriteBatch();
-		ortho = new OrthographicCamera();
-		ortho.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		this.setScreen(new GameScreen(batch, ortho));
+		this.setScreen(new GameScreen(batch));
 	}
 
 	@Override
 	public void render()
 	{
 		timeElapsed += Gdx.graphics.getDeltaTime();
-
-		batch.setProjectionMatrix(ortho.combined);
-		ortho.update();
 
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		Gdx.gl.glClearColor(0f, 0f, 0f, 1f);

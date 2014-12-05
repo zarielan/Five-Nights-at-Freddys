@@ -1,5 +1,6 @@
 package com.games.fnaf;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -13,10 +14,11 @@ public class GameScreen extends ScreenAdapter
 	private OrthographicCamera ortho;
 	private Night night;
 
-	public GameScreen(SpriteBatch batch, OrthographicCamera ortho)
+	public GameScreen(SpriteBatch batch)
 	{
 		this.batch = batch;
-		this.ortho = ortho;
+		this.ortho = new OrthographicCamera();
+		this.ortho.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		this.night = Night.NIGHT_1;
 		this.lookingAtCamera = false;
 	}
@@ -32,6 +34,9 @@ public class GameScreen extends ScreenAdapter
 		{
 			office.render();
 		}
+
+		batch.setProjectionMatrix(ortho.combined);
+		ortho.update();
 
 		//Holy fuck the button doesn't show up. Okay, TODO
 		//but for next time :)
