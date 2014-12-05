@@ -21,6 +21,7 @@ public class Art
 	public static ArrayMap<String, Array<TextureRegion>> jumpScares;
 	public static Array<TextureRegion> kitchenStatic;
 	public static Array<TextureRegion> officeFan;
+	public static Array<TextureRegion> cameraPopup;
 
 	public static void loadTextures()
 	{
@@ -36,7 +37,7 @@ public class Art
 		jumpScares.put("Chica", new Array<TextureRegion>());
 		for (int i = 1; i <= 16; i++)
 		{
-			jumpScares.get("Chica").add(new TextureRegion(new Texture("Jumpscares/Chica (" + i + ")")));
+			jumpScares.get("Chica").add(new TextureRegion(new Texture("Jumpscares/Chica (" + i + ").png")));
 		}
 
 		//Rooms
@@ -120,6 +121,12 @@ public class Art
 			officeFan.add(new TextureRegion(new Texture("OfficeFan" + i + ".png")));
 		}
 
+		cameraPopup = new Array<TextureRegion>();
+		for (int i = 1; i <= 11; i++)
+		{
+			cameraPopup.add(new TextureRegion(new Texture("CameraFrames/" + i + ".png")));
+		}
+
 		//Camera buttons
 		cameraButtonTextures = new ArrayMap<String,Texture>();
 		cameraButtonTextures.put("1A", new Texture("1A.png"));
@@ -194,6 +201,11 @@ public class Art
 		}
 
 		for (TextureRegion t : kitchenStatic)
+		{
+			t.getTexture().dispose();
+		}
+
+		for (TextureRegion t : cameraPopup)
 		{
 			t.getTexture().dispose();
 		}
