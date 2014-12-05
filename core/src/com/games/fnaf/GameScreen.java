@@ -31,7 +31,7 @@ public class GameScreen extends ScreenAdapter
 		this.lookingAtCamera = false;
 		this.cameraToggleHitbox = new Rectangle(255f, 27f, Art.cameraToggle.getWidth(), Art.cameraToggle.getHeight());
 		this.toggling = false;
-		this.cameraToggle = new Animation(1/30f, Art.cameraPopup);
+		this.cameraToggle = new Animation(1/35f, Art.cameraPopup);
 		this.hasCollided = false;
 		this.renderOffice = true;
 	}

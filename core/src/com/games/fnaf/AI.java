@@ -12,11 +12,11 @@ public abstract class AI
 	private boolean isMoving;
 	protected ArrayMap<Room, Room[]> allowedRooms;
 
-	public AI()
+	public AI(int startingTimer)
 	{
 		frequency = -1;
 		freqMovement = MOVEMENT_TIME / (float)frequency;
-		timer = 0;
+		timer = startingTimer;
 		isMoving = false;
 		allowedRooms = new ArrayMap<Room, Room[]>();
 	}
