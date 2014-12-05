@@ -3,6 +3,7 @@ package com.games.fnaf;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
@@ -16,6 +17,7 @@ public class GameScreen extends ScreenAdapter
 	private OrthographicCamera ortho;
 	private Night night;
 	private Rectangle cameraToggleHitbox;
+	private Animation cameraToggle;
 
 	public GameScreen(SpriteBatch batch)
 	{
@@ -26,6 +28,8 @@ public class GameScreen extends ScreenAdapter
 		this.lookingAtCamera = false;
 		this.cameraToggleHitbox = new Rectangle(255f, 27f, Art.cameraToggle.getWidth(), Art.cameraToggle.getHeight());
 		this.toggling = false;
+		this.cameraToggle = new Animation(1/20f, Art.cameraPopup);
+		this.cameraToggle.setPlayMode(Animation.PlayMode.NORMAL);
 	}
 
 	@Override
@@ -58,12 +62,18 @@ public class GameScreen extends ScreenAdapter
 
 			if (!lookingAtCamera)
 			{
-
+				this.cameraToggle.setPlayMode(Animation.PlayMode.LOOP);
 			}
 			else
 			{
-
+				this.cameraToggle.setPlayMode(Animation.PlayMode.REVERSED);
 			}
+		}
+
+		if (toggling)
+		{
+			toggling = !this.cameraToggle.isAnimationFinished(FNaF.getTimeElapsed());
+			batch.draw(cameraToggle.getKeyFrame(FNaF.getTimeElapsed()), 0f, 0f, 1280f, 720f);
 		}
 	}
 
