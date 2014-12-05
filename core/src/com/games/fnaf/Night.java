@@ -27,19 +27,19 @@ public enum Night
 
 		if (chica > 0)
 		{
-			Animatronic.CHICA.getAI().setFrequency(bonnie);
+			Animatronic.CHICA.getAI().setFrequency(chica);
 			Animatronic.CHICA.getAI().setMoving(true);
 		}
 
 		if (freddy > 0)
 		{
-			Animatronic.FREDDY.getAI().setFrequency(bonnie);
+			Animatronic.FREDDY.getAI().setFrequency(freddy);
 			Animatronic.FREDDY.getAI().setMoving(true);
 		}
 
 		if (foxy > 0)
 		{
-			Animatronic.FOXY.getAI().setFrequency(bonnie);
+			Animatronic.FOXY.getAI().setFrequency(foxy);
 			Animatronic.FOXY.getAI().setMoving(true);
 		}
 	}

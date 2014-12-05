@@ -6,7 +6,7 @@ public class BonnieAI extends AI
 {
 	public BonnieAI()
 	{
-		super(MathUtils.random(-30, 0));
+		super(MathUtils.random(-10, 0));
 		allowedRooms.put(Room.SHOW_STAGE, new Room[]{Room.DINING_AREA});
 		allowedRooms.put(Room.DINING_AREA, new Room[]{Room.BACKSTAGE, Room.WEST_HALL});
 		allowedRooms.put(Room.BACKSTAGE, new Room[]{Room.DINING_AREA});

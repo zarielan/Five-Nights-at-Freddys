@@ -6,7 +6,7 @@ public class ChicaAI extends AI
 {
 	public ChicaAI()
 	{
-		super(MathUtils.random(-30, 0));
+		super(MathUtils.random(-10, 0));
 		allowedRooms.put(Room.SHOW_STAGE, new Room[] {Room.DINING_AREA});
 		allowedRooms.put(Room.DINING_AREA, new Room[]{Room.RESTROOMS, Room.EAST_HALL, Room.KITCHEN});
 		allowedRooms.put(Room.KITCHEN, new Room[]{Room.DINING_AREA});
