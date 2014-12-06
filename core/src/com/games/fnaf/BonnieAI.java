@@ -7,12 +7,12 @@ public class BonnieAI extends AI
 	public BonnieAI()
 	{
 		super(MathUtils.random(-10, 0));
-		allowedRooms.put(Room.SHOW_STAGE, new Room[]{Room.DINING_AREA});
-		allowedRooms.put(Room.DINING_AREA, new Room[]{Room.BACKSTAGE, Room.WEST_HALL});
-		allowedRooms.put(Room.BACKSTAGE, new Room[]{Room.DINING_AREA});
-		allowedRooms.put(Room.WEST_HALL, new Room[]{Room.WEST_HALL_CORNER, Room.SUPPLY_CLOSET, Room.DINING_AREA});
-		allowedRooms.put(Room.SUPPLY_CLOSET, new Room[]{Room.WEST_HALL});
-		allowedRooms.put(Room.WEST_HALL_CORNER, new Room[]{Room.WEST_HALL});
+		allowedRooms.put(Room.SHOW_STAGE, new Room[]{Room.DINING_AREA, Room.SHOW_STAGE});
+		allowedRooms.put(Room.DINING_AREA, new Room[]{Room.DINING_AREA, Room.BACKSTAGE, Room.WEST_HALL});
+		allowedRooms.put(Room.BACKSTAGE, new Room[]{Room.BACKSTAGE, Room.DINING_AREA});
+		allowedRooms.put(Room.WEST_HALL, new Room[]{Room.WEST_HALL, Room.WEST_HALL_CORNER, Room.SUPPLY_CLOSET, Room.DINING_AREA});
+		allowedRooms.put(Room.SUPPLY_CLOSET, new Room[]{Room.SUPPLY_CLOSET, Room.WEST_HALL});
+		allowedRooms.put(Room.WEST_HALL_CORNER, new Room[]{Room.WEST_HALL_CORNER, Room.WEST_HALL});
 	}
 
 	@Override
