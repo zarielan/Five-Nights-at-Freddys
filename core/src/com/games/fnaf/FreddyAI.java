@@ -6,7 +6,7 @@ public class FreddyAI extends AI
 {
 	public FreddyAI()
 	{
-		super(MathUtils.random(-30, 0));
+		super(MathUtils.random(-10, 0));
 		allowedRooms.put(Room.SHOW_STAGE, new Room[]{Room.SHOW_STAGE, Room.DINING_AREA});
 		allowedRooms.put(Room.DINING_AREA, new Room[]{Room.DINING_AREA, Room.RESTROOMS, Room.KITCHEN, Room.EAST_HALL});
 		allowedRooms.put(Room.RESTROOMS, new Room[]{Room.RESTROOMS, Room.DINING_AREA});
@@ -18,7 +18,7 @@ public class FreddyAI extends AI
 	@Override
 	public void updatePosition(Animatronic anim)
 	{
-		System.out.println(anim.getName() + " is moving!:");
+		System.out.print(anim.getName() + ": ");
 		System.out.print(anim.getCurrentRoom().getName() + " -> ");
 
 		//The other two (Bonnie and Chica) needs to get off the show stage first before Freddy comes out
@@ -41,11 +41,11 @@ public class FreddyAI extends AI
 			//Checks if Chica is in the East Hall Corner...
 			if (Room.EAST_HALL_CORNER.getVisitors()[Animatronic.CHICA.ordinal()])
 			{
-				//Randomly choses who goes. Freddy has a higher chance of moving.
+				//Randomly chooses who goes. Freddy has a higher chance of moving in.
 				boolean freddyMoves = MathUtils.randomBoolean(0.75f);
 				if (freddyMoves)
 				{
-					//Freddy moves? Move Chica out of the way.
+					//Freddy moves in? Move Chica out of the way.
 					Animatronic.CHICA.setCurrentRoom(Room.EAST_HALL);
 				}
 				else

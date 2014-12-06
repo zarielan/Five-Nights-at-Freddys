@@ -18,7 +18,7 @@ public class ChicaAI extends AI
 	@Override
 	public void updatePosition(Animatronic anim)
 	{
-		System.out.println(anim.getName() + " is moving!:");
+		System.out.print(anim.getName() + ": ");
 		System.out.print(anim.getCurrentRoom().getName() + " -> ");
 
 		Room[] possibleRooms = allowedRooms.get(anim.getCurrentRoom());
