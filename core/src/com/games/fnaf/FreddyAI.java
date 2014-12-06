@@ -19,7 +19,7 @@ public class FreddyAI extends AI
 	public void updatePosition(Animatronic anim)
 	{
 		System.out.println(anim.getName() + " is moving!:");
-		System.out.println(anim.getCurrentRoom().getName() + "-> ");
+		System.out.print(anim.getCurrentRoom().getName() + " -> ");
 
 		//The other two (Bonnie and Chica) needs to get off the show stage first before Freddy comes out
 		if (anim.getCurrentRoom() == Room.SHOW_STAGE)
@@ -57,7 +57,6 @@ public class FreddyAI extends AI
 		}
 
 		anim.setCurrentRoom(possibleRooms[chosen]);
-
 
 		System.out.print(anim.getCurrentRoom().getName());
 		System.out.println();
