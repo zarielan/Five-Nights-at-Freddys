@@ -20,7 +20,10 @@ public class GameScreen extends ScreenAdapter
 	private Night night;
 	private Rectangle cameraToggleHitbox;
 	private Animation cameraToggle;
+	private Animation cameraBars;
 	private float animStateTime = 0f;
+	private boolean playCameraBars;
+	private float cameraBarsTime = 0f;
 
 	public GameScreen(SpriteBatch batch)
 	{
@@ -34,6 +37,9 @@ public class GameScreen extends ScreenAdapter
 		this.cameraToggle = new Animation(1/35f, Art.cameraPopup);
 		this.hasCollided = false;
 		this.renderOffice = true;
+		this.cameraBars = new Animation(1/30f, Art.cameraBars);
+		this.cameraBars.setPlayMode(Animation.PlayMode.NORMAL);
+		this.playCameraBars = false;
 	}
 
 	@Override
@@ -90,6 +96,7 @@ public class GameScreen extends ScreenAdapter
 				{
 					lookingAtCamera = true;
 					renderOffice = false;
+					playCameraBars = true;
 				}
 				else
 				{
@@ -110,6 +117,18 @@ public class GameScreen extends ScreenAdapter
 		else
 		{
 			animStateTime = 0f;
+		}
+
+		if (playCameraBars)
+		{
+			cameraBarsTime += delta;
+			batch.draw(cameraBars.getKeyFrame(cameraBarsTime), 0f, 0f);
+
+			if (cameraBars.isAnimationFinished(cameraBarsTime))
+			{
+				playCameraBars = false;
+				cameraBarsTime = 0f;
+			}
 		}
 
 		hasCollided = collision;

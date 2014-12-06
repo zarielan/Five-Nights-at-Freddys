@@ -22,6 +22,7 @@ public class Art
 	public static Array<TextureRegion> kitchenStatic;
 	public static Array<TextureRegion> officeFan;
 	public static Array<TextureRegion> cameraPopup;
+	public static Array<TextureRegion> cameraBars;
 
 	public static void loadTextures()
 	{
@@ -127,6 +128,12 @@ public class Art
 			cameraPopup.add(new TextureRegion(new Texture("CameraFrames/" + i + ".png")));
 		}
 
+		cameraBars = new Array<TextureRegion>();
+		for (int i = 1; i <= 3; i++)
+		{
+			cameraBars.add(new TextureRegion(new Texture("CameraBars/" + i + ".png")));
+		}
+
 		//Camera buttons
 		cameraButtonTextures = new ArrayMap<String,Texture>();
 		cameraButtonTextures.put("1A", new Texture("1A.png"));
@@ -211,6 +218,11 @@ public class Art
 		}
 
 		for (TextureRegion t: officeFan)
+		{
+			t.getTexture().dispose();
+		}
+
+		for (TextureRegion t : cameraBars)
 		{
 			t.getTexture().dispose();
 		}
