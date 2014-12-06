@@ -129,7 +129,7 @@ public class Art
 		}
 
 		cameraBars = new Array<TextureRegion>();
-		for (int i = 1; i <= 3; i++)
+		for (int i = 1; i <= 4; i++)
 		{
 			cameraBars.add(new TextureRegion(new Texture("CameraBars/" + i + ".png")));
 		}
