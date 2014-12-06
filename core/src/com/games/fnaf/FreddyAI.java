@@ -56,6 +56,42 @@ public class FreddyAI extends AI
 			}
 		}
 
+		//Check if Freddy will be going to the East Hall
+		if (possibleRooms[chosen] == Room.EAST_HALL)
+		{
+			//Check if Chica is there...
+			if (Room.EAST_HALL.getVisitors()[Animatronic.CHICA.ordinal()])
+			{
+				//Have a random chance of either one moving. Freddy has a higher chance of moving in than Chica staying
+				boolean freddyMoves = MathUtils.randomBoolean(0.75f);
+				if (freddyMoves)
+				{
+					//If Freddy moves, move Chica out of the way to either the Dining Area or East Hall Corner:
+					Room chicaMovesAt;
+
+					//If Freddy isn't in the East Hall Corner, and a random boolean...
+					if (anim.getCurrentRoom() != Room.EAST_HALL_CORNER && MathUtils.randomBoolean())
+					{
+						//Put Chica there
+						chicaMovesAt = Room.EAST_HALL_CORNER;
+					}
+					else
+					{
+						//Move Chica back in the Dining Area
+						chicaMovesAt = Room.DINING_AREA;
+					}
+
+					//Move chica to the room picked
+					Animatronic.CHICA.setCurrentRoom(chicaMovesAt);
+				}
+				else
+				{
+					//If Freddy won't move, then don't.
+					return;
+				}
+			}
+		}
+
 		anim.setCurrentRoom(possibleRooms[chosen]);
 
 		System.out.print(anim.getCurrentRoom().getName());
