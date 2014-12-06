@@ -18,13 +18,14 @@ public class BonnieAI extends AI
 	@Override
 	public void updatePosition(Animatronic anim)
 	{
-		System.out.println(anim.getName());
-		System.out.println("Currently in: " + anim.getCurrentRoom().getName());
+		System.out.println(anim.getName() + " is moving!:");
+		System.out.println(anim.getCurrentRoom().getName() + "-> ");
 
 		Room[] possibleRooms = allowedRooms.get(anim.getCurrentRoom());
 		int chosen = MathUtils.random(0, possibleRooms.length - 1);
 		anim.setCurrentRoom(possibleRooms[chosen]);
 
-		System.out.println("Now in: " + anim.getCurrentRoom().getName());
+		System.out.print(anim.getCurrentRoom().getName());
+		System.out.println();
 	}
 }
