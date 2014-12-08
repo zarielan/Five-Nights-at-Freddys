@@ -46,7 +46,9 @@ public class FoxyAI extends AI
 		{
 			System.out.print(anim.getName() + ": Going from Stage " + getStage());
 			stage++;
+			Room.PIRATE_COVE.changeRoomTexture();
 			System.out.print(" to Stage " + getStage());
+			System.out.println();
 			nonViewingTime = 0f;
 		}
 
@@ -81,7 +83,5 @@ public class FoxyAI extends AI
 			//Good luck.
 			anim.setCurrentRoom(Room.WEST_HALL);
 		}
-
-		System.out.println();
 	}
 }
