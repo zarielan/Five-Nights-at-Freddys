@@ -123,10 +123,6 @@ public enum Room
 			//(1 for inside, 2 for peeking outside, 3 for waiting outside, any other is sprinting)
 			int stage = ((FoxyAI) Animatronic.FOXY.getAI()).getStage();
 			fName += stage;
-			if (stage > 3)
-			{
-				fName = "PirateCove";
-			}
 		}
 
 		for (int i = 0; i < multiplePos.size; i++)
