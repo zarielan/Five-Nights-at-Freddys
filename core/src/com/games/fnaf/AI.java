@@ -51,7 +51,11 @@ public abstract class AI
 		if (movementOffset >= 0 && isMoving)
 		{
 			movementCounter += Gdx.graphics.getDeltaTime();
-			if (timer > 0 && (int)(movementCounter / freqMovement) == timer)
+		}
+
+		if ((int)(movementCounter / freqMovement) == timer)
+		{
+			if (timer > 0)
 				updatePosition(anim);
 			timer++;
 		}
