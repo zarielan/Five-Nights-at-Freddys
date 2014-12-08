@@ -6,7 +6,6 @@ import com.badlogic.gdx.utils.ArrayMap;
 public abstract class AI
 {
 	private int frequency;
-	private final float TIME = 90f;
 	private final float MOVEMENT_TIME = 30f;
 	private float freqMovement;
 	private int timer;
@@ -44,11 +43,13 @@ public abstract class AI
 		isMoving = bool;
 	}
 
-	public final void update(Animatronic anim)
+	public final void update(Animatronic anim, float nightDuration)
 	{
-		if (movementOffset >= 0 && isMoving && (int)(FNaF.getTimeElapsed() / freqMovement) == timer)
+		System.out.println(anim + ", " + movementOffset + ", " + isMoving + ", " + timer + ", " + (int)(FNaF.getTimeElapsed() / freqMovement));
+		nightDuration -= movementOffset;
+		if (movementOffset >= 0 && isMoving)
 		{
-			if (timer > 0)
+			if (timer > 0 && (int)(nightDuration / freqMovement) == timer)
 				updatePosition(anim);
 			timer++;
 		}

@@ -45,6 +45,8 @@ public class GameScreen extends ScreenAdapter
 	@Override
 	public void render(float delta)
 	{
+		this.night.incrementNightDuration(delta);
+
 		if (lookingAtCamera && !renderOffice)
 		{
 			camera.render();
@@ -61,7 +63,7 @@ public class GameScreen extends ScreenAdapter
 
 		for (Animatronic a : Animatronic.values())
 		{
-			a.getAI().update(a);
+			a.getAI().update(a, this.night.getNightDuration());
 		}
 
 		cameraToggling(delta);
