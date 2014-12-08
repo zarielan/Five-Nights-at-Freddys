@@ -6,7 +6,7 @@ public class ChicaAI extends AI
 {
 	public ChicaAI()
 	{
-		super(Animatronic.CHICA);
+		super(MathUtils.random(-10f, 0f));
 		allowedRooms.put(Room.SHOW_STAGE, new Room[] {Room.SHOW_STAGE, Room.DINING_AREA});
 		allowedRooms.put(Room.DINING_AREA, new Room[]{Room.DINING_AREA, Room.RESTROOMS, Room.EAST_HALL, Room.KITCHEN});
 		allowedRooms.put(Room.KITCHEN, new Room[]{Room.KITCHEN, Room.DINING_AREA});
@@ -27,11 +27,5 @@ public class ChicaAI extends AI
 
 		System.out.print(anim.getCurrentRoom().getName());
 		System.out.println();
-	}
-
-	@Override
-	public float getMovementOffset()
-	{
-		return MathUtils.random(-10f, 0f);
 	}
 }

@@ -6,19 +6,13 @@ public class FreddyAI extends AI
 {
 	public FreddyAI()
 	{
-		super(Animatronic.FREDDY);
+		super(MathUtils.random(-30f, 0f));
 		allowedRooms.put(Room.SHOW_STAGE, new Room[]{Room.SHOW_STAGE, Room.DINING_AREA});
 		allowedRooms.put(Room.DINING_AREA, new Room[]{Room.DINING_AREA, Room.RESTROOMS, Room.KITCHEN, Room.EAST_HALL});
 		allowedRooms.put(Room.RESTROOMS, new Room[]{Room.RESTROOMS, Room.DINING_AREA});
 		allowedRooms.put(Room.KITCHEN, new Room[]{Room.KITCHEN, Room.DINING_AREA});
 		allowedRooms.put(Room.EAST_HALL, new Room[]{Room.EAST_HALL, Room.DINING_AREA, Room.EAST_HALL_CORNER});
 		allowedRooms.put(Room.EAST_HALL_CORNER, new Room[]{Room.EAST_HALL_CORNER, Room.EAST_HALL});
-	}
-
-	@Override
-	public float getMovementOffset()
-	{
-		return MathUtils.random(-30f, 0f);
 	}
 
 	@Override

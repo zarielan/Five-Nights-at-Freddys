@@ -1,18 +1,10 @@
 package com.games.fnaf;
 
-import com.badlogic.gdx.math.MathUtils;
-
 public class FoxyAI extends AI
 {
 	public FoxyAI()
 	{
-		super(Animatronic.FOXY);
-	}
-
-	@Override
-	public float getMovementOffset()
-	{
-		return MathUtils.random(-10f, 0f);
+		super(0f);
 	}
 
 	@Override
