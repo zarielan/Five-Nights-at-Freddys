@@ -42,8 +42,6 @@ public class FoxyAI extends AI
 	@Override
 	public void updatePosition(Animatronic anim)
 	{
-		System.out.println(nonViewingTime + " approaching " + watchMeTime);
-
 		if (nonViewingTime > watchMeTime)
 		{
 			System.out.print(anim.getName() + ": Going from Stage " + getStage());
