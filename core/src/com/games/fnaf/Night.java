@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.MathUtils;
 public enum Night
 {
 	NIGHT_1(3, 5, 5, 0, 30f),
-	TEST_NIGHT(0, 5, 5, 0, 0f);
+	TEST_NIGHT(0, 5, 5, 2, 0f);
 
 	private int bonnie = -1;
 	private int chica = -1;
@@ -50,10 +50,10 @@ public enum Night
 
 		if (foxy > 0)
 		{
-			((FoxyAI)Animatronic.FOXY.getAI()).reset();
 			Animatronic.FOXY.getAI().reset(0f);
 			Animatronic.FOXY.getAI().setFrequency(foxy);
 			Animatronic.FOXY.getAI().setMovementDelay(movementDelay);
+			((FoxyAI)Animatronic.FOXY.getAI()).reset();
 			Animatronic.FOXY.getAI().setMoving(true);
 		}
 	}

@@ -31,6 +31,7 @@ public class FoxyAI extends AI
 		viewingTime = 0f;
 		nonViewingTime = 0f;
 		watchMeTime = 12 - ((1 / getFrequency() / 20) * 12) + 13;
+		System.out.println("Foxy's watching time is " + watchMeTime);
 	}
 
 	public int getStage()
@@ -41,8 +42,13 @@ public class FoxyAI extends AI
 	@Override
 	public void updatePosition(Animatronic anim)
 	{
-		System.out.print(anim.getName() + ": ");
-		System.out.print(anim.getCurrentRoom().getName() + " -> ");
+		if (nonViewingTime > watchMeTime)
+		{
+			System.out.print(anim.getName() + ": Going from Stage " + getStage());
+			stage++;
+			System.out.print(" to Stage " + getStage());
+			nonViewingTime = 0f;
+		}
 
 		//If Foxy is no longer at stages 1, 2, or 3, this means he's running. For you.
 		if (3 < stage)
@@ -76,7 +82,6 @@ public class FoxyAI extends AI
 			anim.setCurrentRoom(Room.WEST_HALL);
 		}
 
-		System.out.print(anim.getCurrentRoom().getName());
 		System.out.println();
 	}
 }
