@@ -18,9 +18,6 @@ public class FreddyAI extends AI
 	@Override
 	public void updatePosition(Animatronic anim)
 	{
-		System.out.print(anim.getName() + ": ");
-		System.out.print(anim.getCurrentRoom().getName() + " -> ");
-
 		//The other two (Bonnie and Chica) needs to get off the show stage first before Freddy comes out
 		if (anim.getCurrentRoom() == Room.SHOW_STAGE)
 		{
@@ -28,8 +25,7 @@ public class FreddyAI extends AI
 			if (Room.SHOW_STAGE.getVisitors()[Animatronic.BONNIE.ordinal()] || Room.SHOW_STAGE.getVisitors()[Animatronic.CHICA.ordinal()])
 			{
 				//Don't move.
-				System.out.print("Don't move.");
-				System.out.println();
+				System.out.println("Freddy, don't move.");
 				return;
 			}
 		}
@@ -54,8 +50,7 @@ public class FreddyAI extends AI
 				else
 				{
 					//Else? Don't move at all.
-					System.out.print("Don't move.");
-					System.out.println();
+					System.out.println("Freddy, don't move.");
 					return;
 				}
 			}
@@ -92,16 +87,12 @@ public class FreddyAI extends AI
 				else
 				{
 					//If Freddy won't move, then don't.
-					System.out.print("Don't move.");
-					System.out.println();
+					System.out.println("Freddy, don't move.");
 					return;
 				}
 			}
 		}
 
 		anim.setCurrentRoom(possibleRooms[chosen]);
-
-		System.out.print(anim.getCurrentRoom().getName());
-		System.out.println();
 	}
 }

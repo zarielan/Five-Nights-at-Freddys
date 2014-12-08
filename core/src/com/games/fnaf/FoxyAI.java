@@ -47,8 +47,8 @@ public class FoxyAI extends AI
 		if (nonViewingTime > watchMeTime)
 		{
 			System.out.print(anim.getName() + ": Going from Stage " + getStage());
-			stage++;
 
+			stage++;
 			if (stage <= 3)
 				Room.PIRATE_COVE.changeRoomTexture();
 

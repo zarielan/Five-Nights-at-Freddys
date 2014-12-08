@@ -18,9 +18,6 @@ public class ChicaAI extends AI
 	@Override
 	public void updatePosition(Animatronic anim)
 	{
-		System.out.print(anim.getName() + ": ");
-		System.out.print(anim.getCurrentRoom().getName() + " -> ");
-
 		Room[] possibleRooms = allowedRooms.get(anim.getCurrentRoom());
 		int chosen = MathUtils.random(0, possibleRooms.length - 1);
 
@@ -56,8 +53,7 @@ public class ChicaAI extends AI
 				else
 				{
 					//Else? Don't move at all. Let things be...
-					System.out.print("Don't move.");
-					System.out.println();
+					System.out.println("Chica, don't move.");
 					return;
 				}
 			}
@@ -82,16 +78,12 @@ public class ChicaAI extends AI
 				else
 				{
 					//Else? Don't move.
-					System.out.print("Don't move.");
-					System.out.println();
+					System.out.println("Chica, don't move.");
 					return;
 				}
 			}
 		}
 
 		anim.setCurrentRoom(possibleRooms[chosen]);
-
-		System.out.print(anim.getCurrentRoom().getName());
-		System.out.println();
 	}
 }

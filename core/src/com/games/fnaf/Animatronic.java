@@ -41,6 +41,8 @@ public enum Animatronic
 			this.currentRoom.setVisiting(false, ID);
 		}
 
+		System.out.println(this.getName() + ": " + this.currentRoom + " -> " + currentRoom);
+
 		this.currentRoom = currentRoom;
 		this.currentRoom.setVisiting(true, ID);
 	}
