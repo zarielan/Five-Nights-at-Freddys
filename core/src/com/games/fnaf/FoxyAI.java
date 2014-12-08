@@ -6,7 +6,13 @@ public class FoxyAI extends AI
 {
 	public FoxyAI()
 	{
-		super(MathUtils.random(-30, 0));
+		super(Animatronic.FOXY);
+	}
+
+	@Override
+	public float getMovementOffset()
+	{
+		return MathUtils.random(-10f, 0f);
 	}
 
 	@Override

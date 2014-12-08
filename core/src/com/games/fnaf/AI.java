@@ -14,14 +14,19 @@ public abstract class AI
 	private float movementOffset;
 	protected ArrayMap<Room, Room[]> allowedRooms;
 
-	public AI(float movementOffset)
+	public AI(Animatronic anim)
 	{
 		frequency = -1;
 		freqMovement = MOVEMENT_TIME / (float)frequency;
+		reset(anim);
+		allowedRooms = new ArrayMap<Room, Room[]>();
+	}
+
+	public void reset(Animatronic anim)
+	{
 		timer = 0;
 		isMoving = false;
-		this.movementOffset = movementOffset;
-		allowedRooms = new ArrayMap<Room, Room[]>();
+		movementOffset = anim.getAI().getMovementOffset();
 	}
 
 	public void setMovementDelay(float movementDelay)
@@ -56,4 +61,5 @@ public abstract class AI
 	}
 
 	public abstract void updatePosition(Animatronic anim);
+	public abstract float getMovementOffset();
 }
