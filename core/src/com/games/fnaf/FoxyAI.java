@@ -19,14 +19,24 @@ public class FoxyAI extends AI
 		cooldownTime = 0f;
 	}
 
-	public void incrementViewingTime(float delta)
+	public void setViewingTime(float time)
 	{
-		viewingTime += delta;
+		viewingTime = time;
 	}
 
-	public void incrementNonViewingTime(float delta)
+	public void setNonViewingTime(float time)
 	{
-		nonViewingTime += delta;
+		nonViewingTime = time;
+	}
+
+	public float getViewingTime()
+	{
+		return viewingTime;
+	}
+
+	public float getNonViewingTime()
+	{
+		return nonViewingTime;
 	}
 
 	public void reset()
@@ -42,15 +52,11 @@ public class FoxyAI extends AI
 		return stage;
 	}
 
-	public float getCooldownTime()
-	{
-		return cooldownTime;
-	}
-
 	@Override
 	public void updatePosition(Animatronic anim)
 	{
-		if (nonViewingTime > watchMeTime)
+		System.out.println("Viewing time: " + getViewingTime() + ", Non viewing time: " + getNonViewingTime());
+		if (nonViewingTime > watchMeTime || viewingTime > watchMeTime)
 		{
 			System.out.print(anim.getName() + ": Stage " + getStage());
 
@@ -61,6 +67,7 @@ public class FoxyAI extends AI
 			System.out.print(" -> Stage " + getStage());
 			System.out.println();
 			nonViewingTime = 0f;
+			viewingTime = 0f;
 		}
 
 		//If Foxy is no longer at stages 1, 2, or 3, this means he's running. For you.
@@ -68,8 +75,8 @@ public class FoxyAI extends AI
 		{
 			cooldownTime += Gdx.graphics.getDeltaTime();
 
-			//Check if Bonnie is in the West Hall
-			if (Room.WEST_HALL.getVisitors()[Animatronic.BONNIE.ordinal()])
+			//Check if Bonnie is in the West Hall and Foxy isn't there yet
+			if (!Room.WEST_HALL.getVisitors()[Animatronic.FOXY.ordinal()] && Room.WEST_HALL.getVisitors()[Animatronic.BONNIE.ordinal()])
 			{
 				//Move that guy out of the way to either the West Hall Corner, Supply Closet, or Dining Area
 				Room putBonnieIn;
@@ -94,7 +101,8 @@ public class FoxyAI extends AI
 			}
 
 			//Good luck.
-			anim.setCurrentRoom(Room.WEST_HALL);
+			if (anim.getCurrentRoom() != Room.WEST_HALL)
+				anim.setCurrentRoom(Room.WEST_HALL);
 		}
 	}
 }

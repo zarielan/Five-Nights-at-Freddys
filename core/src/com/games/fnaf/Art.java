@@ -68,9 +68,9 @@ public class Art
 
 		roomTextures.put("PirateCove1", new Texture("PirateCove1.png"));
 		roomTextures.put("PirateCove2", new Texture("PirateCove2.png"));
-		roomTextures.put("PirateCoveFoxy1", new Texture("PirateCove1_Foxy.png"));
-		roomTextures.put("PirateCoveFoxy2", new Texture("PirateCove2_Foxy.png"));
-		roomTextures.put("PirateCoveFoxy3", new Texture("PirateCove3_Foxy.png"));
+		roomTextures.put("PirateCoveFoxy1", new Texture("PirateCove_Foxy1.png"));
+		roomTextures.put("PirateCoveFoxy2", new Texture("PirateCove_Foxy2.png"));
+		roomTextures.put("PirateCoveFoxy3", new Texture("PirateCove_Foxy3.png"));
 
 		roomTextures.put("Backstage1", new Texture("Backstage1.png"));
 		roomTextures.put("Backstage2", new Texture("Backstage2.png"));
@@ -113,6 +113,7 @@ public class Art
 
 		officeTextures = new ArrayMap<String, Texture>();
 		officeTextures.put("Office", new Texture("Office.png"));
+		officeTextures.put("OfficeLeftLight", new Texture("OfficeLeftLight.png"));
 
 		kitchenStatic = new Array<TextureRegion>();
 		for (int i = 1; i <= 8; i++)

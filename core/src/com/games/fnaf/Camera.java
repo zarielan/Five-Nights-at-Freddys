@@ -53,10 +53,15 @@ public class Camera
 			batch.draw(room.getCurrentTexture(), room.getCameraX(), 0f);
 		}
 
+		FoxyAI foxyAI = (FoxyAI)Animatronic.FOXY.getAI();
+
 		if (room == Room.PIRATE_COVE)
-			((FoxyAI)Animatronic.FOXY.getAI()).incrementViewingTime(Gdx.graphics.getDeltaTime());
+		{
+			foxyAI.setNonViewingTime(0f);
+			foxyAI.setViewingTime(foxyAI.getViewingTime() + Gdx.graphics.getDeltaTime());
+		}
 		else
-			((FoxyAI)Animatronic.FOXY.getAI()).incrementNonViewingTime(Gdx.graphics.getDeltaTime());
+			foxyAI.setNonViewingTime(foxyAI.getNonViewingTime() + Gdx.graphics.getDeltaTime());
 
 		map.draw(batch);
 

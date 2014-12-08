@@ -82,7 +82,7 @@ public enum Room
 				timePassed = 0f;
 				cameraX += xVel;
 
-				if ((xVel == -2f && cameraX + getTexture().getWidth() <= 1280f) || (xVel == 2f && cameraX >= 0f))
+				if ((xVel == -2f && cameraX + 1600f <= 1280f) || (xVel == 2f && cameraX >= 0f))
 				{
 					xVel *= -1f;
 					isCameraMoving = false;
