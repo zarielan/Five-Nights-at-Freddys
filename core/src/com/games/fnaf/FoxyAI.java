@@ -6,6 +6,8 @@ public class FoxyAI extends AI
 {
 	private int stage;
 	private float viewingTime;
+	private float watchMeTime;
+	private float nonViewingTime;
 
 	public FoxyAI()
 	{
@@ -19,9 +21,16 @@ public class FoxyAI extends AI
 		viewingTime += delta;
 	}
 
+	public void incrementNonViewingTime(float delta)
+	{
+		nonViewingTime += delta;
+	}
+
 	public void reset()
 	{
 		viewingTime = 0f;
+		nonViewingTime = 0f;
+		watchMeTime = 12 - ((1 / getFrequency() / 20) * 12) + 13;
 	}
 
 	public int getStage()

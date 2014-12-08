@@ -38,10 +38,12 @@ public class Camera
 		else
 		{
 			batch.draw(room.getCurrentTexture(), room.getCameraX(), 0f);
-			
-			if (room == Room.PIRATE_COVE)
-				((FoxyAI)Animatronic.FOXY.getAI()).incrementViewingTime(Gdx.graphics.getDeltaTime());
 		}
+
+		if (room == Room.PIRATE_COVE)
+			((FoxyAI)Animatronic.FOXY.getAI()).incrementViewingTime(Gdx.graphics.getDeltaTime());
+		else
+			((FoxyAI)Animatronic.FOXY.getAI()).incrementNonViewingTime(Gdx.graphics.getDeltaTime());
 
 		map.draw(batch);
 

@@ -40,6 +40,11 @@ public abstract class AI
 		this.freqMovement = MOVEMENT_TIME / (float)frequency;
 	}
 
+	float getFrequency()
+	{
+		return frequency;
+	}
+
 	public void setMoving(boolean bool)
 	{
 		isMoving = bool;
@@ -49,6 +54,12 @@ public abstract class AI
 	{
 		if (movementOffset >= 0 && isMoving)
 		{
+			if (anim == Animatronic.FOXY)
+			{
+				updatePosition(anim);
+				return;
+			}
+
 			movementCounter += Gdx.graphics.getDeltaTime();
 		}
 
