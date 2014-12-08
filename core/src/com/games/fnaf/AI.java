@@ -12,6 +12,7 @@ public abstract class AI
 	private boolean isMoving;
 	private float movementOffset;
 	protected ArrayMap<Room, Room[]> allowedRooms;
+	private float movementCounter;
 
 	public AI()
 	{
@@ -25,6 +26,7 @@ public abstract class AI
 		timer = 0;
 		isMoving = false;
 		movementOffset = offset;
+		movementCounter = 0f;
 	}
 
 	public void setMovementDelay(float movementDelay)
@@ -43,13 +45,13 @@ public abstract class AI
 		isMoving = bool;
 	}
 
-	public final void update(Animatronic anim, float nightDuration)
+	public final void update(Animatronic anim)
 	{
-		System.out.println(anim + ", " + movementOffset + ", " + isMoving + ", " + timer + ", " + (int)(FNaF.getTimeElapsed() / freqMovement));
-		nightDuration -= movementOffset;
+		System.out.println(anim + ", " + movementOffset + ", " + isMoving + ", " + timer + ", " + (int)(movementCounter / freqMovement));
 		if (movementOffset >= 0 && isMoving)
 		{
-			if (timer > 0 && (int)(nightDuration / freqMovement) == timer)
+			movementCounter += Gdx.graphics.getDeltaTime();
+			if (timer > 0 && (int)(movementCounter / freqMovement) == timer)
 				updatePosition(anim);
 			timer++;
 		}

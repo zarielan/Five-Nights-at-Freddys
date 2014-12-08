@@ -11,7 +11,6 @@ public enum Night
 	private int freddy = -1;
 	private int foxy = -1;
 	private float movementDelay;
-	private float nightDuration;
 
 	private Night(int bonnie, int chica, int freddy, int foxy, float movementDelay)
 	{
@@ -20,22 +19,6 @@ public enum Night
 		this.foxy = foxy;
 		this.freddy = freddy;
 		this.movementDelay = movementDelay;
-		resetNightDuration();
-	}
-
-	public void resetNightDuration()
-	{
-		nightDuration = 0f;
-	}
-
-	public void incrementNightDuration(float delta)
-	{
-		nightDuration += delta;
-	}
-
-	public float getNightDuration()
-	{
-		return nightDuration;
 	}
 
 	public void doNight()
@@ -71,7 +54,5 @@ public enum Night
 			Animatronic.FOXY.getAI().setMovementDelay(movementDelay);
 			Animatronic.FOXY.getAI().setMoving(true);
 		}
-
-		resetNightDuration();
 	}
 }
