@@ -52,6 +52,7 @@ public class GameScreen extends ScreenAdapter
 		else
 		{
 			office.render();
+			((FoxyAI)Animatronic.FOXY.getAI()).incrementNonViewingTime(Gdx.graphics.getDeltaTime());
 		}
 
 		batch.setProjectionMatrix(ortho.combined);
