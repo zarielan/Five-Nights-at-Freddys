@@ -11,17 +11,22 @@ public abstract class AI
 	private float freqMovement;
 	private int timer;
 	private boolean isMoving;
-	private float initialCooldown;
+	private float movementOffset;
 	protected ArrayMap<Room, Room[]> allowedRooms;
 
-	public AI(float cooldown)
+	public AI(float movementOffset)
 	{
 		frequency = -1;
 		freqMovement = MOVEMENT_TIME / (float)frequency;
 		timer = 0;
 		isMoving = false;
-		initialCooldown = cooldown;
+		this.movementOffset = movementOffset;
 		allowedRooms = new ArrayMap<Room, Room[]>();
+	}
+
+	public void setMovementDelay(float movementDelay)
+	{
+		this.movementOffset -= movementDelay;
 	}
 
 	public void setFrequency(int i)
@@ -37,16 +42,16 @@ public abstract class AI
 
 	public final void update(Animatronic anim)
 	{
-		if (initialCooldown >= 0 && isMoving && (int)(FNaF.getTimeElapsed() / freqMovement) == timer)
+		if (movementOffset >= 0 && isMoving && (int)(FNaF.getTimeElapsed() / freqMovement) == timer)
 		{
 			if (timer > 0)
 				updatePosition(anim);
 			timer++;
 		}
 
-		if (initialCooldown <= 10)
+		if (movementOffset <= 10)
 		{
-			initialCooldown += Gdx.graphics.getDeltaTime();
+			movementOffset += Gdx.graphics.getDeltaTime();
 		}
 	}
 
