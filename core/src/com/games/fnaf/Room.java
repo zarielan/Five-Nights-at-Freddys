@@ -125,6 +125,11 @@ public enum Room
 			}
 		}
 
+		if (fName.contains("Foxy"))
+		{
+			fName += ((FoxyAI)Animatronic.FOXY.getAI()).getStage();
+		}
+
 		Texture tex = Art.getRoomTexture(fName);
 		if (tex == null)
 		{
