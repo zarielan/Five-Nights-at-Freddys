@@ -19,6 +19,7 @@ public class Art
 	public static ArrayMap<String, Texture> cameraButtonTextures;
 	public static ArrayMap<String, Texture> roomLabels;
 	public static ArrayMap<String, Array<TextureRegion>> jumpScares;
+	public static ArrayMap<String, Texture> doorLights;
 	public static Array<TextureRegion> kitchenStatic;
 	public static Array<TextureRegion> officeFan;
 	public static Array<TextureRegion> cameraPopup;
@@ -118,6 +119,18 @@ public class Art
 		officeTextures.put("OfficeBonnie", new Texture("OfficeBonnie.png"));
 		officeTextures.put("OfficeChica", new Texture("OfficeChica.png"));
 
+		//The door lights
+		doorLights = new ArrayMap<String,Texture>();
+		doorLights.put("Left", new Texture("DoorLightLeft.png"));
+		doorLights.put("LeftDoor", new Texture("DoorLightLeftDoor.png"));
+		doorLights.put("LeftLight", new Texture("DoorLightLeftLight.png"));
+		doorLights.put("LeftDoorLight", new Texture("DoorLightLeftDoorLight.png"));
+
+		doorLights.put("Right", new Texture("DoorLightRight.png"));
+		doorLights.put("RightDoor", new Texture("DoorLightRightDoor.png"));
+		doorLights.put("RightLight", new Texture("DoorLightRightLight.png"));
+		doorLights.put("RightDoorLight", new Texture("DoorLightRightDoorLight.png"));
+
 		kitchenStatic = new Array<TextureRegion>();
 		for (int i = 1; i <= 8; i++)
 		{
@@ -209,6 +222,11 @@ public class Art
 			{
 				tr.getTexture().dispose();
 			}
+		}
+
+		for (Texture t : doorLights.values)
+		{
+			t.dispose();;
 		}
 
 		for (Texture t : roomTextures.values())
