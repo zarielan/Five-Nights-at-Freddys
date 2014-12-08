@@ -23,6 +23,72 @@ public class ChicaAI extends AI
 
 		Room[] possibleRooms = allowedRooms.get(anim.getCurrentRoom());
 		int chosen = MathUtils.random(0, possibleRooms.length - 1);
+
+		//Check if Chica is going to the East Hall
+		if (possibleRooms[chosen] == Room.EAST_HALL)
+		{
+			//Check if Freddy is there...
+			if (Room.EAST_HALL.getVisitors()[Animatronic.FREDDY.ordinal()])
+			{
+				//Chica has a 25% chance of moving in and shoving Freddy out
+				boolean chicaMovesIn = MathUtils.randomBoolean(0.25f);
+
+				//If chica moves in...
+				if (chicaMovesIn)
+				{
+					//Set Freddy to go to either the Dining Area or East Hall Corner
+					Room freddyMovesAt;
+
+					//If Chica isn't at the East Hall Corner and a random boolean...
+					if (anim.getCurrentRoom() != Room.EAST_HALL_CORNER && MathUtils.randomBoolean())
+					{
+						//Put him there...
+						freddyMovesAt = Room.EAST_HALL_CORNER;
+					}
+					else
+					{
+						//Else? Put him back in the Dining Area
+						freddyMovesAt = Room.DINING_AREA;
+					}
+
+					Animatronic.FREDDY.setCurrentRoom(freddyMovesAt);
+				}
+				else
+				{
+					//Else? Don't move at all. Let things be...
+					System.out.print("Don't move.");
+					System.out.println();
+					return;
+				}
+			}
+		}
+
+		//Check if Chica is headed to the East Hall Corner
+		if (possibleRooms[chosen] == Room.EAST_HALL_CORNER)
+		{
+			//Check if Freddy is there...
+			if (Room.EAST_HALL_CORNER.getVisitors()[Animatronic.FREDDY.ordinal()])
+			{
+				//Have a random boolean with 25% chance of Chica shoving him out
+				boolean chicaMovesIn = MathUtils.randomBoolean(0.25f);
+
+				//If Chica moves to the East Hall Corner
+				if (chicaMovesIn)
+				{
+					//Send Freddy back
+					//TODO Freddy goes to either the East Hall or in the Office
+					Animatronic.FREDDY.setCurrentRoom(Room.EAST_HALL);
+				}
+				else
+				{
+					//Else? Don't move.
+					System.out.print("Don't move.");
+					System.out.println();
+					return;
+				}
+			}
+		}
+
 		anim.setCurrentRoom(possibleRooms[chosen]);
 
 		System.out.print(anim.getCurrentRoom().getName());

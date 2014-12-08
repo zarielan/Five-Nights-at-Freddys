@@ -68,8 +68,8 @@ public class FreddyAI extends AI
 			if (Room.EAST_HALL.getVisitors()[Animatronic.CHICA.ordinal()])
 			{
 				//Have a random chance of either one moving. Freddy has a higher chance of moving in than Chica staying
-				boolean freddyMoves = MathUtils.randomBoolean(0.75f);
-				if (freddyMoves)
+				boolean freddyMovesIn = MathUtils.randomBoolean(0.75f);
+				if (freddyMovesIn)
 				{
 					//If Freddy moves, move Chica out of the way to either the Dining Area or East Hall Corner:
 					Room chicaMovesAt;
