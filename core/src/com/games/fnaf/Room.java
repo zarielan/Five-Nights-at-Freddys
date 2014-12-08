@@ -153,7 +153,7 @@ public enum Room
 	public void setVisiting(boolean visit, int ID)
 	{
 		visitors[ID] = visit;
-		texture = getTexture();
+		changeRoomTexture();
 	}
 
 	public boolean[] getVisitors()

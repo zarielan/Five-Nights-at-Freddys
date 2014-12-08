@@ -78,7 +78,7 @@ public class Camera
 		}
 
 		this.room = room;
-		this.room.changeRoomTexture();
+		//this.room.changeRoomTexture();
 		this.room.getCamButton().setSelected(true);
 	}
 }
