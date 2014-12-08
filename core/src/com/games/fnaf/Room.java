@@ -121,7 +121,12 @@ public enum Room
 		{
 			//Appends his current stage to the fileName.
 			//(1 for inside, 2 for peeking outside, 3 for waiting outside, any other is sprinting)
-			fName += ((FoxyAI) Animatronic.FOXY.getAI()).getStage();
+			int stage = ((FoxyAI) Animatronic.FOXY.getAI()).getStage();
+			fName += stage;
+			if (stage > 3)
+			{
+				fName = "PirateCove";
+			}
 		}
 
 		for (int i = 0; i < multiplePos.size; i++)
