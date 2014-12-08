@@ -120,7 +120,7 @@ public class Art
 		officeTextures.put("OfficeChica", new Texture("OfficeChica.png"));
 
 		//The door lights
-		doorLights = new ArrayMap<String,Texture>();
+		doorLights = new ArrayMap<String, Texture>();
 		doorLights.put("Left", new Texture("DoorLightLeft.png"));
 		doorLights.put("LeftDoor", new Texture("DoorLightLeftDoor.png"));
 		doorLights.put("LeftLight", new Texture("DoorLightLeftLight.png"));
@@ -224,9 +224,9 @@ public class Art
 			}
 		}
 
-		for (Texture t : doorLights.values)
+		for (Texture t : doorLights.values())
 		{
-			t.dispose();;
+			t.dispose();
 		}
 
 		for (Texture t : roomTextures.values())
