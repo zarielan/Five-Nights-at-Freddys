@@ -141,7 +141,7 @@ public class Art
 		foxySprinting = new Array<TextureRegion>();
 		for (int i = 1; i <= 31; i++)
 		{
-			foxySprinting.add(new TextureRegion(new Texture("/FoxySprinting/" + i + ".png")));
+			foxySprinting.add(new TextureRegion(new Texture("FoxySprinting/" + i + ".png")));
 		}
 
 		//Camera buttons
