@@ -6,7 +6,7 @@ public class FreddyAI extends AI
 {
 	public FreddyAI()
 	{
-		super(MathUtils.random(-30f, 0f));
+		super();
 		allowedRooms.put(Room.SHOW_STAGE, new Room[]{Room.SHOW_STAGE, Room.DINING_AREA});
 		allowedRooms.put(Room.DINING_AREA, new Room[]{Room.DINING_AREA, Room.RESTROOMS, Room.KITCHEN, Room.EAST_HALL});
 		allowedRooms.put(Room.RESTROOMS, new Room[]{Room.RESTROOMS, Room.DINING_AREA});

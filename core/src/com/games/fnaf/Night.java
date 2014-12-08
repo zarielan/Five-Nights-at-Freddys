@@ -1,5 +1,7 @@
 package com.games.fnaf;
 
+import com.badlogic.gdx.math.MathUtils;
+
 public enum Night
 {
 	NIGHT_1(3, 5, 5, 0, 30f);
@@ -23,7 +25,7 @@ public enum Night
 	{
 		if (bonnie > 0)
 		{
-			Animatronic.BONNIE.getAI().reset(Animatronic.BONNIE);
+			Animatronic.BONNIE.getAI().reset(MathUtils.random(-10f, 0f));
 			Animatronic.BONNIE.getAI().setFrequency(bonnie);
 			Animatronic.BONNIE.getAI().setMovementDelay(movementDelay);
 			Animatronic.BONNIE.getAI().setMoving(true);
@@ -31,7 +33,7 @@ public enum Night
 
 		if (chica > 0)
 		{
-			Animatronic.CHICA.getAI().reset(Animatronic.CHICA);
+			Animatronic.CHICA.getAI().reset(MathUtils.random(-10f, 0f));
 			Animatronic.CHICA.getAI().setFrequency(chica);
 			Animatronic.CHICA.getAI().setMovementDelay(movementDelay);
 			Animatronic.CHICA.getAI().setMoving(true);
@@ -39,7 +41,7 @@ public enum Night
 
 		if (freddy > 0)
 		{
-			Animatronic.FREDDY.getAI().reset(Animatronic.FREDDY);
+			Animatronic.FREDDY.getAI().reset(MathUtils.random(-30f, 0f));
 			Animatronic.FREDDY.getAI().setFrequency(freddy);
 			Animatronic.FREDDY.getAI().setMovementDelay(movementDelay);
 			Animatronic.FREDDY.getAI().setMoving(true);
@@ -47,7 +49,7 @@ public enum Night
 
 		if (foxy > 0)
 		{
-			Animatronic.FOXY.getAI().reset(Animatronic.FOXY);
+			Animatronic.FOXY.getAI().reset(0f);
 			Animatronic.FOXY.getAI().setFrequency(foxy);
 			Animatronic.FOXY.getAI().setMovementDelay(movementDelay);
 			Animatronic.FOXY.getAI().setMoving(true);

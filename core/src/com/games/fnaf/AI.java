@@ -14,11 +14,10 @@ public abstract class AI
 	private float movementOffset;
 	protected ArrayMap<Room, Room[]> allowedRooms;
 
-	public AI(float movementOffset)
+	public AI()
 	{
 		frequency = -1;
 		freqMovement = MOVEMENT_TIME / (float)frequency;
-		reset(movementOffset);
 		allowedRooms = new ArrayMap<Room, Room[]>();
 	}
 

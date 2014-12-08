@@ -4,7 +4,7 @@ public class FoxyAI extends AI
 {
 	public FoxyAI()
 	{
-		super(0f);
+		super();
 	}
 
 	@Override
