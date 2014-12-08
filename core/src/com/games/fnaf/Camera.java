@@ -14,6 +14,9 @@ public class Camera
 	private Sprite map;
 	private Room room;
 	private Animation kitchenStatic;
+	private Animation foxySprinting;
+	private float foxyAnimCounter;
+	private boolean showFoxySprinting;
 
 	public Camera(SpriteBatch batch1)
 	{
@@ -23,6 +26,11 @@ public class Camera
 
 		kitchenStatic = new Animation(1/30f, Art.kitchenStatic);
 		kitchenStatic.setPlayMode(Animation.PlayMode.LOOP);
+
+		foxySprinting = new Animation(1/30f, Art.foxySprinting);
+		foxySprinting.setPlayMode(Animation.PlayMode.NORMAL);
+		foxyAnimCounter = 0f;
+		showFoxySprinting = false;
 
 		changeRoom(Room.SHOW_STAGE);
 	}
@@ -34,6 +42,11 @@ public class Camera
 		{
 			batch.draw(kitchenStatic.getKeyFrame(FNaF.getTimeElapsed()), 0f, 0f);
 			batch.draw(Art.cameraDisabled, (Gdx.graphics.getWidth() - Art.cameraDisabled.getWidth()) / 2, 600f);
+		}
+		else if (showFoxySprinting)
+		{
+			foxyAnimCounter += Gdx.graphics.getDeltaTime();
+			batch.draw(foxySprinting.getKeyFrame(foxyAnimCounter), 0f, 0f);
 		}
 		else
 		{
@@ -84,6 +97,8 @@ public class Camera
 		}
 
 		this.room = room;
+		showFoxySprinting = this.room == Room.WEST_HALL && Room.WEST_HALL.getVisitors()[Animatronic.FOXY.ordinal()];
+
 		changeRoomTextureIfNoVisitors();
 		this.room.getCamButton().setSelected(true);
 	}

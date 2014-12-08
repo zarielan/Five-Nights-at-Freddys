@@ -23,6 +23,7 @@ public class Art
 	public static Array<TextureRegion> officeFan;
 	public static Array<TextureRegion> cameraPopup;
 	public static Array<TextureRegion> cameraBars;
+	public static Array<TextureRegion> foxySprinting;
 
 	public static void loadTextures()
 	{
@@ -138,6 +139,12 @@ public class Art
 			cameraBars.add(new TextureRegion(new Texture("CameraBars/" + i + ".png")));
 		}
 
+		foxySprinting = new Array<TextureRegion>();
+		for (int i = 1; i <= 31; i++)
+		{
+			foxySprinting.add(new TextureRegion(new Texture("/FoxySprinting/ " + i + ".png")));
+		}
+
 		//Camera buttons
 		cameraButtonTextures = new ArrayMap<String,Texture>();
 		cameraButtonTextures.put("1A", new Texture("1A.png"));
@@ -212,6 +219,11 @@ public class Art
 		}
 
 		for (TextureRegion t : kitchenStatic)
+		{
+			t.getTexture().dispose();
+		}
+
+		for (TextureRegion t : foxySprinting)
 		{
 			t.getTexture().dispose();
 		}
