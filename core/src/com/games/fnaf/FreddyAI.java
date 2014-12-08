@@ -37,8 +37,8 @@ public class FreddyAI extends AI
 		Room[] possibleRooms = allowedRooms.get(anim.getCurrentRoom());
 		int chosen = MathUtils.random(0, possibleRooms.length - 1);
 
-		//Checks if Freddy is in the East Hall and will be walking towards the East Hall Corner
-		if (anim.getCurrentRoom() == Room.EAST_HALL && possibleRooms[chosen] == Room.EAST_HALL_CORNER)
+		//Checks if Freddy will be walking towards the East Hall Corner
+		if (possibleRooms[chosen] == Room.EAST_HALL_CORNER)
 		{
 			//Checks if Chica is in the East Hall Corner...
 			if (Room.EAST_HALL_CORNER.getVisitors()[Animatronic.CHICA.ordinal()])
@@ -48,6 +48,7 @@ public class FreddyAI extends AI
 				if (freddyMoves)
 				{
 					//Freddy moves in? Move Chica out of the way.
+					//TODO make Chica either go to the East Hall or into the Office, not just backing up to the East Hall
 					Animatronic.CHICA.setCurrentRoom(Room.EAST_HALL);
 				}
 				else

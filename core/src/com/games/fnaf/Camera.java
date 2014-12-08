@@ -79,9 +79,7 @@ public class Camera
 		}
 
 		this.room = room;
-
 		changeRoomTextureIfNoVisitors();
-
 		this.room.getCamButton().setSelected(true);
 	}
 
