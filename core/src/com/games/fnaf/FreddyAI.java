@@ -28,6 +28,8 @@ public class FreddyAI extends AI
 			if (Room.SHOW_STAGE.getVisitors()[Animatronic.BONNIE.ordinal()] || Room.SHOW_STAGE.getVisitors()[Animatronic.CHICA.ordinal()])
 			{
 				//Don't move.
+				System.out.print("Don't move.");
+				System.out.println();
 				return;
 			}
 		}
@@ -51,6 +53,8 @@ public class FreddyAI extends AI
 				else
 				{
 					//Else? Don't move at all.
+					System.out.print("Don't move.");
+					System.out.println();
 					return;
 				}
 			}
@@ -87,6 +91,8 @@ public class FreddyAI extends AI
 				else
 				{
 					//If Freddy won't move, then don't.
+					System.out.print("Don't move.");
+					System.out.println();
 					return;
 				}
 			}
