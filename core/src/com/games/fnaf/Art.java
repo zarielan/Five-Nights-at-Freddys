@@ -114,6 +114,9 @@ public class Art
 		officeTextures = new ArrayMap<String, Texture>();
 		officeTextures.put("Office", new Texture("Office.png"));
 		officeTextures.put("OfficeLeftLight", new Texture("OfficeLeftLight.png"));
+		officeTextures.put("OfficeRightLight", new Texture("OfficeRightLight.png"));
+		officeTextures.put("OfficeBonnie", new Texture("OfficeBonnie.png"));
+		officeTextures.put("OfficeChica", new Texture("OfficeChica.png"));
 
 		kitchenStatic = new Array<TextureRegion>();
 		for (int i = 1; i <= 8; i++)
