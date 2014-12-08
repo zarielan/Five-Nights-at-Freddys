@@ -66,6 +66,8 @@ public class Art
 		roomTextures.put("DiningAreaBonnieChicaFreddy", new Texture("DiningArea_BonnieChicaFreddy.png"));
 
 		//TODO Foxy
+		roomTextures.put("PirateCove1", new Texture("PirateCove1.png"));
+		roomTextures.put("PirateCove2", new Texture("PirateCove2.png"));
 		roomTextures.put("PirateCoveFoxy1", new Texture("PirateCove1_Foxy.png"));
 		roomTextures.put("PirateCoveFoxy2", new Texture("PirateCove2_Foxy.png"));
 		roomTextures.put("PirateCoveFoxy3", new Texture("PirateCove3_Foxy.png"));

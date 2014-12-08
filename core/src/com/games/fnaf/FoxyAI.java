@@ -7,7 +7,7 @@ public class FoxyAI extends AI
 	public FoxyAI()
 	{
 		super();
-		stage = 1;
+		stage = 4;
 	}
 
 	public int getStage()

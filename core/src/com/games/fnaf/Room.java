@@ -54,6 +54,7 @@ public enum Room
 		multiplePos.put("EastHall", 3);
 		multiplePos.put("EastHallChica", 2);
 		multiplePos.put("EastHallCor", 5);
+		multiplePos.put("PirateCove", 2);
 	}
 
 	public String getName()
@@ -114,6 +115,15 @@ public enum Room
 
 		String fName = args.toString();
 
+		//Foxy's Room Texture.
+		//Checks if Foxy is in PirateCove
+		if (fName.contains("PirateCoveFoxy"))
+		{
+			//Appends his current stage to the fileName.
+			//(1 for inside, 2 for peeking outside, 3 for waiting outside, any other is sprinting)
+			fName += ((FoxyAI) Animatronic.FOXY.getAI()).getStage();
+		}
+
 		for (int i = 0; i < multiplePos.size; i++)
 		{
 			String s = multiplePos.getKeyAt(i);
@@ -123,11 +133,6 @@ public enum Room
 				fName += ",".concat(String.valueOf(scope));
 				break;
 			}
-		}
-
-		if (fName.contains("Foxy"))
-		{
-			fName += ((FoxyAI)Animatronic.FOXY.getAI()).getStage();
 		}
 
 		Texture tex = Art.getRoomTexture(fName);
