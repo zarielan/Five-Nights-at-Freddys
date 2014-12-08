@@ -30,7 +30,7 @@ public class FoxyAI extends AI
 	{
 		viewingTime = 0f;
 		nonViewingTime = 0f;
-		watchMeTime = 12 - ((1 / getFrequency() / 20) * 12) + 13;
+		watchMeTime = 12 - ((getFrequency() / 20) * 12) + 13;
 		System.out.println("Foxy's watching time is " + watchMeTime);
 	}
 
