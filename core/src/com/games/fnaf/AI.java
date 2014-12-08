@@ -44,7 +44,7 @@ public abstract class AI
 			timer++;
 		}
 
-		if (initialCooldown <= 2)
+		if (initialCooldown <= 10)
 		{
 			initialCooldown += Gdx.graphics.getDeltaTime();
 		}
