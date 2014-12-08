@@ -23,6 +23,20 @@ public class BonnieAI extends AI
 
 		Room[] possibleRooms = allowedRooms.get(anim.getCurrentRoom());
 		int chosen = MathUtils.random(0, possibleRooms.length - 1);
+
+		//Check if Bonnie is going to the West Hall
+		if (possibleRooms[chosen] == Room.WEST_HALL)
+		{
+			//Check if Foxy's sprinting there
+			if (Room.WEST_HALL.getVisitors()[Animatronic.FOXY.ordinal()])
+			{
+				//If yes, get out of the way!
+				System.out.print("Don't move.");
+				System.out.println();
+				return;
+			}
+		}
+
 		anim.setCurrentRoom(possibleRooms[chosen]);
 
 		System.out.print(anim.getCurrentRoom().getName());
