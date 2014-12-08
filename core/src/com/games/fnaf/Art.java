@@ -66,7 +66,6 @@ public class Art
 		roomTextures.put("DiningAreaBonnieFreddy", new Texture("DiningArea_BonnieFreddy.png"));
 		roomTextures.put("DiningAreaBonnieChicaFreddy", new Texture("DiningArea_BonnieChicaFreddy.png"));
 
-		//TODO Foxy
 		roomTextures.put("PirateCove1", new Texture("PirateCove1.png"));
 		roomTextures.put("PirateCove2", new Texture("PirateCove2.png"));
 		roomTextures.put("PirateCoveFoxy1", new Texture("PirateCove1_Foxy.png"));
@@ -142,7 +141,7 @@ public class Art
 		foxySprinting = new Array<TextureRegion>();
 		for (int i = 1; i <= 31; i++)
 		{
-			foxySprinting.add(new TextureRegion(new Texture("/FoxySprinting/ " + i + ".png")));
+			foxySprinting.add(new TextureRegion(new Texture("/FoxySprinting/" + i + ".png")));
 		}
 
 		//Camera buttons
