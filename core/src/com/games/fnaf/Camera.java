@@ -97,7 +97,7 @@ public class Camera
 		}
 
 		this.room = room;
-		showFoxySprinting = this.room == Room.WEST_HALL && Room.WEST_HALL.getVisitors()[Animatronic.FOXY.ordinal()];
+		showFoxySprinting = (this.room == Room.WEST_HALL && Room.WEST_HALL.getVisitors()[Animatronic.FOXY.ordinal()]);
 
 		changeRoomTextureIfNoVisitors();
 		this.room.getCamButton().setSelected(true);

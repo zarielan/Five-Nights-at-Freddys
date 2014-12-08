@@ -1,5 +1,6 @@
 package com.games.fnaf;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 
 public class FoxyAI extends AI
@@ -8,12 +9,14 @@ public class FoxyAI extends AI
 	private float viewingTime;
 	private float watchMeTime;
 	private float nonViewingTime;
+	private float cooldownTime;
 
 	public FoxyAI()
 	{
 		super();
 		stage = 1;
 		reset();
+		cooldownTime = 0f;
 	}
 
 	public void incrementViewingTime(float delta)
@@ -39,6 +42,11 @@ public class FoxyAI extends AI
 		return stage;
 	}
 
+	public float getCooldownTime()
+	{
+		return cooldownTime;
+	}
+
 	@Override
 	public void updatePosition(Animatronic anim)
 	{
@@ -58,6 +66,8 @@ public class FoxyAI extends AI
 		//If Foxy is no longer at stages 1, 2, or 3, this means he's running. For you.
 		if (3 < stage)
 		{
+			cooldownTime += Gdx.graphics.getDeltaTime();
+
 			//Check if Bonnie is in the West Hall
 			if (Room.WEST_HALL.getVisitors()[Animatronic.BONNIE.ordinal()])
 			{
