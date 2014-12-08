@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
 
 public class Camera
 {
@@ -78,7 +79,27 @@ public class Camera
 		}
 
 		this.room = room;
-		//this.room.changeRoomTexture();
+
+		changeRoomTextureIfNoVisitors();
+
 		this.room.getCamButton().setSelected(true);
+	}
+
+	private void changeRoomTextureIfNoVisitors()
+	{
+		boolean changeRoomTextureRandomly = true;
+		for (int i = 0; i < this.room.getVisitors().length; i++)
+		{
+			if (room.getVisitors()[i])
+			{
+				changeRoomTextureRandomly = false;
+				break;
+			}
+		}
+
+		if (changeRoomTextureRandomly && MathUtils.random(4) == 0)
+		{
+			this.room.changeRoomTexture();
+		}
 	}
 }
