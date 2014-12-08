@@ -47,7 +47,6 @@ public abstract class AI
 
 	public final void update(Animatronic anim)
 	{
-		System.out.println(anim + ", " + movementOffset + ", " + isMoving + ", " + timer + ", " + (int)(movementCounter / freqMovement));
 		if (movementOffset >= 0 && isMoving)
 		{
 			movementCounter += Gdx.graphics.getDeltaTime();

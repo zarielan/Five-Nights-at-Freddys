@@ -25,8 +25,6 @@ public class FNaF extends Game
 	{
 		timeElapsed += Gdx.graphics.getDeltaTime();
 
-		System.out.println(timeElapsed);
-
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		Gdx.gl.glClearColor(0f, 0f, 0f, 1f);
 
