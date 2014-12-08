@@ -5,11 +5,23 @@ import com.badlogic.gdx.math.MathUtils;
 public class FoxyAI extends AI
 {
 	private int stage;
+	private float viewingTime;
 
 	public FoxyAI()
 	{
 		super();
-		stage = 3;
+		stage = 1;
+		reset();
+	}
+
+	public void incrementViewingTime(float delta)
+	{
+		viewingTime += delta;
+	}
+
+	public void reset()
+	{
+		viewingTime = 0f;
 	}
 
 	public int getStage()
@@ -24,7 +36,7 @@ public class FoxyAI extends AI
 		System.out.print(anim.getCurrentRoom().getName() + " -> ");
 
 		//If Foxy is no longer at stages 1, 2, or 3, this means he's running. For you.
-		if (stage < 0 || 3 < stage)
+		if (3 < stage)
 		{
 			//Check if Bonnie is in the West Hall
 			if (Room.WEST_HALL.getVisitors()[Animatronic.BONNIE.ordinal()])
