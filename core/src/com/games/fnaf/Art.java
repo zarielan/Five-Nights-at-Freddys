@@ -92,10 +92,10 @@ public class Art
 		roomTextures.put("WestHall", new Texture("WestHall.png"));
 		roomTextures.put("WestHallBonnie", new Texture("WestHall_Bonnie.png"));
 
-		//TODO Golden Freddy
 		roomTextures.put("WestHallCor1", new Texture("WestHallCor1.png"));
 		roomTextures.put("WestHallCor2", new Texture("WestHallCor2.png"));
 		roomTextures.put("WestHallCorBonnie", new Texture("WestHallCor_Bonnie.png"));
+		roomTextures.put("WestHallCorGoldenFreddy", new Texture("WestHallCor_GoldenFreddy.png"));
 
 		roomTextures.put("EastHall1", new Texture("EastHall1.png"));
 		roomTextures.put("EastHall2", new Texture("EastHall2.png"));
