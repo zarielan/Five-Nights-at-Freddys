@@ -65,10 +65,10 @@ public class Camera
 		if (room == Room.PIRATE_COVE)
 		{
 			foxyAI.setNonViewingTime(0f);
-			foxyAI.setViewingTime(foxyAI.getViewingTime() + Gdx.graphics.getDeltaTime());
+			foxyAI.setViewingTime(foxyAI.getViewingTime() + Gdx.graphics.getDeltaTime() / 2);
 		}
 		else
-			foxyAI.setNonViewingTime(foxyAI.getNonViewingTime() + Gdx.graphics.getDeltaTime() / 2);
+			foxyAI.setNonViewingTime(foxyAI.getNonViewingTime() + Gdx.graphics.getDeltaTime() / 4);
 
 		map.draw(batch);
 
