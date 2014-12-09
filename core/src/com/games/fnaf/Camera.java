@@ -68,7 +68,7 @@ public class Camera
 			foxyAI.setViewingTime(foxyAI.getViewingTime() + Gdx.graphics.getDeltaTime());
 		}
 		else
-			foxyAI.setNonViewingTime(foxyAI.getNonViewingTime() + Gdx.graphics.getDeltaTime());
+			foxyAI.setNonViewingTime(foxyAI.getNonViewingTime() + Gdx.graphics.getDeltaTime() / 2);
 
 		map.draw(batch);
 

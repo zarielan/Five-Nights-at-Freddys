@@ -44,7 +44,5 @@ public class Office
 		{
 			camera.position.x += step;
 		}
-
-
 	}
 }
