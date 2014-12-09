@@ -146,7 +146,6 @@ public class GameScreen extends ScreenAdapter
 		Animatronic.BONNIE.setCurrentRoom(Room.SHOW_STAGE);
 		Animatronic.CHICA.setCurrentRoom(Room.SHOW_STAGE);
 		Animatronic.FOXY.setCurrentRoom(Room.PIRATE_COVE);
-		Animatronic.GOLDEN_FREDDY.setCurrentRoom(null);
 		this.night.doNight();
 	}
 

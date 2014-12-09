@@ -5,8 +5,7 @@ public enum Animatronic
 	BONNIE(0, "Bonnie", new BonnieAI()),
 	CHICA(1, "Chica", new ChicaAI()),
 	FREDDY(2, "Freddy", new FreddyAI()),
-	FOXY(3, "Foxy", new FoxyAI()),
-	GOLDEN_FREDDY(4, "GoldenFreddy", new GoldenFreddyAI());
+	FOXY(3, "Foxy", new FoxyAI());
 
 	private Room currentRoom;
 	private final String name;
@@ -41,6 +40,11 @@ public enum Animatronic
 		{
 			this.currentRoom.setVisiting(false, ID);
 			System.out.println(this.getName() + ": " + this.currentRoom.getName() + " -> " + currentRoom.getName());
+		}
+		else
+		{
+			System.out.println(this.getName() + ": null");
+			return;
 		}
 
 		this.currentRoom = currentRoom;
