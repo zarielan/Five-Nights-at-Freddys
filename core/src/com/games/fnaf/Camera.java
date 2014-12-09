@@ -46,7 +46,14 @@ public class Camera
 		else if (showFoxySprinting)
 		{
 			foxyAnimCounter += Gdx.graphics.getDeltaTime();
-			batch.draw(foxySprinting.getKeyFrame(foxyAnimCounter), 0f, 0f);
+			batch.draw(foxySprinting.getKeyFrame(foxyAnimCounter), room.getCameraX(), 0f);
+
+			if (foxySprinting.isAnimationFinished(foxyAnimCounter))
+			{
+				((FoxyAI)Animatronic.FOXY.getAI()).doneSprinting();
+				showFoxySprinting = false;
+				foxyAnimCounter = 0f;
+			}
 		}
 		else
 		{
@@ -103,7 +110,7 @@ public class Camera
 
 		this.room = room;
 		cam.setFlickerTimeElapsed(0f);
-		showFoxySprinting = (this.room == Room.WEST_HALL && Room.WEST_HALL.getVisitors()[Animatronic.FOXY.ordinal()]);
+		showFoxySprinting = this.room == Room.WEST_HALL && Room.WEST_HALL.getVisitors()[Animatronic.FOXY.ordinal()] && ((FoxyAI)Animatronic.FOXY.getAI()).getCooldown() < 10f;
 
 		changeRoomTextureIfNoVisitors();
 		this.room.getCamButton().setSelected(true);

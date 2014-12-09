@@ -44,12 +44,24 @@ public class FoxyAI extends AI
 		viewingTime = 0f;
 		nonViewingTime = 0f;
 		watchMeTime = 12 - ((getFrequency() / 20) * 12) + 13;
-		System.out.println("Foxy's watching time is " + watchMeTime);
+		System.out.println("Foxy's watchmeTime: " + watchMeTime);
 	}
 
 	public int getStage()
 	{
 		return stage;
+	}
+
+	public float getCooldown()
+	{
+		return cooldownTime;
+	}
+
+	public void doneSprinting()
+	{
+		stage = MathUtils.randomBoolean(0.90f) ? 1 : 2;
+		Animatronic.FOXY.setCurrentRoom(Room.PIRATE_COVE);
+		reset();
 	}
 
 	@Override
@@ -74,6 +86,11 @@ public class FoxyAI extends AI
 		if (3 < stage)
 		{
 			cooldownTime += Gdx.graphics.getDeltaTime();
+
+			if (cooldownTime > 10f)
+			{
+				doneSprinting();
+			}
 
 			//Check if Bonnie is in the West Hall and Foxy isn't there yet
 			if (!Room.WEST_HALL.getVisitors()[Animatronic.FOXY.ordinal()] && Room.WEST_HALL.getVisitors()[Animatronic.BONNIE.ordinal()])
