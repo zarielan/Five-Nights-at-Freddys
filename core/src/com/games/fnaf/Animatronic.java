@@ -5,7 +5,8 @@ public enum Animatronic
 	BONNIE(0, "Bonnie", new BonnieAI()),
 	CHICA(1, "Chica", new ChicaAI()),
 	FREDDY(2, "Freddy", new FreddyAI()),
-	FOXY(3, "Foxy", new FoxyAI());
+	FOXY(3, "Foxy", new FoxyAI()),
+	GOLDEN_FREDDY(4, "GoldenFreddy", new GoldenFreddyAI());
 
 	private Room currentRoom;
 	private final String name;

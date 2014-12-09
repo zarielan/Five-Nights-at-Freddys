@@ -50,11 +50,16 @@ public enum Night
 
 		if (foxy > 0)
 		{
-			Animatronic.FOXY.getAI().reset(0f);
+			Animatronic.FOXY.getAI().reset(MathUtils.random(-10f, 0f));
 			Animatronic.FOXY.getAI().setFrequency(foxy);
 			Animatronic.FOXY.getAI().setMovementDelay(movementDelay);
 			((FoxyAI)Animatronic.FOXY.getAI()).reset();
 			Animatronic.FOXY.getAI().setMoving(true);
 		}
+
+		Animatronic.GOLDEN_FREDDY.getAI().reset(MathUtils.random(-10f, 0f));
+		Animatronic.GOLDEN_FREDDY.getAI().setFrequency(0);
+		Animatronic.GOLDEN_FREDDY.getAI().setMovementDelay(movementDelay);
+		Animatronic.GOLDEN_FREDDY.getAI().setMoving(false);
 	}
 }
