@@ -24,6 +24,11 @@ public class CameraButton
 		hitBox = new Rectangle(position.x, position.y, bg.getWidth(), bg.getHeight());
 	}
 
+	public void setFlickerTimeElapsed(float time)
+	{
+		timeElapsed = time;
+	}
+
 	public void render(SpriteBatch batch)
 	{
 		//Flicker effect
@@ -33,7 +38,7 @@ public class CameraButton
 
 			if (timeElapsed >= 2f)
 			{
-				timeElapsed = 0f;
+				setFlickerTimeElapsed(0f);
 			}
 
 			if (timeElapsed >= 1f)

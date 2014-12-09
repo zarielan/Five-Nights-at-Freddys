@@ -32,7 +32,7 @@ public class Camera
 		foxyAnimCounter = 0f;
 		showFoxySprinting = false;
 
-		changeRoom(Room.SHOW_STAGE);
+		changeRoom(Room.SHOW_STAGE, Room.SHOW_STAGE.getCamButton());
 	}
 
 	public void render()
@@ -80,7 +80,7 @@ public class Camera
 			{
 				if (collision)
 				{
-					changeRoom(r);
+					changeRoom(r, cam);
 				}
 			}
 		}
@@ -89,7 +89,7 @@ public class Camera
 		batch.draw(label, Gdx.graphics.getWidth() - 290f - (label.getWidth() / 2), 400f);
 	}
 
-	public void changeRoom(Room room)
+	public void changeRoom(Room room, CameraButton cam)
 	{
 		if (this.room == room)
 		{
@@ -102,6 +102,7 @@ public class Camera
 		}
 
 		this.room = room;
+		cam.setFlickerTimeElapsed(0f);
 		showFoxySprinting = (this.room == Room.WEST_HALL && Room.WEST_HALL.getVisitors()[Animatronic.FOXY.ordinal()]);
 
 		changeRoomTextureIfNoVisitors();
