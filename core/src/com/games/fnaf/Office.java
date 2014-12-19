@@ -27,7 +27,7 @@ public class Office
 
 	public void render()
 	{
-		System.out.println(Gdx.input.getX() + ", " + Gdx.input.getY());
+		//System.out.println(Gdx.input.getX() + ", " + Gdx.input.getY());
 
 		batch.setProjectionMatrix(camera.combined);
 		camera.update();
