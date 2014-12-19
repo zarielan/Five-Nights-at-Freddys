@@ -146,6 +146,24 @@ public enum Room
 		return tex;
 	}
 
+	public Texture getUnderlayTexture()
+	{
+		for (boolean bool : visitors)
+		{
+			if (bool)
+				return null;
+		}
+
+		Texture tex = Art.getRoomTexture(name);
+		if (tex == null)
+		{
+			System.err.println(name + " doesn't exist.");
+			return null;
+		}
+
+		return tex;
+	}
+
 	public Texture getCurrentTexture()
 	{
 		if (texture == null)

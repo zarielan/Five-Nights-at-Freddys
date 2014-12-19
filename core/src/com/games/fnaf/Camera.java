@@ -57,6 +57,9 @@ public class Camera
 		}
 		else
 		{
+			if (room.getUnderlayTexture() != null)
+				batch.draw(room.getUnderlayTexture(), room.getCameraX(), 0f);
+			
 			batch.draw(room.getCurrentTexture(), room.getCameraX(), 0f);
 		}
 
