@@ -10,7 +10,7 @@ public enum Room
 	SHOW_STAGE("ShowStage", new CameraButton("1A", Gdx.graphics.getWidth() - 260f, 360f), true),
 	PIRATE_COVE("PirateCove", new CameraButton("1C", Gdx.graphics.getWidth() - 320f, 225f), true),
 	DINING_AREA("DiningArea", new CameraButton("1B", Gdx.graphics.getWidth() - 280f, 304f), true),
-	BACKSTAGE("Backstage", new CameraButton("5", Gdx.graphics.getWidth() - 390f, 280f), true),
+	BACKSTAGE("Backstage", new CameraButton("5", Gdx.graphics.getWidth() - 390f, 280f), true, null),
 	RESTROOMS("Restrooms", new CameraButton("7", Gdx.graphics.getWidth() - 55f, 275f), true),
 	SUPPLY_CLOSET("SupplyCloset", new CameraButton("3", Gdx.graphics.getWidth() - 350f, 130f), false),
 	WEST_HALL("WestHall", new CameraButton("2A", Gdx.graphics.getWidth() - 263f, 110f), true),
@@ -29,8 +29,14 @@ public enum Room
 	private CameraButton camButton;
 	private ArrayMap<String, Integer> multiplePos;
 	private boolean moving;
+	private String underlayTexture;
 
 	private Room(String name, CameraButton camButton, boolean movingCam)
+	{
+		this(name, camButton, movingCam, name);
+	}
+
+	private Room(String name, CameraButton camButton, boolean movingCam, String underlay)
 	{
 		moving = movingCam;
 		this.name = name;
@@ -39,6 +45,7 @@ public enum Room
 		this.camButton = camButton;
 		cameraX = moving ? MathUtils.random(-320f, 0f) : 0f;
 		xVel = 2f * (float)MathUtils.randomSign();
+		underlayTexture = underlay;
 
 		//Rooms that have multiple positions in them. Yay for hardcoded values! :D
 		multiplePos = new ArrayMap<String, Integer>();
@@ -148,6 +155,9 @@ public enum Room
 
 	public Texture getUnderlayTexture()
 	{
+		if (underlayTexture == null)
+			return null;
+
 		boolean hasVisitor = false;
 		for (boolean bool : visitors)
 		{
@@ -161,7 +171,7 @@ public enum Room
 		if (!hasVisitor)
 			return null;
 
-		Texture tex = Art.getRoomTexture(name);
+		Texture tex = Art.getRoomTexture(underlayTexture);
 		if (tex == null)
 		{
 			System.err.println(name + " doesn't exist.");
