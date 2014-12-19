@@ -57,6 +57,11 @@ public class FoxyAI extends AI
 		return cooldownTime;
 	}
 
+	public static FoxyAI getInstance()
+	{
+		return (FoxyAI)Animatronic.FOXY.getAI();
+	}
+
 	public void doneSprinting()
 	{
 		stage = MathUtils.randomBoolean(0.90f) ? 1 : 2;
@@ -67,7 +72,7 @@ public class FoxyAI extends AI
 	@Override
 	public void updatePosition(Animatronic anim)
 	{
-		System.out.println("Viewing time: " + getViewingTime() + ", Non viewing time: " + getNonViewingTime());
+		//System.out.println("Viewing time: " + getViewingTime() + ", Non viewing time: " + getNonViewingTime());
 		if (nonViewingTime > watchMeTime || viewingTime > watchMeTime)
 		{
 			System.out.print(anim.getName() + ": Stage " + getStage());

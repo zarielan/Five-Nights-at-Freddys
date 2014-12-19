@@ -50,7 +50,7 @@ public class Camera
 
 			if (foxySprinting.isAnimationFinished(foxyAnimCounter))
 			{
-				((FoxyAI)Animatronic.FOXY.getAI()).doneSprinting();
+				FoxyAI.getInstance().doneSprinting();
 				showFoxySprinting = false;
 				foxyAnimCounter = 0f;
 			}
@@ -65,7 +65,7 @@ public class Camera
 			batch.draw(room.getCurrentTexture(), room.getCameraX(), 0f);
 		}
 
-		FoxyAI foxyAI = (FoxyAI)Animatronic.FOXY.getAI();
+		FoxyAI foxyAI = FoxyAI.getInstance();
 
 		if (room == Room.PIRATE_COVE)
 		{
@@ -115,7 +115,7 @@ public class Camera
 
 		this.room = room;
 		cam.setFlickerTimeElapsed(0f);
-		showFoxySprinting = this.room == Room.WEST_HALL && Room.WEST_HALL.getVisitors()[Animatronic.FOXY.ordinal()] && ((FoxyAI)Animatronic.FOXY.getAI()).getCooldown() < 10f;
+		showFoxySprinting = this.room == Room.WEST_HALL && Room.WEST_HALL.getVisitors()[Animatronic.FOXY.ordinal()] && FoxyAI.getInstance().getCooldown() < 10f;
 
 		changeRoomTextureIfNoVisitors();
 		this.room.getCamButton().setSelected(true);

@@ -53,7 +53,7 @@ public enum Night
 			Animatronic.FOXY.getAI().reset(MathUtils.random(-10f, 0f));
 			Animatronic.FOXY.getAI().setFrequency(foxy);
 			Animatronic.FOXY.getAI().setMovementDelay(movementDelay);
-			((FoxyAI)Animatronic.FOXY.getAI()).reset();
+			FoxyAI.getInstance().reset();
 			Animatronic.FOXY.getAI().setMoving(true);
 		}
 	}
