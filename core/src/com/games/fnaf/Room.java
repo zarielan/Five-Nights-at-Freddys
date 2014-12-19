@@ -148,11 +148,18 @@ public enum Room
 
 	public Texture getUnderlayTexture()
 	{
+		boolean hasVisitor = false;
 		for (boolean bool : visitors)
 		{
 			if (bool)
-				return null;
+			{
+				hasVisitor = true;
+				break;
+			}
 		}
+
+		if (!hasVisitor)
+			return null;
 
 		Texture tex = Art.getRoomTexture(name);
 		if (tex == null)
