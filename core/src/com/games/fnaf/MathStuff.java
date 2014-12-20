@@ -4,8 +4,8 @@ import com.badlogic.gdx.Gdx;
 
 public class MathStuff
 {
-	public static float reverseYCoords(float y)
+	public static int reverseYCoords(float y)
 	{
-		return Math.abs(y - Gdx.graphics.getHeight());
+		return (int)Math.abs(y - Gdx.graphics.getHeight());
 	}
 }

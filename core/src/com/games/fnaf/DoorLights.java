@@ -1,7 +1,10 @@
 package com.games.fnaf;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Polygon;
 
 public class DoorLights
@@ -17,6 +20,7 @@ public class DoorLights
 	private boolean rightLight;
 	private SpriteBatch batch;
 	private Texture rightDoorLight, leftDoorLight;
+	private ShapeRenderer render;
 
 	public DoorLights(SpriteBatch batch1)
 	{
@@ -34,11 +38,28 @@ public class DoorLights
 		batch = batch1;
 		rightDoorLight = Art.doorLights.get("Right");
 		leftDoorLight = Art.doorLights.get("Left");
+
+		render = new ShapeRenderer();
 	}
 
 	public void render()
 	{
 		batch.draw(rightDoorLight, 1600f - 160f - rightDoorLight.getWidth() - 24f, 240f);
 		batch.draw(leftDoorLight, 12f - 160f, 240f);
+
+		System.out.println(Gdx.input.getX() + ", " + MathStuff.reverseYCoords(Gdx.input.getY()));
+
+		render.begin(ShapeRenderer.ShapeType.Line);
+		render.setProjectionMatrix(batch.getProjectionMatrix());
+		render.setColor(Color.WHITE);
+
+		for (Polygon poly : HITBOXES)
+		{
+			render.polygon(poly.getVertices());
+			boolean collision = poly.contains(Gdx.input.getX(), (Gdx.input.getY()));
+			if (collision) System.out.println("HITBOX ON " + poly + ", " + FNaF.getTimeElapsed());
+		}
+
+		render.end();
 	}
 }
