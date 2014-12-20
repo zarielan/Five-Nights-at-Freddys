@@ -54,11 +54,10 @@ public class Office
 			camera.position.x += step;
 		}
 
-		debugLights.setProjectionMatrix(camera.combined);
-		debugLights.begin();
-		debugLights.set(ShapeRenderer.ShapeType.Line);
+		//debugLights.setProjectionMatrix(camera.combined);
+		debugLights.begin(ShapeRenderer.ShapeType.Line);
 		debugLights.setColor(Color.WHITE);
-		debugLights.polygon(new float[]{0, 0, 100, 100});
+		debugLights.polygon(new float[]{0, 0, 0, 100, 100, 100, 100, 0});
 		debugLights.end();
 	}
 
