@@ -29,8 +29,6 @@ public class Office
 		leftDoorLight = Art.doorLights.get("Left");
 
 		debugLights = new ShapeRenderer();
-		debugLights.set(ShapeRenderer.ShapeType.Line);
-		debugLights.setColor(Color.WHITE);
 	}
 
 	public void render()
@@ -58,6 +56,8 @@ public class Office
 
 		debugLights.setProjectionMatrix(camera.combined);
 		debugLights.begin();
+		debugLights.set(ShapeRenderer.ShapeType.Line);
+		debugLights.setColor(Color.WHITE);
 		debugLights.polygon(new float[]{0, 0, 100, 100});
 		debugLights.end();
 	}

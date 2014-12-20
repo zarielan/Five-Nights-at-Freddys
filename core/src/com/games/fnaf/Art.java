@@ -28,6 +28,7 @@ public class Art
 
 	public static void loadTextures()
 	{
+
 		//General Stuff
 		map = new Texture("map.png");
 		cameraButtonBG = new Texture("CameraButtonBG.png");
@@ -48,6 +49,7 @@ public class Art
 		//Maximum permutations must be 7, plus one for the empty room
 		roomTextures = new ArrayMap<String, Texture>();
 
+		/*
 		roomTextures.put("ShowStage", new Texture("ShowStage.png"));
 		roomTextures.put("ShowStageBonnieChicaFreddy1", new Texture("ShowStage_BonnieChicaFreddy1.png"));
 		roomTextures.put("ShowStageBonnieChicaFreddy2", new Texture("ShowStage_BonnieChicaFreddy2.png"));
@@ -77,7 +79,7 @@ public class Art
 		roomTextures.put("Backstage2", new Texture("Backstage2.png"));
 		roomTextures.put("BackstageBonnie1", new Texture("Backstage_Bonnie1.png"));
 		roomTextures.put("BackstageBonnie2", new Texture("Backstage_Bonnie1.png")); //<-- this specifically
-		/* TODO change this to Backstage_Bonnie2, too scared shitless to see Bonnie starting at the camera closely */
+		// TODO change this to Backstage_Bonnie2, too scared shitless to see Bonnie starting at the camera closely
 
 		roomTextures.put("Restrooms", new Texture("Restrooms.png"));
 		roomTextures.put("RestroomsChica1", new Texture("Restrooms_Chica1.png"));
@@ -111,6 +113,7 @@ public class Art
 		roomTextures.put("EastHallCor5", new Texture("EastHallCor5.png"));
 		roomTextures.put("EastHallCorFreddy", new Texture("EastHallCor_Freddy.png"));
 		roomTextures.put("EastHallCorChica", new Texture("EastHallCor_Chica.png"));
+		*/
 
 		officeTextures = new ArrayMap<String, Texture>();
 		officeTextures.put("Office", new Texture("Office.png"));
