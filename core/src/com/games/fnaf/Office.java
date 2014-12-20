@@ -3,7 +3,6 @@ package com.games.fnaf;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -14,7 +13,6 @@ public class Office
 	private OrthographicCamera camera;
 	private final float SIGHT_MOVEMENT = 400f;
 	private Animation officeFan;
-	private Texture rightDoorLight, leftDoorLight;
 
 	private ShapeRenderer debugLights;
 
@@ -25,8 +23,6 @@ public class Office
 		camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		officeFan = new Animation(1/30f, Art.officeFan);
 		officeFan.setPlayMode(Animation.PlayMode.LOOP);
-		rightDoorLight = Art.doorLights.get("Right");
-		leftDoorLight = Art.doorLights.get("Left");
 
 		debugLights = new ShapeRenderer();
 	}
@@ -40,8 +36,6 @@ public class Office
 
 		batch.draw(Art.officeTextures.get("Office"), -160, 0f);
 		batch.draw(officeFan.getKeyFrame(FNaF.getTimeElapsed()), 620f, 221f); //these x,y values are merely from trial and error xD
-		batch.draw(leftDoorLight, 12f - 160f, 240f);
-		batch.draw(rightDoorLight, 1600f - 160f - rightDoorLight.getWidth() - 24f, 240f);
 
 		float step = Gdx.graphics.getDeltaTime() * SIGHT_MOVEMENT;
 		//I honestly don't have any idea where I got 480 and 800, something with 640 +- 160? Wut? o.O
