@@ -1,10 +1,12 @@
 package com.games.fnaf;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class Office
 {
@@ -13,6 +15,8 @@ public class Office
 	private final float SIGHT_MOVEMENT = 400f;
 	private Animation officeFan;
 	private Texture rightDoorLight, leftDoorLight;
+
+	private ShapeRenderer debugLights;
 
 	public Office(SpriteBatch batch)
 	{
@@ -23,6 +27,10 @@ public class Office
 		officeFan.setPlayMode(Animation.PlayMode.LOOP);
 		rightDoorLight = Art.doorLights.get("Right");
 		leftDoorLight = Art.doorLights.get("Left");
+
+		debugLights = new ShapeRenderer();
+		debugLights.set(ShapeRenderer.ShapeType.Line);
+		debugLights.setColor(Color.WHITE);
 	}
 
 	public void render()
@@ -47,5 +55,15 @@ public class Office
 		{
 			camera.position.x += step;
 		}
+
+		debugLights.setProjectionMatrix(camera.combined);
+		debugLights.begin();
+		debugLights.polygon(new float[]{0, 0, 100, 100});
+		debugLights.end();
+	}
+
+	public void dispose()
+	{
+		debugLights.dispose();
 	}
 }

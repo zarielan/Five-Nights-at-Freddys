@@ -157,5 +157,6 @@ public class GameScreen extends ScreenAdapter
 	@Override
 	public void dispose()
 	{
+		office.dispose();
 	}
 }
