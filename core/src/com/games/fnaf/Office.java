@@ -1,11 +1,9 @@
 package com.games.fnaf;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class Office
 {
@@ -13,8 +11,7 @@ public class Office
 	private OrthographicCamera camera;
 	private final float SIGHT_MOVEMENT = 400f;
 	private Animation officeFan;
-
-	private ShapeRenderer debugLights;
+	private DoorLights doorLights;
 
 	public Office(SpriteBatch batch)
 	{
@@ -23,8 +20,7 @@ public class Office
 		camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		officeFan = new Animation(1/30f, Art.officeFan);
 		officeFan.setPlayMode(Animation.PlayMode.LOOP);
-
-		debugLights = new ShapeRenderer();
+		doorLights = new DoorLights(batch);
 	}
 
 	public void render()
@@ -36,6 +32,7 @@ public class Office
 
 		batch.draw(Art.officeTextures.get("Office"), -160, 0f);
 		batch.draw(officeFan.getKeyFrame(FNaF.getTimeElapsed()), 620f, 221f); //these x,y values are merely from trial and error xD
+		doorLights.render();
 
 		float step = Gdx.graphics.getDeltaTime() * SIGHT_MOVEMENT;
 		//I honestly don't have any idea where I got 480 and 800, something with 640 +- 160? Wut? o.O
@@ -47,17 +44,5 @@ public class Office
 		{
 			camera.position.x += step;
 		}
-
-
-		debugLights.setProjectionMatrix(camera.combined);
-		debugLights.begin(ShapeRenderer.ShapeType.Line);
-		debugLights.setColor(Color.WHITE);
-		//debugLights.polygon(new float[]{27 - 160, 350 - 80, 27 - 160, 402 - 80, 67 - 160, 401 - 80, 67 - 160, 349 - 80});
-		debugLights.end();
-	}
-
-	public void dispose()
-	{
-		debugLights.dispose();
 	}
 }
