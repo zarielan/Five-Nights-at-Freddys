@@ -40,8 +40,8 @@ public class Office
 
 		batch.draw(Art.officeTextures.get("Office"), -160, 0f);
 		batch.draw(officeFan.getKeyFrame(FNaF.getTimeElapsed()), 620f, 221f); //these x,y values are merely from trial and error xD
-		batch.draw(rightDoorLight, 1600f - 160f - rightDoorLight.getWidth() - 24f, 240f);
 		batch.draw(leftDoorLight, 12f - 160f, 240f);
+		batch.draw(rightDoorLight, 1600f - 160f - rightDoorLight.getWidth() - 24f, 240f);
 
 		float step = Gdx.graphics.getDeltaTime() * SIGHT_MOVEMENT;
 		//I honestly don't have any idea where I got 480 and 800, something with 640 +- 160? Wut? o.O
@@ -54,10 +54,11 @@ public class Office
 			camera.position.x += step;
 		}
 
-		//debugLights.setProjectionMatrix(camera.combined);
+
+		debugLights.setProjectionMatrix(camera.combined);
 		debugLights.begin(ShapeRenderer.ShapeType.Line);
 		debugLights.setColor(Color.WHITE);
-		debugLights.polygon(new float[]{0, 0, 0, 100, 100, 100, 100, 0});
+		//debugLights.polygon(new float[]{27 - 160, 350 - 80, 27 - 160, 402 - 80, 67 - 160, 401 - 80, 67 - 160, 349 - 80});
 		debugLights.end();
 	}
 
