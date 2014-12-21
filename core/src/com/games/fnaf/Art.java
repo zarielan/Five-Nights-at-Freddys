@@ -25,6 +25,7 @@ public class Art
 	public static Array<TextureRegion> cameraPopup;
 	public static Array<TextureRegion> cameraBars;
 	public static Array<TextureRegion> foxySprinting;
+	public static Array<TextureRegion> leftDoor;
 
 	public static void loadTextures()
 	{
@@ -48,7 +49,7 @@ public class Art
 		//Animatronic combination naming must be in the order of Bonnie -> Chica -> Freddy -> Foxy
 		//Maximum permutations must be 7, plus one for the empty room
 		roomTextures = new ArrayMap<String, Texture>();
-
+/*
 		roomTextures.put("ShowStage", new Texture("ShowStage.png"));
 		roomTextures.put("ShowStageBonnieChicaFreddy1", new Texture("ShowStage_BonnieChicaFreddy1.png"));
 		roomTextures.put("ShowStageBonnieChicaFreddy2", new Texture("ShowStage_BonnieChicaFreddy2.png"));
@@ -119,7 +120,7 @@ public class Art
 		officeTextures.put("OfficeRightLight", new Texture("OfficeRightLight.png"));
 		officeTextures.put("OfficeBonnie", new Texture("OfficeBonnie.png"));
 		officeTextures.put("OfficeChica", new Texture("OfficeChica.png"));
-
+*/
 		//The door lights
 		doorLights = new ArrayMap<String, Texture>();
 		doorLights.put("Left", new Texture("DoorLightLeft.png"));
@@ -160,6 +161,12 @@ public class Art
 		for (int i = 1; i <= 31; i++)
 		{
 			foxySprinting.add(new TextureRegion(new Texture("FoxySprinting/" + i + ".png")));
+		}
+
+		leftDoor = new Array<TextureRegion>();
+		for (int i = 1; i <= 12; i++)
+		{
+			leftDoor.add(new TextureRegion(new Texture("Doors/LeftDoor (" + i + ").png")));
 		}
 
 		//Camera buttons
@@ -223,6 +230,11 @@ public class Art
 			{
 				tr.getTexture().dispose();
 			}
+		}
+
+		for (TextureRegion t : leftDoor)
+		{
+			t.getTexture().dispose();
 		}
 
 		for (Texture t : doorLights.values())
