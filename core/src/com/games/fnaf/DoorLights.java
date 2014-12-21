@@ -54,9 +54,9 @@ public class DoorLights
 		batch.draw(rightDoorLight, 1600f - 160f - rightDoorLight.getWidth() - 24f, 240f);
 		batch.draw(leftDoorLight, 12f - 160f, 240f);
 
-		System.out.println(Gdx.input.getX() + ", " + MathStuff.reverseYCoords(Gdx.input.getY()));
+		//System.out.println(Gdx.input.getX() + ", " + MathStuff.reverseYCoords(Gdx.input.getY()));
 
-		mouseCoords.set(Gdx.input.getX(), MathStuff.reverseYCoords(Gdx.input.getY()), 0f);
+		mouseCoords.set(Gdx.input.getX(), Gdx.input.getY(), 0f);
 		mouseCoords = camera.unproject(mouseCoords);
 		System.out.println(mouseCoords);
 
@@ -67,7 +67,7 @@ public class DoorLights
 		for (Polygon poly : HITBOXES)
 		{
 			render.polygon(poly.getVertices());
-			boolean collision = poly.contains(Gdx.input.getX(), (Gdx.input.getY()));
+			boolean collision = poly.contains(mouseCoords.x, mouseCoords.y);
 			if (collision) System.out.println("HITBOX ON " + poly + ", " + FNaF.getTimeElapsed());
 		}
 

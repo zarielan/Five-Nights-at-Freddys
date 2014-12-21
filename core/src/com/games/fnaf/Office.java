@@ -20,7 +20,7 @@ public class Office
 		camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		officeFan = new Animation(1/30f, Art.officeFan);
 		officeFan.setPlayMode(Animation.PlayMode.LOOP);
-		doorLights = new DoorLights(batch);
+		doorLights = new DoorLights(batch, camera);
 	}
 
 	public void render()
