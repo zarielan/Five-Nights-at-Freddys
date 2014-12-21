@@ -1,11 +1,9 @@
 package com.games.fnaf;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector3;
 
@@ -22,7 +20,6 @@ public class DoorLights
 	private boolean rightLight;
 	private SpriteBatch batch;
 	private Texture rightDoorLight, leftDoorLight;
-	private ShapeRenderer render;
 	private OrthographicCamera camera;
 	private Vector3 mouseCoords;
 
@@ -44,8 +41,6 @@ public class DoorLights
 		rightDoorLight = Art.doorLights.get("Right");
 		leftDoorLight = Art.doorLights.get("Left");
 
-		render = new ShapeRenderer();
-
 		mouseCoords = new Vector3(Gdx.input.getX(), MathStuff.reverseYCoords(Gdx.input.getY()), 0f);
 	}
 
@@ -54,23 +49,14 @@ public class DoorLights
 		batch.draw(rightDoorLight, 1600f - 160f - rightDoorLight.getWidth() - 24f, 240f);
 		batch.draw(leftDoorLight, 12f - 160f, 240f);
 
-		//System.out.println(Gdx.input.getX() + ", " + MathStuff.reverseYCoords(Gdx.input.getY()));
-
 		mouseCoords.set(Gdx.input.getX(), Gdx.input.getY(), 0f);
 		mouseCoords = camera.unproject(mouseCoords);
 		System.out.println(mouseCoords);
 
-		render.begin(ShapeRenderer.ShapeType.Line);
-		render.setProjectionMatrix(batch.getProjectionMatrix());
-		render.setColor(Color.WHITE);
-
 		for (Polygon poly : HITBOXES)
 		{
-			render.polygon(poly.getVertices());
 			boolean collision = poly.contains(mouseCoords.x, mouseCoords.y);
 			if (collision) System.out.println("HITBOX ON " + poly + ", " + FNaF.getTimeElapsed());
 		}
-
-		render.end();
 	}
 }
