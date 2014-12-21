@@ -143,8 +143,8 @@ public class GameScreen extends ScreenAdapter
 		this.office = new Office(batch);
 		//Set their starting areas
 		Animatronic.FREDDY.setCurrentRoom(Room.SHOW_STAGE);
-		Animatronic.BONNIE.setCurrentRoom(Room.SHOW_STAGE);
-		Animatronic.CHICA.setCurrentRoom(Room.SHOW_STAGE);
+		Animatronic.BONNIE.setCurrentRoom(Room.OFFICE);
+		Animatronic.CHICA.setCurrentRoom(Room.OFFICE);
 		Animatronic.FOXY.setCurrentRoom(Room.PIRATE_COVE);
 		this.night.doNight();
 	}

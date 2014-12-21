@@ -30,6 +30,7 @@ public class Office
 
 		batch.draw(Art.officeTextures.get("Office"), -160, 0f);
 		renderLightsOverlay();
+		renderOfficeVisitors();
 		batch.draw(officeFan.getKeyFrame(FNaF.getTimeElapsed()), 620f, 221f); //these x,y values are merely from trial and error xD
 		doorLights.render();
 
@@ -42,6 +43,18 @@ public class Office
 		if (Gdx.input.getX() >= Gdx.graphics.getWidth() - 200 && camera.position.x + step <= 800)
 		{
 			camera.position.x += step;
+		}
+	}
+
+	private void renderOfficeVisitors()
+	{
+		if (Room.OFFICE.getVisitors()[Animatronic.BONNIE.ordinal()])
+		{
+			batch.draw(Art.officeTextures.get("OfficeBonnie"), -160f, 0f);
+		}
+		if (Room.OFFICE.getVisitors()[Animatronic.CHICA.ordinal()])
+		{
+			batch.draw(Art.officeTextures.get("OfficeChica"), -160f, 0f);
 		}
 	}
 
