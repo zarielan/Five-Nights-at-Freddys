@@ -45,6 +45,7 @@ public class FreddyAI extends AI
 				{
 					//Freddy moves in? Move Chica out of the way.
 					//TODO make Chica either go to the East Hall or into the Office, not just backing up to the East Hall
+					System.out.println("Chica, make way for Freddy.");
 					Animatronic.CHICA.setCurrentRoom(Room.EAST_HALL);
 				}
 				else
@@ -82,6 +83,7 @@ public class FreddyAI extends AI
 					}
 
 					//Move chica to the room picked
+					System.out.println("Chica, make way for Freddy.");
 					Animatronic.CHICA.setCurrentRoom(chicaMovesAt);
 				}
 				else

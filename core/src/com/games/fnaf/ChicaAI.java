@@ -13,6 +13,7 @@ public class ChicaAI extends AI
 		allowedRooms.put(Room.RESTROOMS, new Room[]{Room.RESTROOMS, Room.DINING_AREA});
 		allowedRooms.put(Room.EAST_HALL, new Room[]{Room.EAST_HALL, Room.DINING_AREA, Room.EAST_HALL_CORNER});
 		allowedRooms.put(Room.EAST_HALL_CORNER, new Room[]{Room.EAST_HALL_CORNER, Room.EAST_HALL, Room.OFFICE});
+		allowedRooms.put(Room.OFFICE, new Room[]{Room.OFFICE, Room.EAST_HALL_CORNER});
 	}
 
 	@Override
@@ -48,6 +49,7 @@ public class ChicaAI extends AI
 						freddyMovesAt = Room.DINING_AREA;
 					}
 
+					System.out.println("Freddy, make way for Chica.");
 					Animatronic.FREDDY.setCurrentRoom(freddyMovesAt);
 				}
 				else
@@ -73,6 +75,7 @@ public class ChicaAI extends AI
 				{
 					//Send Freddy back
 					//TODO Freddy goes to either the East Hall or in the Office
+					System.out.println("Freddy, make way for Chica.");
 					Animatronic.FREDDY.setCurrentRoom(Room.EAST_HALL);
 				}
 				else
