@@ -38,8 +38,8 @@ public class DoorLights
 
 		batch = batch1;
 		camera = cam;
-		rightDoorLight = Art.doorLights.get("Right");
-		leftDoorLight = Art.doorLights.get("Left");
+		rightDoorLight = getDoorLightTexture(1);
+		leftDoorLight = getDoorLightTexture(0);
 
 		mouseCoords = new Vector3(Gdx.input.getX(), MathStuff.reverseYCoords(Gdx.input.getY()), 0f);
 	}
@@ -57,6 +57,33 @@ public class DoorLights
 		{
 			boolean collision = poly.contains(mouseCoords.x, mouseCoords.y);
 			if (collision) System.out.println("HITBOX ON " + poly + ", " + FNaF.getTimeElapsed());
+		}
+	}
+
+	private Texture getDoorLightTexture(int i)
+	{
+		StringBuilder doorLightFName;
+
+		switch (i)
+		{
+		//Left doorlight
+		case 0:
+			doorLightFName = new StringBuilder("Left");
+			if (leftDoor)
+				doorLightFName.append("Door");
+			if (leftLight)
+				doorLightFName.append("Light");
+			return Art.doorLights.get(doorLightFName.toString());
+		//Right doorlight
+		case 1:
+			doorLightFName = new StringBuilder("Right");
+			if (rightDoor)
+				doorLightFName.append("Door");
+			if (rightLight)
+				doorLightFName.append("Light");
+			return Art.doorLights.get(doorLightFName.toString());
+		default:
+			return null;
 		}
 	}
 }
