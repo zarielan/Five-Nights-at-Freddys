@@ -90,6 +90,26 @@ public class DoorLights
 		mouseClicked = Gdx.input.isButtonPressed(Input.Buttons.LEFT);
 	}
 
+	public boolean isRightLight()
+	{
+		return rightLight;
+	}
+
+	public boolean isLeftDoor()
+	{
+		return leftDoor;
+	}
+
+	public boolean isLeftLight()
+	{
+		return leftLight;
+	}
+
+	public boolean isRightDoor()
+	{
+		return rightDoor;
+	}
+
 	private Texture getDoorLightTexture(int i)
 	{
 		StringBuilder doorLightFName;
