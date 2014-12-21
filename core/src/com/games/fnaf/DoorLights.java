@@ -1,6 +1,7 @@
 package com.games.fnaf;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -22,6 +23,7 @@ public class DoorLights
 	private Texture rightDoorLight, leftDoorLight;
 	private OrthographicCamera camera;
 	private Vector3 mouseCoords;
+	private boolean mouseClicked;
 
 	public DoorLights(SpriteBatch batch1, OrthographicCamera cam)
 	{
@@ -42,10 +44,14 @@ public class DoorLights
 		leftDoorLight = getDoorLightTexture(0);
 
 		mouseCoords = new Vector3(Gdx.input.getX(), MathStuff.reverseYCoords(Gdx.input.getY()), 0f);
+		mouseClicked = false;
 	}
 
 	public void render()
 	{
+		rightDoorLight = getDoorLightTexture(1);
+		leftDoorLight = getDoorLightTexture(0);
+
 		batch.draw(rightDoorLight, 1600f - 160f - rightDoorLight.getWidth() - 24f, 240f);
 		batch.draw(leftDoorLight, 12f - 160f, 240f);
 
@@ -53,11 +59,35 @@ public class DoorLights
 		mouseCoords = camera.unproject(mouseCoords);
 		System.out.println(mouseCoords);
 
-		for (Polygon poly : HITBOXES)
+		for (int i = 0; i < HITBOXES.length; i++)
 		{
+			Polygon poly = HITBOXES[i];
 			boolean collision = poly.contains(mouseCoords.x, mouseCoords.y);
-			if (collision) System.out.println("HITBOX ON " + poly + ", " + FNaF.getTimeElapsed());
+			if (collision)
+			{
+				if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && !mouseClicked)
+				{
+					mouseClicked = true;
+					switch (i)
+					{
+					case LEFT_LIGHT_HITBOX:
+						leftLight = !leftLight;
+						break;
+					case LEFT_DOOR_HITBOX:
+						leftDoor = !leftDoor;
+						break;
+					case RIGHT_LIGHT_HITBOX:
+						rightLight = !rightLight;
+						break;
+					case RIGHT_DOOR_HITBOX:
+						rightDoor = !rightDoor;
+						break;
+					}
+				}
+			}
 		}
+
+		mouseClicked = Gdx.input.isButtonPressed(Input.Buttons.LEFT);
 	}
 
 	private Texture getDoorLightTexture(int i)
