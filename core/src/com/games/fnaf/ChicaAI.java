@@ -12,7 +12,7 @@ public class ChicaAI extends AI
 		allowedRooms.put(Room.KITCHEN, new Room[]{Room.KITCHEN, Room.DINING_AREA});
 		allowedRooms.put(Room.RESTROOMS, new Room[]{Room.RESTROOMS, Room.DINING_AREA});
 		allowedRooms.put(Room.EAST_HALL, new Room[]{Room.EAST_HALL, Room.DINING_AREA, Room.EAST_HALL_CORNER});
-		allowedRooms.put(Room.EAST_HALL_CORNER, new Room[]{Room.EAST_HALL_CORNER, Room.EAST_HALL});
+		allowedRooms.put(Room.EAST_HALL_CORNER, new Room[]{Room.EAST_HALL_CORNER, Room.EAST_HALL, Room.OFFICE});
 	}
 
 	@Override

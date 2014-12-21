@@ -12,7 +12,7 @@ public class BonnieAI extends AI
 		allowedRooms.put(Room.BACKSTAGE, new Room[]{Room.BACKSTAGE, Room.DINING_AREA});
 		allowedRooms.put(Room.WEST_HALL, new Room[]{Room.WEST_HALL, Room.WEST_HALL_CORNER, Room.SUPPLY_CLOSET, Room.DINING_AREA});
 		allowedRooms.put(Room.SUPPLY_CLOSET, new Room[]{Room.SUPPLY_CLOSET, Room.WEST_HALL});
-		allowedRooms.put(Room.WEST_HALL_CORNER, new Room[]{Room.WEST_HALL_CORNER, Room.WEST_HALL});
+		allowedRooms.put(Room.WEST_HALL_CORNER, new Room[]{Room.WEST_HALL_CORNER, Room.WEST_HALL, Room.OFFICE});
 	}
 
 	@Override
