@@ -14,6 +14,7 @@ public class Office
 	private DoorLights doorLights;
 	private boolean[] playDoorAnimation;
 	private boolean[] previousDoorShut;
+	private float[] doorAnimCounter;
 
 	public Office(SpriteBatch batch)
 	{
@@ -31,6 +32,7 @@ public class Office
 
 		playDoorAnimation = new boolean[]{false, false};
 		previousDoorShut = new boolean[]{false, false};
+		doorAnimCounter = new float[]{0f, 0f};
 	}
 
 	public void render()
@@ -42,7 +44,7 @@ public class Office
 		renderLightsOverlay();
 		renderDoors();
 		batch.draw(officeFan.getKeyFrame(FNaF.getTimeElapsed()), 620f, 221f); //these x,y values are merely from trial and error xD
-		doorLights.render();
+		doorLights.render(playDoorAnimation);
 
 		float step = Gdx.graphics.getDeltaTime() * SIGHT_MOVEMENT;
 		//I honestly don't have any idea where I got 480 and 800, something with 640 +- 160? Wut? o.O
@@ -58,10 +60,79 @@ public class Office
 
 	private void renderDoors()
 	{
-		if (doorLights.isLeftDoor())
-			batch.draw(Art.leftDoor.peek().getTexture(), -100f, 0f);
-		if (doorLights.isRightDoor())
-			batch.draw(Art.rightDoor.peek().getTexture(), 1080f, 0f);
+		//LEFT DOOR
+		if (!previousDoorShut[0])
+		{
+			if (doorLights.isLeftDoor())
+			{
+				previousDoorShut[0] = true;
+				playDoorAnimation[0] = true;
+				leftDoor.setPlayMode(Animation.PlayMode.NORMAL);
+			}
+		}
+		else
+		{
+			if (!doorLights.isLeftDoor())
+			{
+				previousDoorShut[0] = false;
+				playDoorAnimation[0] = true;
+				leftDoor.setPlayMode(Animation.PlayMode.REVERSED);
+			}
+		}
+
+		if (playDoorAnimation[0])
+		{
+			doorAnimCounter[0] += Gdx.graphics.getDeltaTime();
+
+			if (leftDoor.isAnimationFinished(doorAnimCounter[0]))
+			{
+				playDoorAnimation[0] = false;
+				doorAnimCounter[0] = 0f;
+			}
+			else
+				batch.draw(leftDoor.getKeyFrame(doorAnimCounter[0]), -100f, 0f);
+		}
+
+		//RIGHT DOOR
+		if (!previousDoorShut[1])
+		{
+			if (doorLights.isRightDoor())
+			{
+				previousDoorShut[1] = true;
+				playDoorAnimation[1] = true;
+				rightDoor.setPlayMode(Animation.PlayMode.NORMAL);
+			}
+		}
+		else
+		{
+			if (!doorLights.isRightDoor())
+			{
+				previousDoorShut[1] = false;
+				playDoorAnimation[1] = true;
+				rightDoor.setPlayMode(Animation.PlayMode.REVERSED);
+			}
+		}
+
+		if (playDoorAnimation[1])
+		{
+			doorAnimCounter[1] += Gdx.graphics.getDeltaTime();
+
+			if (rightDoor.isAnimationFinished(doorAnimCounter[1]))
+			{
+				playDoorAnimation[1] = false;
+				doorAnimCounter[1] = 0f;
+			}
+			else
+				batch.draw(rightDoor.getKeyFrame(doorAnimCounter[1]), 1080f, 0f);
+		}
+
+		if (doorLights.isLeftDoor() && !playDoorAnimation[0])
+			batch.draw(Art.leftDoor.peek(), -100f, 0f);
+		if (doorLights.isRightDoor() && !playDoorAnimation[1])
+			batch.draw(Art.rightDoor.peek(), 1080f, 0f);
+
+		previousDoorShut[0] = doorLights.isLeftDoor();
+		previousDoorShut[1] = doorLights.isRightDoor();
 	}
 
 	private void renderLightsOverlay()

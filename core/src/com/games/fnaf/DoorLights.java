@@ -47,7 +47,7 @@ public class DoorLights
 		mouseClicked = false;
 	}
 
-	public void render()
+	public void render(boolean[] doorAnim)
 	{
 		rightDoorLight = getLightTexture(1);
 		leftDoorLight = getLightTexture(0);
@@ -74,13 +74,15 @@ public class DoorLights
 						leftLight = !leftLight;
 						break;
 					case LEFT_DOOR_HITBOX:
-						leftDoor = !leftDoor;
+						if (!doorAnim[0])
+							leftDoor = !leftDoor;
 						break;
 					case RIGHT_LIGHT_HITBOX:
 						rightLight = !rightLight;
 						break;
 					case RIGHT_DOOR_HITBOX:
-						rightDoor = !rightDoor;
+						if (!doorAnim[1])
+							rightDoor = !rightDoor;
 						break;
 					}
 				}
