@@ -30,7 +30,7 @@ public class GameScreen extends ScreenAdapter
 		this.batch = batch;
 		this.ortho = new OrthographicCamera();
 		this.ortho.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		this.night = Night.DONT_MOVE_NIGHT;
+		this.night = Night.TEST_NIGHT;
 		this.lookingAtCamera = false;
 		this.cameraToggleHitbox = new Rectangle(255f, 27f, Art.cameraToggle.getWidth(), Art.cameraToggle.getHeight());
 		this.toggling = false;
