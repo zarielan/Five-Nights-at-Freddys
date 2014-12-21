@@ -164,9 +164,11 @@ public class Art
 		}
 
 		leftDoor = new Array<TextureRegion>();
+		rightDoor = new Array<TextureRegion>();
 		for (int i = 1; i <= 12; i++)
 		{
 			leftDoor.add(new TextureRegion(new Texture("Doors/LeftDoor (" + i + ").png")));
+			rightDoor.add(new TextureRegion(new Texture("Doors/RightDoor (" + i + ").png")));
 		}
 
 		//Camera buttons
@@ -233,6 +235,11 @@ public class Art
 		}
 
 		for (TextureRegion t : leftDoor)
+		{
+			t.getTexture().dispose();
+		}
+
+		for (TextureRegion t : rightDoor)
 		{
 			t.getTexture().dispose();
 		}
