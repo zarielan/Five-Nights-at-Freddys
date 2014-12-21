@@ -30,6 +30,7 @@ public class Office
 
 		batch.draw(Art.officeTextures.get("Office"), -160, 0f);
 		renderLightsOverlay();
+		batch.draw(Art.leftDoor.peek(), -100, 0);
 		batch.draw(officeFan.getKeyFrame(FNaF.getTimeElapsed()), 620f, 221f); //these x,y values are merely from trial and error xD
 		doorLights.render();
 

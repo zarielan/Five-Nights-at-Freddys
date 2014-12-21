@@ -40,8 +40,8 @@ public class DoorLights
 
 		batch = batch1;
 		camera = cam;
-		rightDoorLight = getDoorLightTexture(1);
-		leftDoorLight = getDoorLightTexture(0);
+		rightDoorLight = getLightTexture(1);
+		leftDoorLight = getLightTexture(0);
 
 		mouseCoords = new Vector3(Gdx.input.getX(), MathStuff.reverseYCoords(Gdx.input.getY()), 0f);
 		mouseClicked = false;
@@ -49,8 +49,8 @@ public class DoorLights
 
 	public void render()
 	{
-		rightDoorLight = getDoorLightTexture(1);
-		leftDoorLight = getDoorLightTexture(0);
+		rightDoorLight = getLightTexture(1);
+		leftDoorLight = getLightTexture(0);
 
 		batch.draw(rightDoorLight, 1600f - 160f - rightDoorLight.getWidth() - 24f, 240f);
 		batch.draw(leftDoorLight, 12f - 160f, 240f);
@@ -110,7 +110,7 @@ public class DoorLights
 		return rightDoor;
 	}
 
-	private Texture getDoorLightTexture(int i)
+	private Texture getLightTexture(int i)
 	{
 		StringBuilder doorLightFName;
 

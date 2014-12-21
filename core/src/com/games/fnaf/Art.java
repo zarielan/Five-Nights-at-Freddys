@@ -25,7 +25,7 @@ public class Art
 	public static Array<TextureRegion> cameraPopup;
 	public static Array<TextureRegion> cameraBars;
 	public static Array<TextureRegion> foxySprinting;
-	public static Array<TextureRegion> leftDoor;
+	public static Array<TextureRegion> leftDoor, rightDoor;
 
 	public static void loadTextures()
 	{
@@ -113,14 +113,14 @@ public class Art
 		roomTextures.put("EastHallCor5", new Texture("EastHallCor5.png"));
 		roomTextures.put("EastHallCorFreddy", new Texture("EastHallCor_Freddy.png"));
 		roomTextures.put("EastHallCorChica", new Texture("EastHallCor_Chica.png"));
-
+*/
 		officeTextures = new ArrayMap<String, Texture>();
 		officeTextures.put("Office", new Texture("Office.png"));
 		officeTextures.put("OfficeLeftLight", new Texture("OfficeLeftLight.png"));
 		officeTextures.put("OfficeRightLight", new Texture("OfficeRightLight.png"));
 		officeTextures.put("OfficeBonnie", new Texture("OfficeBonnie.png"));
 		officeTextures.put("OfficeChica", new Texture("OfficeChica.png"));
-*/
+
 		//The door lights
 		doorLights = new ArrayMap<String, Texture>();
 		doorLights.put("Left", new Texture("DoorLightLeft.png"));
