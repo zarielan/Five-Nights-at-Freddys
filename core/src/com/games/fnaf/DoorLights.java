@@ -57,7 +57,7 @@ public class DoorLights
 
 		mouseCoords.set(Gdx.input.getX(), Gdx.input.getY(), 0f);
 		mouseCoords = camera.unproject(mouseCoords);
-		System.out.println(mouseCoords);
+		//System.out.println(mouseCoords);
 
 		for (int i = 0; i < HITBOXES.length; i++)
 		{

@@ -25,12 +25,11 @@ public class Office
 
 	public void render()
 	{
-		//System.out.println(Gdx.input.getX() + ", " + Gdx.input.getY());
-
 		batch.setProjectionMatrix(camera.combined);
 		camera.update();
 
 		batch.draw(Art.officeTextures.get("Office"), -160, 0f);
+		renderLightsOverlay();
 		batch.draw(officeFan.getKeyFrame(FNaF.getTimeElapsed()), 620f, 221f); //these x,y values are merely from trial and error xD
 		doorLights.render();
 
@@ -44,5 +43,13 @@ public class Office
 		{
 			camera.position.x += step;
 		}
+	}
+
+	private void renderLightsOverlay()
+	{
+		if (doorLights.isLeftLight())
+			batch.draw(Art.officeTextures.get("OfficeLeftLight"), -160f, 0f);
+		if (doorLights.isRightLight())
+			batch.draw(Art.officeTextures.get("OfficeRightLight"), -160f, 0f);
 	}
 }
