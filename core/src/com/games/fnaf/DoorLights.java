@@ -2,10 +2,12 @@ package com.games.fnaf;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Polygon;
+import com.badlogic.gdx.math.Vector3;
 
 public class DoorLights
 {
@@ -21,8 +23,10 @@ public class DoorLights
 	private SpriteBatch batch;
 	private Texture rightDoorLight, leftDoorLight;
 	private ShapeRenderer render;
+	private OrthographicCamera camera;
+	private Vector3 mouseCoords;
 
-	public DoorLights(SpriteBatch batch1)
+	public DoorLights(SpriteBatch batch1, OrthographicCamera cam)
 	{
 		HITBOXES = new Polygon[4];
 		HITBOXES[RIGHT_DOOR_HITBOX] = new Polygon(new float[]{1600 - 40 - 160, 350, 1600 - 40 - 160, 402, 1600 - 78 - 160, 400, 1600 - 78 - 160, 348});
@@ -36,10 +40,13 @@ public class DoorLights
 		rightLight = false;
 
 		batch = batch1;
+		camera = cam;
 		rightDoorLight = Art.doorLights.get("Right");
 		leftDoorLight = Art.doorLights.get("Left");
 
 		render = new ShapeRenderer();
+
+		mouseCoords = new Vector3(Gdx.input.getX(), MathStuff.reverseYCoords(Gdx.input.getY()), 0f);
 	}
 
 	public void render()
@@ -48,6 +55,10 @@ public class DoorLights
 		batch.draw(leftDoorLight, 12f - 160f, 240f);
 
 		System.out.println(Gdx.input.getX() + ", " + MathStuff.reverseYCoords(Gdx.input.getY()));
+
+		mouseCoords.set(Gdx.input.getX(), MathStuff.reverseYCoords(Gdx.input.getY()), 0f);
+		mouseCoords = camera.unproject(mouseCoords);
+		System.out.println(mouseCoords);
 
 		render.begin(ShapeRenderer.ShapeType.Line);
 		render.setProjectionMatrix(batch.getProjectionMatrix());
