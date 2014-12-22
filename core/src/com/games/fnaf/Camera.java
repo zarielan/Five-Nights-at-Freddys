@@ -50,9 +50,9 @@ public class Camera
 
 			if (foxySprinting.isAnimationFinished(foxyAnimCounter))
 			{
-				FoxyAI.getInstance().doneSprinting();
 				showFoxySprinting = false;
 				foxyAnimCounter = 0f;
+				FoxyAI.getInstance().doneSprinting();
 			}
 		}
 		else

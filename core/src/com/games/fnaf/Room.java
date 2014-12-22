@@ -147,8 +147,7 @@ public enum Room
 		Texture tex = Art.getRoomTexture(fName);
 		if (tex == null)
 		{
-			//SURPRESS ERROR
-			//System.err.println(fName + " doesn't exist.");
+			System.err.println(fName + " doesn't exist.");
 			return null;
 		}
 
@@ -176,7 +175,8 @@ public enum Room
 		Texture tex = Art.getRoomTexture(underlayTexture);
 		if (tex == null)
 		{
-			System.err.println(name + " doesn't exist.");
+			//SUPRESSED
+			//System.err.println(name + " doesn't exist.");
 			return null;
 		}
 
