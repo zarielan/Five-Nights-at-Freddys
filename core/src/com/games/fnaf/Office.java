@@ -35,6 +35,16 @@ public class Office
 		doorAnimCounter = new float[]{0f, 0f};
 	}
 
+	public boolean isLeftDoorClosed()
+	{
+		return doorLights.isLeftDoor();
+	}
+
+	public boolean isRightDoorClosed()
+	{
+		return doorLights.isRightDoor();
+	}
+
 	public void render()
 	{
 		batch.setProjectionMatrix(camera.combined);
