@@ -46,6 +46,7 @@ public class Office
 
 		BonnieAI.getInstance().setDoorShut(doorLights.isLeftDoor());
 		ChicaAI.getInstance().setDoorShut(doorLights.isRightDoor());
+		FoxyAI.getInstance().setDoorShut(doorLights.isLeftDoor());
 
 		batch.draw(officeFan.getKeyFrame(FNaF.getTimeElapsed()), 620f, 221f); //these x,y values are merely from trial and error xD
 		doorLights.render(playDoorAnimation);

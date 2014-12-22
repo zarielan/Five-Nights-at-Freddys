@@ -10,6 +10,7 @@ public class FoxyAI extends AI
 	private float watchMeTime;
 	private float nonViewingTime;
 	private float cooldownTime;
+	private boolean isDoorShut;
 
 	public FoxyAI()
 	{
@@ -17,6 +18,7 @@ public class FoxyAI extends AI
 		stage = 1;
 		reset();
 		cooldownTime = 0f;
+		isDoorShut = false;
 	}
 
 	public void setViewingTime(float time)
@@ -37,6 +39,11 @@ public class FoxyAI extends AI
 	public float getNonViewingTime()
 	{
 		return nonViewingTime;
+	}
+
+	public void setDoorShut(boolean bool)
+	{
+		isDoorShut = bool;
 	}
 
 	public void reset()
@@ -64,14 +71,28 @@ public class FoxyAI extends AI
 
 	public void doneSprinting()
 	{
-		Animatronic.FOXY.setCurrentRoom(Room.PIRATE_COVE);
-		stage = MathUtils.randomBoolean(0.90f) ? 1 : 2;
-		reset();
+		//Done sprinting?
+		//Is the door shut?
+		if (isDoorShut)
+		{
+			//Go back.
+			Animatronic.FOXY.setCurrentRoom(Room.PIRATE_COVE);
+			stage = MathUtils.randomBoolean(0.90f) ? 1 : 2;
+			reset();
+		}
+		else
+		{
+			//Move in!
+			Animatronic.FOXY.setCurrentRoom(Room.JUMPSCARE_TIME);
+		}
 	}
 
 	@Override
 	public void updatePosition(Animatronic anim)
 	{
+		if (anim.getCurrentRoom() == Room.JUMPSCARE_TIME)
+			return;
+
 		//System.out.println("Viewing time: " + getViewingTime() + ", Non viewing time: " + getNonViewingTime());
 		if (nonViewingTime > watchMeTime || viewingTime > watchMeTime)
 		{
