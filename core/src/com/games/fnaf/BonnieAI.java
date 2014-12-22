@@ -17,7 +17,7 @@ public class BonnieAI extends AI
 		allowedRooms.put(Room.BACKSTAGE, new Room[]{Room.BACKSTAGE, Room.DINING_AREA});
 		allowedRooms.put(Room.WEST_HALL, new Room[]{Room.WEST_HALL, Room.WEST_HALL_CORNER, Room.SUPPLY_CLOSET, Room.DINING_AREA});
 		allowedRooms.put(Room.SUPPLY_CLOSET, new Room[]{Room.SUPPLY_CLOSET, Room.WEST_HALL});
-		allowedRooms.put(Room.WEST_HALL_CORNER, new Room[]{Room.WEST_HALL_CORNER, Room.WEST_HALL, Room.OFFICE});
+		allowedRooms.put(Room.WEST_HALL_CORNER, new Room[]{Room.WEST_HALL_CORNER, /*Room.WEST_HALL,*/ Room.OFFICE}); //TEMPORARY
 		allowedRooms.put(Room.OFFICE, new Room[]{Room.OFFICE, Room.WEST_HALL_CORNER});
 		doorCounter = 0f;
 		isOnDoor = false;
@@ -32,6 +32,7 @@ public class BonnieAI extends AI
 	@Override
 	public void updatePosition(Animatronic anim)
 	{
+		System.out.println(doorCounter);
 		if (!isOnDoor || isDoorShut)
 		{
 			Room[] possibleRooms = allowedRooms.get(anim.getCurrentRoom());
@@ -61,9 +62,20 @@ public class BonnieAI extends AI
 		{
 			doorCounter += Gdx.graphics.getDeltaTime();
 
+			//Check if Bonnie has been at the door for more than 8 seconds
 			if (doorCounter >= 8f)
 			{
+				//Check if someone's currently inside the office
+				for (int i = 0; i < 4; i++)
+				{
+					if (Room.JUMPSCARE_TIME.getVisitors()[i])
+					{
+						return;
+					}
 
+					//No one's there? Get in.
+					anim.setCurrentRoom(Room.JUMPSCARE_TIME);
+				}
 			}
 		}
 	}

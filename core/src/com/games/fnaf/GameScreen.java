@@ -30,7 +30,7 @@ public class GameScreen extends ScreenAdapter
 		this.batch = batch;
 		this.ortho = new OrthographicCamera();
 		this.ortho.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		this.night = Night.DONT_MOVE_NIGHT;
+		this.night = Night.TEST_NIGHT;
 		this.lookingAtCamera = false;
 		this.cameraToggleHitbox = new Rectangle(255f, 27f, Art.cameraToggle.getWidth(), Art.cameraToggle.getHeight());
 		this.toggling = false;
@@ -143,7 +143,7 @@ public class GameScreen extends ScreenAdapter
 		this.office = new Office(batch);
 		//Set their starting areas
 		Animatronic.FREDDY.setCurrentRoom(Room.SHOW_STAGE);
-		Animatronic.BONNIE.setCurrentRoom(Room.SHOW_STAGE);
+		Animatronic.BONNIE.setCurrentRoom(Room.WEST_HALL_CORNER);
 		Animatronic.CHICA.setCurrentRoom(Room.SHOW_STAGE);
 		Animatronic.FOXY.setCurrentRoom(Room.PIRATE_COVE);
 		this.night.doNight();
