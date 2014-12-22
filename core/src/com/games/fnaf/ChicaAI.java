@@ -1,9 +1,13 @@
 package com.games.fnaf;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 
 public class ChicaAI extends AI
 {
+	private boolean isDoorShut;
+	private float waitCounter;
+
 	public ChicaAI()
 	{
 		super();
@@ -14,6 +18,13 @@ public class ChicaAI extends AI
 		allowedRooms.put(Room.EAST_HALL, new Room[]{Room.EAST_HALL, Room.DINING_AREA, Room.EAST_HALL_CORNER});
 		allowedRooms.put(Room.EAST_HALL_CORNER, new Room[]{Room.EAST_HALL_CORNER, Room.EAST_HALL, Room.OFFICE});
 		allowedRooms.put(Room.OFFICE, new Room[]{Room.OFFICE, Room.EAST_HALL_CORNER});
+		isDoorShut = false;
+		waitCounter = 0f;
+	}
+
+	public void setDoorShut(boolean bool)
+	{
+		isDoorShut = bool;
 	}
 
 	@Override
@@ -87,6 +98,52 @@ public class ChicaAI extends AI
 			}
 		}
 
+		//If Chica is at the Office
+		if (anim.getCurrentRoom() == Room.OFFICE)
+		{
+			//And the door is open...
+			if (!isDoorShut)
+			{
+				//Move in
+				anim.setCurrentRoom(Room.JUMPSCARE_TIME);
+				return;
+			}
+		}
+
+		//If she's about to move into the office
+		if (possibleRooms[chosen] == Room.OFFICE)
+		{
+			//And she wasn't there before...
+			if (anim.getCurrentRoom() != Room.OFFICE)
+			{
+				//Reset the wait counter.
+				waitCounter = 0f;
+			}
+		}
+
 		anim.setCurrentRoom(possibleRooms[chosen]);
+	}
+
+	public void updateDoorCounter(Animatronic anim)
+	{
+		//System.out.println(waitCounter);
+
+		//Wait when the door is open
+		if (!isDoorShut)
+		{
+			waitCounter += Gdx.graphics.getDeltaTime();
+		}
+
+		//If you've been waiting for more than 8 seconds
+		if (waitCounter > 8f)
+		{
+			//Move in
+			anim.setCurrentRoom(Room.JUMPSCARE_TIME);
+		}
+	}
+
+	public static ChicaAI getInstance()
+	{
+		return (ChicaAI)Animatronic.CHICA.getAI();
 	}
 }

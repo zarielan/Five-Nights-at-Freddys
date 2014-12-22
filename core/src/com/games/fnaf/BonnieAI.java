@@ -74,7 +74,7 @@ public class BonnieAI extends AI
 
 	public void updateDoorCounter(Animatronic anim)
 	{
-		System.out.println(waitCounter);
+		//System.out.println(waitCounter);
 
 		//Wait when the door is open
 		if (!isDoorShut)

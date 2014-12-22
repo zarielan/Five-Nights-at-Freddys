@@ -147,7 +147,8 @@ public enum Room
 		Texture tex = Art.getRoomTexture(fName);
 		if (tex == null)
 		{
-			System.err.println(fName + " doesn't exist.");
+			//Surpressed
+			//System.err.println(fName + " doesn't exist.");
 			return null;
 		}
 

@@ -65,6 +65,11 @@ public abstract class AI
 				BonnieAI.getInstance().updateDoorCounter(anim);
 			}
 
+			if (anim == Animatronic.CHICA && anim.getCurrentRoom() == Room.OFFICE)
+			{
+				ChicaAI.getInstance().updateDoorCounter(anim);
+			}
+
 			movementCounter += Gdx.graphics.getDeltaTime();
 		}
 
