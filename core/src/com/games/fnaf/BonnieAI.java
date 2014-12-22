@@ -32,7 +32,7 @@ public class BonnieAI extends AI
 	@Override
 	public void updatePosition(Animatronic anim)
 	{
-		if (!isOnDoor)
+		if (!isOnDoor || isDoorShut)
 		{
 			Room[] possibleRooms = allowedRooms.get(anim.getCurrentRoom());
 			int chosen = MathUtils.random(0, possibleRooms.length - 1);
@@ -60,6 +60,11 @@ public class BonnieAI extends AI
 		else
 		{
 			doorCounter += Gdx.graphics.getDeltaTime();
+
+			if (doorCounter >= 8f)
+			{
+
+			}
 		}
 	}
 
