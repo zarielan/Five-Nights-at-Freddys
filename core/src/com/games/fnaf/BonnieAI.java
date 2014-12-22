@@ -4,6 +4,9 @@ import com.badlogic.gdx.math.MathUtils;
 
 public class BonnieAI extends AI
 {
+	private float doorCounter;
+	private boolean isOnDoor;
+
 	public BonnieAI()
 	{
 		super();
@@ -14,6 +17,13 @@ public class BonnieAI extends AI
 		allowedRooms.put(Room.SUPPLY_CLOSET, new Room[]{Room.SUPPLY_CLOSET, Room.WEST_HALL});
 		allowedRooms.put(Room.WEST_HALL_CORNER, new Room[]{Room.WEST_HALL_CORNER, Room.WEST_HALL, Room.OFFICE});
 		allowedRooms.put(Room.OFFICE, new Room[]{Room.OFFICE, Room.WEST_HALL_CORNER});
+		doorCounter = 0f;
+		isOnDoor = false;
+	}
+
+	public boolean isOnDoor()
+	{
+		return isOnDoor;
 	}
 
 	@Override
@@ -35,5 +45,10 @@ public class BonnieAI extends AI
 		}
 
 		anim.setCurrentRoom(possibleRooms[chosen]);
+	}
+
+	public void onDoor()
+	{
+		
 	}
 }
