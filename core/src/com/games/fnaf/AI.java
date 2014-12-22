@@ -60,6 +60,11 @@ public abstract class AI
 				return;
 			}
 
+			if (anim == Animatronic.BONNIE && BonnieAI.getInstance().isOnDoor())
+			{
+				updatePosition(anim);
+			}
+
 			movementCounter += Gdx.graphics.getDeltaTime();
 		}
 

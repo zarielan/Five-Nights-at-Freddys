@@ -35,16 +35,6 @@ public class Office
 		doorAnimCounter = new float[]{0f, 0f};
 	}
 
-	public boolean isLeftDoorClosed()
-	{
-		return doorLights.isLeftDoor();
-	}
-
-	public boolean isRightDoorClosed()
-	{
-		return doorLights.isRightDoor();
-	}
-
 	public void render()
 	{
 		batch.setProjectionMatrix(camera.combined);
@@ -53,6 +43,7 @@ public class Office
 		batch.draw(Art.officeTextures.get("Office"), -160, 0f);
 		renderLightsOverlay();
 		renderDoors();
+		BonnieAI.getInstance().setDoorShut(doorLights.isLeftDoor());
 		batch.draw(officeFan.getKeyFrame(FNaF.getTimeElapsed()), 620f, 221f); //these x,y values are merely from trial and error xD
 		doorLights.render(playDoorAnimation);
 

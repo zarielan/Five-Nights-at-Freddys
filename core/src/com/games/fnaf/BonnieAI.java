@@ -1,11 +1,13 @@
 package com.games.fnaf;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 
 public class BonnieAI extends AI
 {
 	private float doorCounter;
 	private boolean isOnDoor;
+	private boolean isDoorShut;
 
 	public BonnieAI()
 	{
@@ -19,6 +21,7 @@ public class BonnieAI extends AI
 		allowedRooms.put(Room.OFFICE, new Room[]{Room.OFFICE, Room.WEST_HALL_CORNER});
 		doorCounter = 0f;
 		isOnDoor = false;
+		isDoorShut = false;
 	}
 
 	public boolean isOnDoor()
@@ -29,26 +32,44 @@ public class BonnieAI extends AI
 	@Override
 	public void updatePosition(Animatronic anim)
 	{
-		Room[] possibleRooms = allowedRooms.get(anim.getCurrentRoom());
-		int chosen = MathUtils.random(0, possibleRooms.length - 1);
-
-		//Check if Bonnie is going to the West Hall
-		if (possibleRooms[chosen] == Room.WEST_HALL)
+		if (!isOnDoor)
 		{
-			//Check if Foxy's sprinting there
-			if (Room.WEST_HALL.getVisitors()[Animatronic.FOXY.ordinal()])
-			{
-				//If yes, get out of the way!
-				System.out.println("Bonnie, don't move.");
-				return;
-			}
-		}
+			Room[] possibleRooms = allowedRooms.get(anim.getCurrentRoom());
+			int chosen = MathUtils.random(0, possibleRooms.length - 1);
 
-		anim.setCurrentRoom(possibleRooms[chosen]);
+			//Check if Bonnie is going to the West Hall
+			if (possibleRooms[chosen] == Room.WEST_HALL)
+			{
+				//Check if Foxy's sprinting there
+				if (Room.WEST_HALL.getVisitors()[Animatronic.FOXY.ordinal()])
+				{
+					//If yes, get out of the way!
+					System.out.println("Bonnie, don't move.");
+					return;
+				}
+			}
+
+			if (possibleRooms[chosen] == Room.OFFICE)
+			{
+				doorCounter = 0f;
+				isOnDoor = true;
+			}
+
+			anim.setCurrentRoom(possibleRooms[chosen]);
+		}
+		else
+		{
+			doorCounter += Gdx.graphics.getDeltaTime();
+		}
 	}
 
-	public void onDoor()
+	public void setDoorShut(boolean bool)
 	{
-		
+		isDoorShut = bool;
+	}
+
+	public static BonnieAI getInstance()
+	{
+		return (BonnieAI)Animatronic.BONNIE.getAI();
 	}
 }
