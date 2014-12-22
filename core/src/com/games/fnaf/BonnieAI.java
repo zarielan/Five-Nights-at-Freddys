@@ -57,24 +57,35 @@ public class BonnieAI extends AI
 			}
 		}
 
-		//Move into the new location
-		anim.setCurrentRoom(possibleRooms[chosen]);
-
 		//If he's about to move into the office
 		if (possibleRooms[chosen] == Room.OFFICE)
 		{
-			//Reset the wait counter.
-			waitCounter = 0f;
+			//And he wasn't there before...
+			if (anim.getCurrentRoom() != Room.OFFICE)
+			{
+				//Reset the wait counter.
+				waitCounter = 0f;
+			}
 		}
+
+		//Move into the new location
+		anim.setCurrentRoom(possibleRooms[chosen]);
 	}
 
 	public void updateDoorCounter(Animatronic anim)
 	{
 		System.out.println(waitCounter);
-		waitCounter += Gdx.graphics.getDeltaTime();
 
+		//Wait when the door is open
+		if (!isDoorShut)
+		{
+			waitCounter += Gdx.graphics.getDeltaTime();
+		}
+
+		//If you've been waiting for more than 8 seconds
 		if (waitCounter > 8f)
 		{
+			//Move in
 			anim.setCurrentRoom(Room.JUMPSCARE_TIME);
 		}
 	}

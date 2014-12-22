@@ -19,7 +19,7 @@ public enum Room
 	EAST_HALL_CORNER("EastHallCor", new CameraButton("4B", Gdx.graphics.getWidth() - 160f, 68f), true, "EastHallCor1"),
 	KITCHEN("Kitchen", new CameraButton("6", Gdx.graphics.getWidth() - 65f, 145f), false),
 	OFFICE("Office", null, false),
-	JUMPSCARE_TIME("JumpscareTime!", null, false);
+	JUMPSCARE_TIME("It's Jumpscare Time!", null, false);
 
 	private final String name;
 	private boolean[] visitors;
