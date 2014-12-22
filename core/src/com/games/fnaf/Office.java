@@ -125,13 +125,13 @@ public class Office
 				doorAnimCounter[1] = 0f;
 			}
 			else
-				batch.draw(rightDoor.getKeyFrame(doorAnimCounter[1]), 1080f, 0f);
+				batch.draw(rightDoor.getKeyFrame(doorAnimCounter[1]), 1200f, 0f);
 		}
 
 		if (doorLights.isLeftDoor() && !playDoorAnimation[0])
 			batch.draw(Art.leftDoor.peek(), -100f, 0f);
 		if (doorLights.isRightDoor() && !playDoorAnimation[1])
-			batch.draw(Art.rightDoor.peek(), 1080f, 0f);
+			batch.draw(Art.rightDoor.peek(), 1200f, 0f);
 
 		previousDoorShut[0] = doorLights.isLeftDoor();
 		previousDoorShut[1] = doorLights.isRightDoor();
