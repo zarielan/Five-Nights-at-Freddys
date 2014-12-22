@@ -1,9 +1,13 @@
 package com.games.fnaf;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 
 public class BonnieAI extends AI
 {
+	private boolean isDoorShut;
+	private float waitCounter;
+
 	public BonnieAI()
 	{
 		super();
@@ -14,6 +18,13 @@ public class BonnieAI extends AI
 		allowedRooms.put(Room.SUPPLY_CLOSET, new Room[]{Room.SUPPLY_CLOSET, Room.WEST_HALL});
 		allowedRooms.put(Room.WEST_HALL_CORNER, new Room[]{Room.WEST_HALL_CORNER, /*Room.WEST_HALL,*/ Room.OFFICE}); //TEMPORARY
 		allowedRooms.put(Room.OFFICE, new Room[]{Room.OFFICE, Room.WEST_HALL_CORNER});
+		isDoorShut = false;
+		waitCounter = 0f;
+	}
+
+	public void setDoorShut(boolean bool)
+	{
+		isDoorShut = bool;
 	}
 
 	@Override
@@ -34,7 +45,38 @@ public class BonnieAI extends AI
 			}
 		}
 
+		//If Bonnie is at the Office
+		if (anim.getCurrentRoom() == Room.OFFICE)
+		{
+			//And the door is open...
+			if (!isDoorShut)
+			{
+				//Move in
+				anim.setCurrentRoom(Room.JUMPSCARE_TIME);
+				return;
+			}
+		}
+
+		//Move into the new location
 		anim.setCurrentRoom(possibleRooms[chosen]);
+
+		//If he's about to move into the office
+		if (possibleRooms[chosen] == Room.OFFICE)
+		{
+			//Reset the wait counter.
+			waitCounter = 0f;
+		}
+	}
+
+	public void updateDoorCounter(Animatronic anim)
+	{
+		System.out.println(waitCounter);
+		waitCounter += Gdx.graphics.getDeltaTime();
+
+		if (waitCounter > 8f)
+		{
+			anim.setCurrentRoom(Room.JUMPSCARE_TIME);
+		}
 	}
 
 	public static BonnieAI getInstance()
