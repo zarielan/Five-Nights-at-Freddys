@@ -64,9 +64,9 @@ public class FoxyAI extends AI
 
 	public void doneSprinting()
 	{
+		Animatronic.FOXY.setCurrentRoom(Room.PIRATE_COVE);
 		stage = MathUtils.randomBoolean(0.90f) ? 1 : 2;
 		reset();
-		Animatronic.FOXY.setCurrentRoom(Room.PIRATE_COVE);
 	}
 
 	@Override
@@ -92,9 +92,10 @@ public class FoxyAI extends AI
 		{
 			cooldownTime += Gdx.graphics.getDeltaTime();
 
-			if (cooldownTime > 10f)
+			if (cooldownTime >= 10f)
 			{
 				doneSprinting();
+				return;
 			}
 
 			//Check if Bonnie is in the West Hall and Foxy isn't there yet

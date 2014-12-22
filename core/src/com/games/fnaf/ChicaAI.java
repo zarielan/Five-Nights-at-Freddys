@@ -30,6 +30,9 @@ public class ChicaAI extends AI
 	@Override
 	public void updatePosition(Animatronic anim)
 	{
+		if (anim.getCurrentRoom() == Room.JUMPSCARE_TIME)
+			return;
+
 		Room[] possibleRooms = allowedRooms.get(anim.getCurrentRoom());
 		int chosen = MathUtils.random(0, possibleRooms.length - 1);
 
