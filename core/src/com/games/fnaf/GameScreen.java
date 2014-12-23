@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
+import java.util.Scanner;
+
 public class GameScreen extends ScreenAdapter
 {
 	private Camera camera;
@@ -26,6 +28,8 @@ public class GameScreen extends ScreenAdapter
 	private float cameraBarsTime = 0f;
 	private boolean renderJumpScare;
 	private boolean animatronicInside;
+	private Animation jumpScare;
+	private float jumpScareTimer;
 
 	public GameScreen(SpriteBatch batch)
 	{
@@ -44,6 +48,7 @@ public class GameScreen extends ScreenAdapter
 		this.playCameraBars = false;
 		this.renderJumpScare = false;
 		this.animatronicInside = false;
+		this.jumpScareTimer = 0f;
 	}
 
 	@Override
@@ -52,6 +57,11 @@ public class GameScreen extends ScreenAdapter
 		if (lookingAtCamera && !renderOffice)
 		{
 			camera.render();
+		}
+		else if (renderJumpScare)
+		{
+			jumpScareTimer += delta;
+			batch.draw(jumpScare.getKeyFrame(jumpScareTimer), 0f, 0f);
 		}
 		else
 		{
@@ -76,6 +86,31 @@ public class GameScreen extends ScreenAdapter
 		}
 
 		cameraToggling(delta);
+	}
+
+	private void readyJumpscare()
+	{
+		renderJumpScare = true;
+		jumpScareTimer = 0f;
+
+		String jumpScarer = "Bonnie";
+		for (int i = 0; i < 4; i++)
+		{
+			if (Room.JUMPSCARE_TIME.getVisitors()[i])
+			{
+				jumpScarer = Animatronic.values()[i].getName();
+				break;
+			}
+		}
+
+		jumpScare = new Animation(1/30f, Art.jumpScares.get(jumpScarer));
+		jumpScare.setPlayMode(Animation.PlayMode.NORMAL);
+
+		//TODO REMOVE THIS
+		{
+			Scanner scan = new Scanner(System.in);
+			scan.nextLine();
+		}
 	}
 
 	private void cameraToggling(float delta)
@@ -131,8 +166,10 @@ public class GameScreen extends ScreenAdapter
 					//Now we're not
 					lookingAtCamera = false;
 
-					//And we're looking at the office instead
-					renderOffice = true;
+					//Check if someone isn't there
+					if (!animatronicInside)
+						//And we're looking at the office instead
+						renderOffice = true;
 				}
 			}
 			else
@@ -141,8 +178,13 @@ public class GameScreen extends ScreenAdapter
 				//Were we looking at the camera?
 				if (lookingAtCamera)
 				{
-					//Immediately render the office behind the transparent camera texture
-					renderOffice = true;
+					//Is someone there?
+					if (animatronicInside)
+						//Prepare the jumpscare
+						readyJumpscare();
+					else
+						//Immediately render the office behind the transparent camera texture
+						renderOffice = true;
 				}
 			}
 
@@ -173,7 +215,7 @@ public class GameScreen extends ScreenAdapter
 				cameraBarsTime = 0f;
 			}
 		}
-		
+
 		hasCollided = collision;
 	}
 
