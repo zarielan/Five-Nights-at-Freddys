@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Office
 {
@@ -35,6 +36,16 @@ public class Office
 		doorAnimCounter = new float[]{0f, 0f};
 	}
 
+	public void renderJumpscare(TextureRegion frame)
+	{
+		batch.setProjectionMatrix(camera.combined);
+		camera.update();
+
+		batch.draw(frame, 0f, 0f);
+
+		movePOV();
+	}
+
 	public void render()
 	{
 		batch.setProjectionMatrix(camera.combined);
@@ -51,6 +62,11 @@ public class Office
 
 		batch.draw(officeFan.getKeyFrame(FNaF.getTimeElapsed()), 620f, 221f); //these x,y values are merely from trial and error xD
 		doorLights.render(playDoorAnimation);
+		movePOV();
+	}
+
+	private void movePOV()
+	{
 		float step = Gdx.graphics.getDeltaTime() * SIGHT_MOVEMENT;
 		//I honestly don't have any idea where I got 480 and 800, something with 640 +- 160? Wut? o.O
 		if (Gdx.input.getX() <= 200 && camera.position.x - step >= 480)

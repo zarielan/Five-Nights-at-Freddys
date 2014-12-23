@@ -7,8 +7,6 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
-import java.util.Scanner;
-
 public class GameScreen extends ScreenAdapter
 {
 	private Camera camera;
@@ -61,7 +59,7 @@ public class GameScreen extends ScreenAdapter
 		else if (renderJumpScare)
 		{
 			jumpScareTimer += delta;
-			batch.draw(jumpScare.getKeyFrame(jumpScareTimer), 0f, 0f);
+			office.renderJumpscare(jumpScare.getKeyFrame(jumpScareTimer));
 		}
 		else
 		{
@@ -69,6 +67,9 @@ public class GameScreen extends ScreenAdapter
 			FoxyAI foxyAI = (FoxyAI)Animatronic.FOXY.getAI();
 			foxyAI.setNonViewingTime(foxyAI.getNonViewingTime() + delta);
 		}
+
+		if (renderJumpScare)
+			return;
 
 		batch.setProjectionMatrix(ortho.combined);
 		ortho.update();
@@ -105,12 +106,6 @@ public class GameScreen extends ScreenAdapter
 
 		jumpScare = new Animation(1/30f, Art.jumpScares.get(jumpScarer));
 		jumpScare.setPlayMode(Animation.PlayMode.NORMAL);
-
-		//TODO REMOVE THIS
-		{
-			Scanner scan = new Scanner(System.in);
-			scan.nextLine();
-		}
 	}
 
 	private void cameraToggling(float delta)
@@ -226,7 +221,7 @@ public class GameScreen extends ScreenAdapter
 		this.office = new Office(batch);
 		//Set their starting areas
 		Animatronic.FREDDY.setCurrentRoom(Room.SHOW_STAGE);
-		Animatronic.BONNIE.setCurrentRoom(Room.WEST_HALL_CORNER);
+		Animatronic.BONNIE.setCurrentRoom(Room.SHOW_STAGE);
 		Animatronic.CHICA.setCurrentRoom(Room.SHOW_STAGE);
 		Animatronic.FOXY.setCurrentRoom(Room.PIRATE_COVE);
 		this.night.doNight();
