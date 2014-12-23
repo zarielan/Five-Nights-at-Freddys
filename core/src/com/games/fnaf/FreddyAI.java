@@ -4,6 +4,8 @@ import com.badlogic.gdx.math.MathUtils;
 
 public class FreddyAI extends AI
 {
+	private boolean isDoorShut;
+
 	public FreddyAI()
 	{
 		super();
@@ -13,6 +15,12 @@ public class FreddyAI extends AI
 		allowedRooms.put(Room.KITCHEN, new Room[]{Room.KITCHEN, Room.DINING_AREA});
 		allowedRooms.put(Room.EAST_HALL, new Room[]{Room.EAST_HALL, Room.DINING_AREA, Room.EAST_HALL_CORNER});
 		allowedRooms.put(Room.EAST_HALL_CORNER, new Room[]{Room.EAST_HALL_CORNER, Room.EAST_HALL});
+		isDoorShut = false;
+	}
+
+	public void setDoorShut(boolean bool)
+	{
+		isDoorShut = bool;
 	}
 
 	@Override
@@ -96,5 +104,10 @@ public class FreddyAI extends AI
 		}
 
 		anim.setCurrentRoom(possibleRooms[chosen]);
+	}
+
+	public static FreddyAI getInstance()
+	{
+		return (FreddyAI)Animatronic.FREDDY.getAI();
 	}
 }
