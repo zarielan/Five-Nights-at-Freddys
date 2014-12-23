@@ -68,21 +68,21 @@ public class GameScreen extends ScreenAdapter
 			foxyAI.setNonViewingTime(foxyAI.getNonViewingTime() + delta);
 		}
 
-		if (renderJumpScare)
-			return;
-
 		batch.setProjectionMatrix(ortho.combined);
 		ortho.update();
 
-		batch.draw(Art.cameraToggle, 255f, 27f);
-
-		for (Animatronic a : Animatronic.values())
+		if (!renderJumpScare)
 		{
-			a.getAI().update(a);
+			batch.draw(Art.cameraToggle, 255f, 27f);
 
-			if (a.getCurrentRoom() == Room.JUMPSCARE_TIME)
+			for (Animatronic a : Animatronic.values())
 			{
-				animatronicInside = true;
+				a.getAI().update(a);
+
+				if (a.getCurrentRoom() == Room.JUMPSCARE_TIME)
+				{
+					animatronicInside = true;
+				}
 			}
 		}
 
@@ -110,7 +110,7 @@ public class GameScreen extends ScreenAdapter
 
 	private void cameraToggling(float delta)
 	{
-		boolean collision = this.cameraToggleHitbox.contains(Gdx.input.getX(), MathStuff.reverseYCoords(Gdx.input.getY()));
+		boolean collision = !renderJumpScare && this.cameraToggleHitbox.contains(Gdx.input.getX(), MathStuff.reverseYCoords(Gdx.input.getY()));
 
 		//The cursor has collided with the toggle button
 		if (!hasCollided && collision && !toggling)
