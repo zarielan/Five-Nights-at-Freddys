@@ -82,6 +82,16 @@ public class FoxyAI extends AI
 		}
 		else
 		{
+			//Check if someone's already inside
+			for (int i = 0; i < 4; i++)
+			{
+				//Yes? Don't go in anymore.
+				if (Room.JUMPSCARE_TIME.getVisitors()[i])
+				{
+					return;
+				}
+			}
+
 			//Move in!
 			Animatronic.FOXY.setCurrentRoom(Room.JUMPSCARE_TIME);
 		}

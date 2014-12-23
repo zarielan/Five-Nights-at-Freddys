@@ -54,6 +54,16 @@ public class BonnieAI extends AI
 			//And the door is open...
 			if (!isDoorShut)
 			{
+				//Check if someone's already inside
+				for (int i = 0; i < 4; i++)
+				{
+					//Yes? Don't go in anymore.
+					if (Room.JUMPSCARE_TIME.getVisitors()[i])
+					{
+						return;
+					}
+				}
+
 				//Move in
 				anim.setCurrentRoom(Room.JUMPSCARE_TIME);
 				return;
@@ -88,6 +98,16 @@ public class BonnieAI extends AI
 		//If you've been waiting for more than 8 seconds
 		if (waitCounter > 8f)
 		{
+			//Check if someone's already inside
+			for (int i = 0; i < 4; i++)
+			{
+				//Yes? Don't go in anymore.
+				if (Room.JUMPSCARE_TIME.getVisitors()[i])
+				{
+					return;
+				}
+			}
+
 			//Move in
 			anim.setCurrentRoom(Room.JUMPSCARE_TIME);
 		}
