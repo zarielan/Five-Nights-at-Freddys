@@ -24,6 +24,8 @@ public class GameScreen extends ScreenAdapter
 	private float animStateTime = 0f;
 	private boolean playCameraBars;
 	private float cameraBarsTime = 0f;
+	private boolean renderJumpScare;
+	private boolean animatronicInside;
 
 	public GameScreen(SpriteBatch batch)
 	{
@@ -40,6 +42,8 @@ public class GameScreen extends ScreenAdapter
 		this.cameraBars = new Animation(1/30f, Art.cameraBars);
 		this.cameraBars.setPlayMode(Animation.PlayMode.NORMAL);
 		this.playCameraBars = false;
+		this.renderJumpScare = false;
+		this.animatronicInside = false;
 	}
 
 	@Override
@@ -64,6 +68,11 @@ public class GameScreen extends ScreenAdapter
 		for (Animatronic a : Animatronic.values())
 		{
 			a.getAI().update(a);
+
+			if (a.getCurrentRoom() == Room.JUMPSCARE_TIME)
+			{
+				animatronicInside = true;
+			}
 		}
 
 		cameraToggling(delta);
@@ -73,66 +82,98 @@ public class GameScreen extends ScreenAdapter
 	{
 		boolean collision = this.cameraToggleHitbox.contains(Gdx.input.getX(), MathStuff.reverseYCoords(Gdx.input.getY()));
 
+		//The cursor has collided with the toggle button
 		if (!hasCollided && collision && !toggling)
 		{
+			//It's toggling now
 			toggling = true;
 
+			//Was the player not looking at the camera?
 			if (!lookingAtCamera)
 			{
+				//Set the animation to when the camera is raised up
 				this.cameraToggle.setPlayMode(Animation.PlayMode.NORMAL);
 			}
 			else
 			{
+				//Else? Reverse the animation; put the camera down
 				this.cameraToggle.setPlayMode(Animation.PlayMode.REVERSED);
 			}
 		}
 
+		//Are we toggling?
 		if (toggling)
 		{
+			//Start the animation counter
 			animStateTime += delta;
 
+			//Is the animation done?
 			if (this.cameraToggle.isAnimationFinished(animStateTime))
 			{
+				//Not toggling anymore
 				toggling = false;
+
+				//Were we not looking at the camera before?
 				if (!lookingAtCamera)
 				{
+					//We are now
 					lookingAtCamera = true;
+
+					//Not the office, but the camera
 					renderOffice = false;
+
+					//Render the white camera bars we see after raising the camera
 					playCameraBars = true;
 				}
 				else
 				{
+					//Were we looking at the camera before?
+					//Now we're not
 					lookingAtCamera = false;
+
+					//And we're looking at the office instead
 					renderOffice = true;
 				}
 			}
 			else
 			{
+				//Is the animation not done?
+				//Were we looking at the camera?
 				if (lookingAtCamera)
 				{
+					//Immediately render the office behind the transparent camera texture
 					renderOffice = true;
 				}
 			}
 
+			//Since we're toggling, render the camera pull up/down animation
 			batch.draw(cameraToggle.getKeyFrame(animStateTime), 0f, 0f, 1280f, 720f);
 		}
 		else
 		{
+			//Since we're not toggling, reset the animation counter to 0
 			animStateTime = 0f;
 		}
 
+		//Playing the camera bars animation?
 		if (playCameraBars)
 		{
+			//Start the animation counter
 			cameraBarsTime += delta;
+
+			//Render frames
 			batch.draw(cameraBars.getKeyFrame(cameraBarsTime), 0f, 0f);
 
+			//Is it done?
 			if (cameraBars.isAnimationFinished(cameraBarsTime))
 			{
+				//We're not rendering it anymore
 				playCameraBars = false;
+				//Reset the counter to 0
 				cameraBarsTime = 0f;
 			}
 		}
-
+		
 		hasCollided = collision;
 	}
 
