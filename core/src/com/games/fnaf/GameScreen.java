@@ -105,7 +105,7 @@ public class GameScreen extends ScreenAdapter
 		}
 
 		jumpScare = new Animation(1/30f, Art.jumpScares.get(jumpScarer));
-		jumpScare.setPlayMode(Animation.PlayMode.NORMAL);
+		jumpScare.setPlayMode(Animation.PlayMode.LOOP);
 	}
 
 	private void cameraToggling(float delta)
@@ -222,7 +222,7 @@ public class GameScreen extends ScreenAdapter
 		//Set their starting areas
 		Animatronic.FREDDY.setCurrentRoom(Room.SHOW_STAGE);
 		Animatronic.BONNIE.setCurrentRoom(Room.SHOW_STAGE);
-		Animatronic.CHICA.setCurrentRoom(Room.SHOW_STAGE);
+		Animatronic.CHICA.setCurrentRoom(Room.EAST_HALL_CORNER);
 		Animatronic.FOXY.setCurrentRoom(Room.PIRATE_COVE);
 		this.night.doNight();
 	}

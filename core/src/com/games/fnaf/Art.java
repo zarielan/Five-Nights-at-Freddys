@@ -57,7 +57,7 @@ public class Art
 		roomTextures.put("ShowStageChicaFreddy", new Texture("ShowStage_ChicaFreddy.png"));
 		roomTextures.put("ShowStageFreddy1", new Texture("ShowStage_Freddy1.png"));
 		roomTextures.put("ShowStageFreddy2", new Texture("ShowStage_Freddy2.png"));
-
+/*
 		roomTextures.put("DiningArea", new Texture("DiningArea.png"));
 		roomTextures.put("DiningAreaFreddy", new Texture("DiningArea_Freddy.png"));
 		roomTextures.put("DiningAreaBonnie1", new Texture("DiningArea_Bonnie1.png"));
@@ -113,7 +113,7 @@ public class Art
 		roomTextures.put("EastHallCor5", new Texture("EastHallCor5.png"));
 		roomTextures.put("EastHallCorFreddy", new Texture("EastHallCor_Freddy.png"));
 		roomTextures.put("EastHallCorChica", new Texture("EastHallCor_Chica.png"));
-
+*/
 		officeTextures = new ArrayMap<String, Texture>();
 		officeTextures.put("Office", new Texture("Office.png"));
 		officeTextures.put("OfficeLeftLight", new Texture("OfficeLeftLight.png"));
