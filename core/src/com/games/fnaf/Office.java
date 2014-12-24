@@ -42,7 +42,7 @@ public class Office
 	{
 		if (resetCameraX)
 		{
-			camera.position.x = 0;
+			camera.position.x = 640f;
 			resetCameraX = false;
 		}
 
