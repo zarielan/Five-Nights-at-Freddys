@@ -52,7 +52,7 @@ public class GameScreen extends ScreenAdapter
 	@Override
 	public void render(float delta)
 	{
-		if (lookingAtCamera && !renderOffice)
+		if (lookingAtCamera && !renderOffice && !renderJumpScare)
 		{
 			camera.render();
 		}
@@ -64,7 +64,7 @@ public class GameScreen extends ScreenAdapter
 		else
 		{
 			office.render();
-			FoxyAI foxyAI = (FoxyAI)Animatronic.FOXY.getAI();
+			FoxyAI foxyAI = (FoxyAI) Animatronic.FOXY.getAI();
 			foxyAI.setNonViewingTime(foxyAI.getNonViewingTime() + delta);
 		}
 
@@ -128,6 +128,11 @@ public class GameScreen extends ScreenAdapter
 			{
 				//Else? Reverse the animation; put the camera down
 				this.cameraToggle.setPlayMode(Animation.PlayMode.REVERSED);
+
+				//Is there an animatronic?
+				if (animatronicInside)
+					//Prepare the jumpscare
+					readyJumpscare();
 			}
 		}
 
@@ -173,11 +178,8 @@ public class GameScreen extends ScreenAdapter
 				//Were we looking at the camera?
 				if (lookingAtCamera)
 				{
-					//Is someone there?
-					if (animatronicInside)
-						//Prepare the jumpscare
-						readyJumpscare();
-					else
+					//Is nobody there?
+					if (!animatronicInside)
 						//Immediately render the office behind the transparent camera texture
 						renderOffice = true;
 				}
