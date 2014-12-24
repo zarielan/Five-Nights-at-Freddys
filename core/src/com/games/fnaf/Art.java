@@ -40,9 +40,14 @@ public class Art
 		//Jumpsares
 		jumpScares = new ArrayMap<String, Array<TextureRegion>>();
 		jumpScares.put("Chica", new Array<TextureRegion>());
+		jumpScares.put("Bonnie", new Array<TextureRegion>());
 		for (int i = 1; i <= 16; i++)
 		{
 			jumpScares.get("Chica").add(new TextureRegion(new Texture("Jumpscares/Chica (" + i + ").png")));
+		}
+		for (int i = 1; i <= 11; i++)
+		{
+			jumpScares.get("Bonnie").add(new TextureRegion(new Texture("Jumpscares/Bonnie (" + i + ").png")));
 		}
 
 		//Rooms
