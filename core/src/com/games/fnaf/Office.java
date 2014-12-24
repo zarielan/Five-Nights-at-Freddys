@@ -16,6 +16,7 @@ public class Office
 	private boolean[] playDoorAnimation;
 	private boolean[] previousDoorShut;
 	private float[] doorAnimCounter;
+	private boolean resetCameraX;
 
 	public Office(SpriteBatch batch)
 	{
@@ -34,10 +35,17 @@ public class Office
 		playDoorAnimation = new boolean[]{false, false};
 		previousDoorShut = new boolean[]{false, false};
 		doorAnimCounter = new float[]{0f, 0f};
+		resetCameraX = true;
 	}
 
 	public void renderJumpscare(TextureRegion frame)
 	{
+		if (resetCameraX)
+		{
+			camera.position.x = 0;
+			resetCameraX = false;
+		}
+
 		batch.setProjectionMatrix(camera.combined);
 		camera.update();
 
