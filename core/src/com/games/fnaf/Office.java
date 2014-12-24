@@ -49,7 +49,7 @@ public class Office
 		batch.setProjectionMatrix(camera.combined);
 		camera.update();
 
-		batch.draw(frame, 0f, 0f);
+		batch.draw(frame, -160f, 0f);
 
 		movePOV();
 	}
