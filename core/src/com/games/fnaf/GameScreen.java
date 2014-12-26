@@ -60,6 +60,11 @@ public class GameScreen extends ScreenAdapter
 		{
 			jumpScareTimer += delta;
 			office.renderJumpscare(jumpScare.getKeyFrame(jumpScareTimer));
+
+			if (jumpScareTimer >= 3f)
+			{
+				((FNaF)Gdx.app.getApplicationListener()).setScreen(new GameOverScreen(batch));
+			}
 		}
 		else
 		{

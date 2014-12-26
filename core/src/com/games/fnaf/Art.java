@@ -26,6 +26,7 @@ public class Art
 	public static Array<TextureRegion> cameraBars;
 	public static Array<TextureRegion> foxySprinting;
 	public static Array<TextureRegion> leftDoor, rightDoor;
+	public static Texture gameOverScreen;
 
 	public static void loadTextures()
 	{
@@ -36,6 +37,7 @@ public class Art
 		cameraButtonFlash = new Texture("CameraButtonFlash.png");
 		cameraDisabled = new Texture("CameraDisabled.png");
 		cameraToggle = new Texture("CameraToggle.png");
+		gameOverScreen = new Texture("GameOverScreen.png");
 
 		//Jumpsares
 		jumpScares = new ArrayMap<String, Array<TextureRegion>>();
@@ -230,6 +232,7 @@ public class Art
 		cameraButtonFlash.dispose();
 		cameraDisabled.dispose();
 		cameraToggle.dispose();
+		gameOverScreen.dispose();
 
 		for (Array<TextureRegion> t : jumpScares.values())
 		{
