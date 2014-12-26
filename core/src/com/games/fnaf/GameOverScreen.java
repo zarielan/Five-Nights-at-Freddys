@@ -11,8 +11,10 @@ public class GameOverScreen extends ScreenAdapter
 	private SpriteBatch batch;
 	private OrthographicCamera camera;
 	private Animation endStatic;
-	private float staticCounter;
+	private float animCounter;
 	private float fadeTime;
+	private boolean renderStatic;
+	private float gameOverCounter;
 
 	public GameOverScreen(SpriteBatch batch1)
 	{
@@ -25,12 +27,21 @@ public class GameOverScreen extends ScreenAdapter
 	@Override
 	public void render(float delta)
 	{
-		renderStatic(delta);
+		if (renderStatic)
+			renderStatic(delta);
+		renderGameOver(delta);
+	}
+
+	private void renderGameOver(float delta)
+	{
+		gameOverCounter += delta;
+		batch.draw(Art.gameOverScreen, 0f, 0f);
+		batch.draw(Art.gameOverText, Gdx.graphics.getWidth() - 20f - Art.gameOverText.getWidth(), 20f);
 	}
 
 	private void renderStatic(float delta)
 	{
-		if (staticCounter >= 10f)
+		if (animCounter >= 10f)
 		{
 			fadeTime += delta;
 			if (1f - fadeTime > 0f)
@@ -38,15 +49,16 @@ public class GameOverScreen extends ScreenAdapter
 			else
 			{
 				batch.setColor(1f, 1f, 1f, 1f);
+				renderStatic = false;
 				return;
 			}
 		}
 		else
 		{
-			staticCounter += delta;
+			animCounter += delta;
 		}
 
-		batch.draw(endStatic.getKeyFrame(staticCounter), 0f, 0f);
+		batch.draw(endStatic.getKeyFrame(animCounter), 0f, 0f);
 	}
 
 	@Override
@@ -54,7 +66,9 @@ public class GameOverScreen extends ScreenAdapter
 	{
 		endStatic = new Animation(1/30f, Art.kitchenStatic);
 		endStatic.setPlayMode(Animation.PlayMode.LOOP);
-		staticCounter = 0f;
+		animCounter = 0f;
 		fadeTime = 0f;
+		renderStatic = true;
+		gameOverCounter = 0f;
 	}
 }
