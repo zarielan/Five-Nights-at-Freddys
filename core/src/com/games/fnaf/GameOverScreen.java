@@ -11,6 +11,7 @@ public class GameOverScreen extends ScreenAdapter
 	private SpriteBatch batch;
 	private OrthographicCamera camera;
 	private Animation endStatic;
+	private Animation cameraBars;
 	private float animCounter;
 	private float fadeTime;
 	private boolean renderStatic;
@@ -27,16 +28,22 @@ public class GameOverScreen extends ScreenAdapter
 	@Override
 	public void render(float delta)
 	{
+		renderGameOver(delta);
 		if (renderStatic)
 			renderStatic(delta);
-		renderGameOver(delta);
 	}
 
 	private void renderGameOver(float delta)
 	{
+		batch.setColor(1f, 1f, 1f, 1f);
 		gameOverCounter += delta;
 		batch.draw(Art.gameOverScreen, 0f, 0f);
 		batch.draw(Art.gameOverText, Gdx.graphics.getWidth() - 20f - Art.gameOverText.getWidth(), 20f);
+
+		if (gameOverCounter >= 10f)
+		{
+			//main menu
+		}
 	}
 
 	private void renderStatic(float delta)
@@ -59,6 +66,7 @@ public class GameOverScreen extends ScreenAdapter
 		}
 
 		batch.draw(endStatic.getKeyFrame(animCounter), 0f, 0f);
+		batch.draw(cameraBars.getKeyFrame(animCounter), 0f, 0f);
 	}
 
 	@Override
@@ -70,5 +78,7 @@ public class GameOverScreen extends ScreenAdapter
 		fadeTime = 0f;
 		renderStatic = true;
 		gameOverCounter = 0f;
+		cameraBars = new Animation(1/30f, Art.cameraBars);
+		cameraBars.setPlayMode(Animation.PlayMode.NORMAL);
 	}
 }

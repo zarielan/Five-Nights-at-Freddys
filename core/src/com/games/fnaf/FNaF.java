@@ -17,7 +17,7 @@ public class FNaF extends Game
 		timeElapsed = 0f;
 
 		batch = new SpriteBatch();
-		this.setScreen(new GameScreen(batch));
+		this.setScreen(new GameOverScreen(batch));
 	}
 
 	@Override
