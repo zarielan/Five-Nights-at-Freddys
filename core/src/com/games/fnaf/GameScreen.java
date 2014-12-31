@@ -52,6 +52,8 @@ public class GameScreen extends ScreenAdapter
 	@Override
 	public void render(float delta)
 	{
+		this.night.incrementNightCounter(delta);
+
 		if (lookingAtCamera && !renderOffice && !renderJumpScare)
 		{
 			camera.render();

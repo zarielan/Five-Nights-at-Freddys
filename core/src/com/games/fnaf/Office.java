@@ -51,7 +51,7 @@ public class Office
 		batch.setProjectionMatrix(camera.combined);
 		camera.update();
 
-		batch.draw(Art.officeTextures.get("Office"), -160, 0f);
+		batch.draw(Art.officeTextures.get("Office"), -160f, 0f);
 		renderLightsOverlay();
 		renderDoors();
 

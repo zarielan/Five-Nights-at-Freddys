@@ -2,10 +2,12 @@ package com.games.fnaf;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 
 public class Camera
@@ -17,6 +19,7 @@ public class Camera
 	private Animation foxySprinting;
 	private float foxyAnimCounter;
 	private boolean showFoxySprinting;
+	private ShapeRenderer cameraOutline;
 
 	public Camera(SpriteBatch batch1)
 	{
@@ -31,6 +34,10 @@ public class Camera
 		foxySprinting.setPlayMode(Animation.PlayMode.NORMAL);
 		foxyAnimCounter = 0f;
 		showFoxySprinting = false;
+
+		cameraOutline = new ShapeRenderer();
+		cameraOutline.setColor(Color.WHITE);
+		cameraOutline.setProjectionMatrix(batch.getProjectionMatrix());
 
 		changeRoom(Room.SHOW_STAGE, Room.SHOW_STAGE.getCamButton());
 	}

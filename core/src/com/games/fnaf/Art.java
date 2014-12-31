@@ -58,7 +58,7 @@ public class Art
 		//Animatronic combination naming must be in the order of Bonnie -> Chica -> Freddy -> Foxy
 		//Maximum permutations must be 7, plus one for the empty room
 		roomTextures = new ArrayMap<String, Texture>();
-/*
+
 		roomTextures.put("ShowStage", new Texture("ShowStage.png"));
 		roomTextures.put("ShowStageBonnieChicaFreddy1", new Texture("ShowStage_BonnieChicaFreddy1.png"));
 		roomTextures.put("ShowStageBonnieChicaFreddy2", new Texture("ShowStage_BonnieChicaFreddy2.png"));
@@ -129,7 +129,7 @@ public class Art
 		officeTextures.put("OfficeRightLight", new Texture("OfficeRightLight.png"));
 		officeTextures.put("OfficeBonnie", new Texture("OfficeBonnie.png"));
 		officeTextures.put("OfficeChica", new Texture("OfficeChica.png"));
-*/
+
 		//The door lights
 		doorLights = new ArrayMap<String, Texture>();
 		doorLights.put("Left", new Texture("DoorLightLeft.png"));
