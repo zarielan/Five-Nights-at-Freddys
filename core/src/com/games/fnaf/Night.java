@@ -16,14 +16,21 @@ public enum Night
 	private float nightCounter;
 	private boolean startCounting = false;
 	private float secondsPerNight = 90f;
+	private int nightNumber;
 
-	private Night(int bonnie, int chica, int freddy, int foxy, float movementDelay)
+	private Night(int bonnie, int chica, int freddy, int foxy, float movementDelay, int nightNumber)
 	{
 		this.bonnie = bonnie;
 		this.chica = chica;
 		this.foxy = foxy;
 		this.freddy = freddy;
 		this.movementDelay = movementDelay;
+		this.nightNumber = nightNumber;
+	}
+
+	public int getNightNumber()
+	{
+		return nightNumber;
 	}
 
 	public void incrementNightCounter(float delta)
