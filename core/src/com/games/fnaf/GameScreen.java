@@ -34,7 +34,7 @@ public class GameScreen extends ScreenAdapter
 		this.batch = batch;
 		this.ortho = new OrthographicCamera();
 		this.ortho.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		this.night = Night.TEST_NIGHT;
+		this.night = Night.NIGHT_1;
 		this.lookingAtCamera = false;
 		this.cameraToggleHitbox = new Rectangle(255f, 27f, Art.cameraToggle.getWidth(), Art.cameraToggle.getHeight());
 		this.toggling = false;
@@ -97,6 +97,19 @@ public class GameScreen extends ScreenAdapter
 
 		batch.draw(Art.am, 1250f - Art.am.getWidth(), 690f - Art.am.getHeight());
 		renderAMNumbers();
+		renderNightNumber();
+	}
+
+	private void renderNightNumber()
+	{
+		float x = 1250f - Art.am.getWidth() - 20f - Art.amNumbers.first().getRegionWidth();
+		float y = 690f - Art.am.getHeight() - 10f - Art.night.getHeight();
+
+		if (this.night.getNightNumber() > 0)
+		{
+			batch.draw(Art.night, x, y);
+			batch.draw(Art.nightNumbers.get(night.getNightNumber() - 1), x + 10f + Art.night.getWidth(), y);
+		}
 	}
 
 	private void renderAMNumbers()
