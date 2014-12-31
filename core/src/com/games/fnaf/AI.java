@@ -6,7 +6,7 @@ import com.badlogic.gdx.utils.ArrayMap;
 public abstract class AI
 {
 	private int frequency;
-	private final float MOVEMENT_TIME = 90f;
+	private final float MOVEMENT_TIME = 180f;
 	private float freqMovement;
 	private int timer;
 	private boolean isMoving;
