@@ -40,7 +40,7 @@ public abstract class AI
 		this.freqMovement = MOVEMENT_TIME / (float)frequency;
 	}
 
-	float getFrequency()
+	public float getFrequency()
 	{
 		return frequency;
 	}

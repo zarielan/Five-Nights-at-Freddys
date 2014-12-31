@@ -50,8 +50,13 @@ public class FoxyAI extends AI
 	{
 		viewingTime = 0f;
 		nonViewingTime = 0f;
-		watchMeTime = 12f - ((getFrequency() / 20f) * 12f) + 13f;
+		watchMeTime = 25.2f - ((getFrequency() / 20f) * 24f) + 13f;
 		cooldownTime = 0f;
+	}
+
+	public float getMultiplier()
+	{
+		return getFrequency() / 20f;
 	}
 
 	public int getStage()

@@ -45,12 +45,8 @@ public class Camera
 	public void render()
 	{
 		room.updateCameraValues();
-		if (room == Room.KITCHEN)
-		{
-			batch.draw(kitchenStatic.getKeyFrame(FNaF.getTimeElapsed()), 0f, 0f);
-			batch.draw(Art.cameraDisabled, (Gdx.graphics.getWidth() - Art.cameraDisabled.getWidth()) / 2, 600f);
-		}
-		else if (showFoxySprinting)
+
+		if (showFoxySprinting)
 		{
 			foxyAnimCounter += Gdx.graphics.getDeltaTime();
 			batch.draw(foxySprinting.getKeyFrame(foxyAnimCounter), room.getCameraX(), 0f);
@@ -62,7 +58,7 @@ public class Camera
 				foxyAnimCounter = 0f;
 			}
 		}
-		else
+		else if (room != Room.KITCHEN)
 		{
 			if (room.getUnderlayTexture() != null)
 			{
@@ -77,10 +73,17 @@ public class Camera
 		if (room == Room.PIRATE_COVE)
 		{
 			foxyAI.setNonViewingTime(0f);
-			foxyAI.setViewingTime(foxyAI.getViewingTime() + Gdx.graphics.getDeltaTime() / 2);
+			foxyAI.setViewingTime(foxyAI.getViewingTime() + (Gdx.graphics.getDeltaTime() / 2) * FoxyAI.getInstance().getMultiplier());
 		}
 		else
-			foxyAI.setNonViewingTime(foxyAI.getNonViewingTime() + Gdx.graphics.getDeltaTime() / 4);
+			foxyAI.setNonViewingTime(foxyAI.getNonViewingTime() + (Gdx.graphics.getDeltaTime() / 4) * FoxyAI.getInstance().getMultiplier());
+
+		batch.draw(kitchenStatic.getKeyFrame(FNaF.getTimeElapsed()), 0f, 0f);
+
+		if (room == Room.KITCHEN)
+		{
+			batch.draw(Art.cameraDisabled, (Gdx.graphics.getWidth() - Art.cameraDisabled.getWidth()) / 2, 600f);
+		}
 
 		map.draw(batch);
 

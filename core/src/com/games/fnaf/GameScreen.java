@@ -72,7 +72,7 @@ public class GameScreen extends ScreenAdapter
 		{
 			office.render();
 			FoxyAI foxyAI = (FoxyAI) Animatronic.FOXY.getAI();
-			foxyAI.setNonViewingTime(foxyAI.getNonViewingTime() + delta);
+			foxyAI.setNonViewingTime(foxyAI.getNonViewingTime() + delta * FoxyAI.getInstance().getMultiplier());
 		}
 
 		batch.setProjectionMatrix(ortho.combined);
