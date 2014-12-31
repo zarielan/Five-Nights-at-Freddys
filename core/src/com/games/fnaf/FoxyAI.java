@@ -154,9 +154,51 @@ public class FoxyAI extends AI
 				Animatronic.BONNIE.setCurrentRoom(putBonnieIn);
 			}
 
+			//Check if Bonnie is in the West Hall and Foxy isn't there yet
+			if (!Room.WEST_HALL.getVisitors()[Animatronic.FOXY.ordinal()] && Room.WEST_HALL.getVisitors()[Animatronic.BONNIE.ordinal()])
+			{
+				//Move that guy out of the way to either the West Hall Corner, Supply Closet, or Dining Area
+				Room putBonnieIn;
+				switch (MathUtils.random(2))
+				{
+				case 0:
+					putBonnieIn = Room.WEST_HALL_CORNER;
+					break;
+				case 1:
+					putBonnieIn = Room.SUPPLY_CLOSET;
+					break;
+				case 2:
+					putBonnieIn = Room.DINING_AREA;
+					break;
+				default:
+					putBonnieIn = Room.SUPPLY_CLOSET;
+					break;
+				}
+
+				//Clear the way for Foxy!
+				Animatronic.BONNIE.setCurrentRoom(putBonnieIn);
+			}
+
 			//Good luck.
 			if (anim.getCurrentRoom() != Room.WEST_HALL)
 				anim.setCurrentRoom(Room.WEST_HALL);
+
+			//Check if Bonnie is at the door
+			if (Room.OFFICE.getVisitors()[Animatronic.BONNIE.ordinal()])
+			{
+				//Move him out of the way!
+				Room bonnieMovesAt = Room.WEST_HALL_CORNER;
+
+				//If by some random boolean, and the left door is open...
+				if (MathUtils.randomBoolean() && !isDoorShut)
+				{
+					//Move him in instead..
+					bonnieMovesAt = Room.JUMPSCARE_TIME;
+				}
+
+				//Go!
+				Animatronic.BONNIE.setCurrentRoom(bonnieMovesAt);
+			}
 		}
 	}
 }

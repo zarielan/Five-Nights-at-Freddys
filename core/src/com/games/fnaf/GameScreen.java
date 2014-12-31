@@ -104,8 +104,6 @@ public class GameScreen extends ScreenAdapter
 		float x = 1250f - Art.am.getWidth() - 20f - Art.amNumbers.first().getRegionWidth();
 		float y = 690f - Art.am.getHeight() - 2f;
 
-		System.out.println("Time: " + night.getCounter() + ", Hour: " + night.getHour());
-
 		if (night.getHour() <= 0)
 		{
 			batch.draw(Art.amNumbers.get(0), x - 24f, y);
