@@ -26,8 +26,10 @@ public class Art
 	public static Array<TextureRegion> cameraBars;
 	public static Array<TextureRegion> foxySprinting;
 	public static Array<TextureRegion> leftDoor, rightDoor;
+	public static Array<TextureRegion> amNumbers;
 	public static Texture gameOverScreen;
 	public static Texture gameOverText;
+	public static Texture am;
 
 	public static void loadTextures()
 	{
@@ -40,6 +42,7 @@ public class Art
 		cameraToggle = new Texture("CameraToggle.png");
 		gameOverScreen = new Texture("GameOverScreen.png");
 		gameOverText = new Texture("GameOverText.png");
+		am = new Texture("Mechanics/am.png");
 
 		//Jumpsares
 		jumpScares = new ArrayMap<String, Array<TextureRegion>>();
@@ -180,6 +183,12 @@ public class Art
 			rightDoor.add(new TextureRegion(new Texture("Doors/RightDoor (" + i + ").png")));
 		}
 
+		amNumbers = new Array<TextureRegion>();
+		for (int i = 1; i <= 5; i++)
+		{
+			amNumbers.add(new TextureRegion(new Texture("Mechanics/am" + i + ".png")));
+		}
+
 		//Camera buttons
 		cameraButtonTextures = new ArrayMap<String,Texture>();
 		cameraButtonTextures.put("1A", new Texture("1A.png"));
@@ -236,6 +245,7 @@ public class Art
 		cameraToggle.dispose();
 		gameOverScreen.dispose();
 		gameOverText.dispose();
+		am.dispose();
 
 		for (Array<TextureRegion> t : jumpScares.values())
 		{
@@ -243,6 +253,11 @@ public class Art
 			{
 				tr.getTexture().dispose();
 			}
+		}
+
+		for (TextureRegion t : amNumbers)
+		{
+			t.getTexture().dispose();
 		}
 
 		for (TextureRegion t : leftDoor)
