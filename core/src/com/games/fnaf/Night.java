@@ -4,9 +4,9 @@ import com.badlogic.gdx.math.MathUtils;
 
 public enum Night
 {
-	NIGHT_1(3, 5, 5, 0, 30f),
-	TEST_NIGHT(15, 15, 1, 1, 0f),
-	DONT_MOVE_NIGHT(0, 0, 0, 0, 0f);
+	NIGHT_1(3, 5, 5, 0, 30f, 1),
+	TEST_NIGHT(15, 15, 1, 1, 0f, 0),
+	DONT_MOVE_NIGHT(0, 0, 0, 0, 0f, 0);
 
 	private int bonnie = -1;
 	private int chica = -1;
