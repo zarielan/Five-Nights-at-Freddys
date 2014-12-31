@@ -102,13 +102,13 @@ public class GameScreen extends ScreenAdapter
 
 	private void renderNightNumber()
 	{
-		float x = 1250f - Art.am.getWidth() - 20f - Art.amNumbers.first().getRegionWidth();
-		float y = 690f - Art.am.getHeight() - 10f - Art.night.getHeight();
+		float x = 1250f - Art.am.getWidth() - 38f - Art.amNumbers.first().getRegionWidth();
+		float y = 690f - Art.am.getHeight() - 20f - Art.night.getHeight();
 
 		if (this.night.getNightNumber() > 0)
 		{
 			batch.draw(Art.night, x, y);
-			batch.draw(Art.nightNumbers.get(night.getNightNumber() - 1), x + 10f + Art.night.getWidth(), y);
+			batch.draw(Art.nightNumbers.get(night.getNightNumber() - 1), x + 10f + Art.night.getWidth(), y - 1f);
 		}
 	}
 
