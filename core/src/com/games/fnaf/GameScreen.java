@@ -94,6 +94,27 @@ public class GameScreen extends ScreenAdapter
 		}
 
 		cameraToggling(delta);
+
+		batch.draw(Art.am, 1250f - Art.am.getWidth(), 690f - Art.am.getHeight());
+		renderAMNumbers();
+	}
+
+	private void renderAMNumbers()
+	{
+		float x = 1250f - Art.am.getWidth() - 20f - Art.amNumbers.first().getRegionWidth();
+		float y = 690f - Art.am.getHeight() - 2f;
+
+		System.out.println("Time: " + night.getCounter() + ", Hour: " + night.getHour());
+
+		if (night.getHour() <= 0)
+		{
+			batch.draw(Art.amNumbers.get(0), x - 24f, y);
+			batch.draw(Art.amNumbers.get(1), x, y);
+		}
+		else if (night.getHour() < 6)
+		{
+			batch.draw(Art.amNumbers.get(night.getHour() - 1), x, y);
+		}
 	}
 
 	private void readyJumpscare()

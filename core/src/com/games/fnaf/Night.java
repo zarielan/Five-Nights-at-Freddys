@@ -39,6 +39,11 @@ public enum Night
 		return MathUtils.floor(nightCounter / secondsPerNight);
 	}
 
+	public float getCounter()
+	{
+		return nightCounter;
+	}
+
 	public void doNight()
 	{
 		if (bonnie > 0)
@@ -75,5 +80,6 @@ public enum Night
 		}
 
 		nightCounter = 0f;
+		startCounting = true;
 	}
 }
