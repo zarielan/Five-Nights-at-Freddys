@@ -1,4 +1,4 @@
-#Five Nights at Freddy's Recreated
+# Five Nights at Freddy's Recreated
 
 Ohai there! This is just a little project of mine where I recreate [Five Nights at Freddy's](http://store.steampowered.com/app/319510/) by Scott Cawthon
 
